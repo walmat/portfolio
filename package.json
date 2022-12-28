@@ -51,7 +51,7 @@
     "use-spotify": "^0.0.1-alpha3"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
+    "@babel/core": "^7.20.7",
     "@babel/preset-typescript": "^7.18.6",
     "@prismicio/types": "^0.2.7",
     "@storybook/addon-essentials": "^6.5.14",
