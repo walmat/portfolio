@@ -1,0 +1,21 @@
+{
+  "name": "Matthew Thomas Wall",
+  "short_name": "mtw.",
+  "icons": [
+    {
+      "src": "/img/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/img/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "background_color": "#06092B",
+  "description": "An aspiring homesteader and avid believer that Web3 can change the world.",
+  "display": "fullscreen",
+  "start_url": "/",
+  "theme_color": "#06092B"
+}
