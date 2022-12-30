@@ -34,8 +34,8 @@ export default function DarkModeSwitch() {
   }
 
   return (
-    <S.Container onTap={handleSwitch}>
-      <S.Background>
+    <S.Container>
+      <S.Background onTap={handleSwitch}>
         <S.Toggle
           animate={theme === ThemeOptions[0] ? 'light' : 'dark'}
           initial={theme === ThemeOptions[0] ? 'light' : 'dark'}

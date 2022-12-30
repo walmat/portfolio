@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { Arrow } from 'components'
+import { Arrow, Button } from 'components'
 import { useThemeContext } from 'providers'
 
 import * as S from './styles'
@@ -25,9 +25,7 @@ function Social({ name, href, width, height }: SocialProps) {
         height={height}
       />
       <Link href={href} target="_blank">
-        <S.CornerContainer>
-          <Arrow />
-        </S.CornerContainer>
+        <Button onlyIcon Icon={Arrow} />
       </Link>
     </S.Container>
   )

@@ -1,43 +1,9 @@
 import Link from 'next/link'
 import { useAnimation } from 'framer-motion'
-import { Arrow } from 'components'
+import { Arrow, Button } from 'components'
 
 import * as S from './styles'
 import { ThemeOptions, useThemeContext } from 'providers'
-
-const container = {
-  init: {
-    width: '36px',
-    transition: {
-      duration: 0.48,
-      delay: 0.12
-    }
-  },
-  anim: {
-    width: 'auto',
-    transition: {
-      duration: 0.48
-    }
-  }
-}
-
-const text = {
-  init: {
-    x: -12,
-    opacity: 0,
-    transition: {
-      duration: 0.48
-    }
-  },
-  anim: {
-    x: 0,
-    opacity: 1,
-    transition: {
-      delay: 0.36,
-      duration: 0.12
-    }
-  }
-}
 
 function Nebula() {
   const animate = useAnimation()
@@ -73,12 +39,9 @@ function Nebula() {
         />
       )}
       <Link href="/projects/nebula">
-        <S.ExpandedCorner variants={container}>
-          <S.ExpandedCornerText variants={text}>Nebula</S.ExpandedCornerText>
-          <S.ExpandedCornerIcon>
-            <Arrow />
-          </S.ExpandedCornerIcon>
-        </S.ExpandedCorner>
+        <Button withMotion Icon={Arrow}>
+          Nebula
+        </Button>
       </Link>
     </S.Wrapper>
   )

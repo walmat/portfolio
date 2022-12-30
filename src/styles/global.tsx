@@ -11,15 +11,15 @@ export const _Fonts = css`
   }
 
   @font-face {
-    font-family: 'Silka Medium';
-    src: url('/fonts/Silka-Medium.ttf');
-    font-weight: 500;
+    font-family: 'Silka Regular';
+    src: url('/fonts/Silka-Regular.ttf');
+    font-weight: 400;
     font-style: normal;
   }
 
   @font-face {
-    font-family: 'Silka Regular';
-    src: url('/fonts/Silka-Regular.ttf');
+    font-family: 'Silka Medium';
+    src: url('/fonts/Silka-Medium.ttf');
     font-weight: 500;
     font-style: normal;
   }

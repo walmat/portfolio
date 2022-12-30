@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import { toast } from 'react-hot-toast'
 import { useAnimation, AnimationControls } from 'framer-motion'
 
-import { Arrow } from '..'
+import { Arrow, Button, Heading, Paragraph } from 'components'
 
 import * as S from './styles'
 
@@ -86,11 +86,11 @@ function Contact() {
   return (
     <S.Wrapper onSubmit={handleSubmit}>
       <S.Copy>
-        <S.Title>{title}</S.Title>
-        <S.Text>
+        <Heading>{title}</Heading>
+        <Paragraph>
           Content includes articles, early access to products, and ongoing
           learnings.
-        </S.Text>
+        </Paragraph>
       </S.Copy>
 
       <S.Subscribe
@@ -106,11 +106,7 @@ function Contact() {
       />
 
       <S.Footer>
-        <S.Button type="submit">
-          <Arrow />
-          <S.ButtonText>Subscribe</S.ButtonText>
-        </S.Button>
-
+        <Button Icon={Arrow}>Subscribe</Button>
         {errors.email && <S.Error>{errors.email}</S.Error>}
       </S.Footer>
     </S.Wrapper>

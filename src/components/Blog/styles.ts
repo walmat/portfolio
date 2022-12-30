@@ -17,24 +17,6 @@ export const Wrapper = styled.div`
 
 export const Copy = styled.div``
 
-export const Title = styled.h2`
-  font-size: 24px;
-  font-family: 'Moranga Bold';
-  line-height: 32px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.primary};
-  margin-bottom: 4px;
-`
-
-export const Text = styled.p`
-  font-size: 15px;
-  font-family: 'Silka Regular';
-  line-height: 26px;
-  letter-spacing: 0.5px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.colors.primary};
-`
-
 export const Footer = styled.div`
   width: 100%;
   display: flex;

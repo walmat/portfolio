@@ -60,10 +60,11 @@ export const ImageContainer = styled(Image)`
 `
 
 export const BiographyText = styled.div`
-  font-size: 15px;
+  font-size: 14px;
   line-height: 26px;
   letter-spacing: 0.5px;
   font-weight: 400;
+  font-family: 'Silka Regular';
   color: ${({ theme }) => theme.colors.primary};
 `
 

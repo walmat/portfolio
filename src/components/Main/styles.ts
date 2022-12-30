@@ -1,3 +1,4 @@
+import { Paragraph } from 'components/Typography/styles'
 import styled from 'styled-components'
 
 import { breakpoints } from 'styles'
@@ -58,12 +59,8 @@ ${({ theme }) =>
     })}
 `
 
-export const Contact = styled.div`
+export const Contact = styled(Paragraph)`
   display: none;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  line-height: normal;
-  font-weight: 700;
   transition: all 0.2s ease 0s;
 
   &:hover {

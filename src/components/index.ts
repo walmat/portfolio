@@ -15,4 +15,5 @@ export * from './Blog'
 export * from './Arrow'
 export * from './Project'
 
-export * from './Heading'
+export * from './Button'
+export * from './Typography'

@@ -18,7 +18,7 @@ export const Container = styled(motion.div)`
   }
 `
 
-export const Background = styled.div`
+export const Background = styled(motion.div)`
   height: 48px;
   width: 80px;
   border-radius: 40px;
