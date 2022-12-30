@@ -95,6 +95,12 @@ export interface Theme extends DefaultTheme {
     radius: string
     shadow: string
   }
+  close: {
+    background: string
+    radius: string
+    border: string
+    hover: string
+  }
 }
 
 export const light: Theme = {
@@ -192,6 +198,12 @@ export const light: Theme = {
     toggle: 'rgb(13, 17, 23)',
     radius: '32px',
     shadow: 'transparent 0px 0px 0px 2px inset'
+  },
+  close: {
+    background: 'rgb(255, 255, 255)',
+    radius: '32px',
+    border: '2px solid rgb(240, 242, 248)',
+    hover: 'rgb(240 242 248) 0px 0px 0px 5px'
   }
 }
 
@@ -289,6 +301,12 @@ export const dark: Theme = {
     toggle: 'rgb(13, 17, 23)',
     radius: '32px',
     shadow: 'rgb(48 54 61) 0px 0px 0px 2px inset'
+  },
+  close: {
+    background: 'rgb(13, 17, 23)',
+    radius: '23px',
+    border: '2px solid rgb(48, 54, 61)',
+    hover: 'rgb(33, 38, 45)'
   }
 }
 

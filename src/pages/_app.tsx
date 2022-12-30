@@ -69,7 +69,6 @@ function Application({ Component, pageProps, theme }: ApplicationProps) {
         <GlobalStyles />
         <AnimatePresence
           mode="wait"
-          initial={false}
           onExitComplete={() => window.scrollTo(0, 0)}
         >
           <Component {...pageProps} />
