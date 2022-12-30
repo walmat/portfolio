@@ -1,15 +1,19 @@
-import { Arrow } from 'components/Arrow'
+import { Box } from 'rebass'
+import { Arrow, Heading } from 'components'
+
 import * as S from './styles'
 
 function Blog() {
   return (
     <S.Wrapper>
       <S.Copy>
-        <S.Title>Introspective look into web3 gaming</S.Title>
+        <Box sx={{ mb: 2 }}>
+          <Heading>Introspective look into web3 gaming</Heading>
+        </Box>
         <S.Text>
-          A brief overview of the pitfalls of the current play-to-earn trends
-          that we see in Web3 gaming and my analysis on what we could be doing
-          to promote mass adoption within NFTs as a whole.
+          A brief look into the pitfalls of the current play-to-earn trends that
+          we see in Web3 gaming and my take on what we should be doing to
+          promote mass adoption of NFT communities.
         </S.Text>
       </S.Copy>
 

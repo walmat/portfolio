@@ -50,7 +50,12 @@ function Recur() {
       onHoverEnd={() => animate.start('init')}
       onHoverStart={() => animate.start('anim')}
     >
-      {/* <S.BackgroundImage src="/recur/recur.svg" alt="" height={100} width={100} /> */}
+      <S.BackgroundImage
+        src="/recur/recur.svg"
+        alt=""
+        height={100}
+        width={100}
+      />
       {theme === ThemeOptions[0] && (
         <S.RectangleImage
           src="/recur/rectangle.svg"

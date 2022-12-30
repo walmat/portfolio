@@ -14,3 +14,5 @@ export * from './Social'
 export * from './Blog'
 export * from './Arrow'
 export * from './Project'
+
+export * from './Heading'

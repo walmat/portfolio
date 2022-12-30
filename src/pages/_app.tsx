@@ -43,17 +43,17 @@ const ThemeSwitch = ({ children }: ChildrenProps) => {
 function App({ Component, pageProps }: AppProps) {
   return (
     <Providers>
+      <Head>
+        <title>mtw.</title>
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/icon-512.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta
+          name="description"
+          content="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
+        />
+      </Head>
       <ThemeSwitch>
-        <Head>
-          <title>mtw.</title>
-          <link rel="icon" href="/favicon.ico" />
-          <link rel="apple-touch-icon" href="/icon-512.png" />
-          <link rel="manifest" href="/manifest.json" />
-          <meta
-            name="description"
-            content="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
-          />
-        </Head>
         <GlobalStyles />
         <AnimatePresence
           mode="wait"

@@ -87,6 +87,8 @@ const Grid = () => {
     <S.GridContainer>
       <S.Container>
         <ResponsiveGridLayout
+          measureBeforeMount
+          useCSSTransforms
           isResizable={false}
           layouts={{ lg, md, sm: mobile }}
           breakpoints={{ lg: 1199, md: 799, sm: 0 }}
