@@ -1,13 +1,31 @@
 import { Project } from 'components'
 import { PageLayout } from 'layouts'
+import { projects } from 'meta'
+import { NextPageContext } from 'next'
 
-export default function Home() {
+interface ProjectPageProps {
+  title: string
+  name: string
+  description: string
+}
+
+export default function ProjectPage(project: ProjectPageProps) {
   return (
     <PageLayout
-      title="mtw."
-      description="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
+      title={`mtw. ${project.title}`}
+      description={project.description}
     >
-      <Project />
+      <Project {...project} />
     </PageLayout>
   )
+}
+
+ProjectPage.getInitialProps = ({ query: { name } }: NextPageContext) => {
+  if (!name || typeof name !== 'string' || !projects[name]) {
+    return {
+      notFound: true
+    }
+  }
+
+  return { ...projects[name] }
 }
