@@ -1,10 +1,5 @@
-import {
-  createContext,
-  PropsWithChildren,
-  useContext,
-  useEffect,
-  useState
-} from 'react'
+import { createContext, PropsWithChildren, useContext, useState } from 'react'
+import { setCookie } from 'cookies-next'
 
 export const ThemeOptions = ['light', 'dark']
 
@@ -17,26 +12,19 @@ interface ThemeContext {
 const ThemeContext = createContext<ThemeContext>({} as ThemeContext)
 
 interface ThemeProviderProps {
+  initialTheme: string
   children: PropsWithChildren<React.ReactNode>
 }
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, _setTheme] = useState(ThemeOptions[0])
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const theme = window.localStorage.getItem('theme')
-      if (theme) {
-        _setTheme(theme)
-      }
-    }
-  }, [])
+export const ThemeProvider = ({
+  initialTheme,
+  children
+}: ThemeProviderProps) => {
+  const [theme, _setTheme] = useState(initialTheme ?? 'light')
 
   const setTheme = (theme: string) => {
     _setTheme(theme)
-    if (typeof window !== 'undefined') {
-      window.localStorage.setItem('theme', theme)
-    }
+    setCookie('theme', theme)
   }
 
   return (

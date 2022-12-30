@@ -39,26 +39,26 @@ export default class MyDocument extends Document {
       <Html lang="en-US">
         <Head>
           <link
-            rel="preload"
+            rel="preconnect"
             href="/fonts/Beastly.otf"
             as="font"
             type="font/otf"
           />
           <link
-            rel="preload"
+            rel="preconnect"
             href="/fonts/Silka-Medium.ttf"
             as="font"
             type="font/ttf"
           />
           <link
-            rel="preload"
+            rel="preconnect"
             href="/fonts/Silka-Regular.ttf"
             as="font"
             type="font/ttf"
           />
           <link
-            rel="preload"
-            href="/fonts/Morango Bold.otf"
+            rel="preconnect"
+            href="/fonts/Moranga-Bold.otf"
             as="font"
             type="font/otf"
           />

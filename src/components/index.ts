@@ -13,7 +13,5 @@ export * from './Contact'
 export * from './Social'
 export * from './Blog'
 export * from './Arrow'
-export * from './Project'
-
 export * from './Button'
 export * from './Typography'

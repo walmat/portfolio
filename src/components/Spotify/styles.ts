@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import Image from 'next/image'
 import { breakpoints } from 'styles'
 
-export const SpotifyWrapper = styled.div`
+export const SpotifyWrapper = styled.div<{ $opacity: number }>`
   position: relative;
   height: 100%;
   width: 100%;
@@ -15,6 +15,7 @@ export const SpotifyWrapper = styled.div`
   overflow: hidden;
   background: ${({ theme }) => theme.spotify.background};
   box-shadow: ${({ theme }) => theme.spotify.shadow};
+  opacity: ${({ $opacity }) => $opacity};
 
   cursor: grab;
   &:active {

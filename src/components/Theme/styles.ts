@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.div<{ $opacity: number }>`
   height: 100%;
   width: 100%;
   display: flex;
@@ -11,6 +11,7 @@ export const Container = styled.div`
   overflow: hidden;
   background: ${({ theme }) => theme.card.background};
   box-shadow: ${({ theme }) => theme.card.shadow};
+  opacity: ${({ $opacity }) => $opacity};
 
   cursor: grab;
   &:active {

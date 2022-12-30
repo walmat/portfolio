@@ -5,7 +5,7 @@ import { Theme } from './themes'
 export const _Fonts = css`
   @font-face {
     font-family: 'Moranga Bold';
-    src: url('/fonts/Moranga Bold.otf');
+    src: url('/fonts/Moranga-Bold.otf');
     font-weight: 500;
     font-style: normal;
   }

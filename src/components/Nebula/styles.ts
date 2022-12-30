@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const Wrapper = styled(motion.div)`
+export const Wrapper = styled(motion.div)<{ $opacity: number }>`
   position: relative;
   height: 100%;
   width: 100%;
@@ -15,6 +15,7 @@ export const Wrapper = styled(motion.div)`
   overflow: hidden;
   box-shadow: ${({ theme }) => theme.nebula.shadow};
   z-index: -1;
+  opacity: ${({ $opacity }) => $opacity};
 
   cursor: grab;
   &:active {

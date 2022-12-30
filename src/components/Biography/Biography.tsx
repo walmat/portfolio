@@ -1,8 +1,14 @@
+import { useFiltersContext } from 'providers'
+
+import { getOpacity } from 'utils'
+
 import * as S from './styles'
 
 function Biography() {
+  const { active } = useFiltersContext()
+
   return (
-    <S.Container>
+    <S.Container $opacity={getOpacity(['About'], active)}>
       <S.ImageWrapper>
         <S.ImageContainer src="/pfp.jpeg" alt="" width={72} height={72} />
       </S.ImageWrapper>

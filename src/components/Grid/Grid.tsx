@@ -14,29 +14,29 @@ import {
   Recur
 } from 'components'
 
-import { lg, md, mobile, paddings, rowHeights } from 'meta'
+import { lg, md, mobile, rowHeights } from 'meta'
 import * as S from './styles'
+import { useFiltersContext } from 'providers'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
 const Grid = () => {
   const [rowHeight, setRowHeight] = useState(280)
 
+  const { active } = useFiltersContext()
+
   return (
     <S.GridContainer>
       <S.Container>
         <ResponsiveGridLayout
-          measureBeforeMount
-          useCSSTransforms
           isDraggable={!isMobile}
           isResizable={false}
-          layouts={{ lg, md, sm: mobile }}
+          layouts={{ lg: lg[active], md: md[active], sm: mobile[active] }}
           breakpoints={{ lg: 1199, md: 799, sm: 0 }}
           cols={{ lg: 4, md: 4, sm: 2 }}
           onBreakpointChange={(breakpoint) =>
             setRowHeight(rowHeights[breakpoint])
           }
-          containerPadding={paddings}
           rowHeight={rowHeight}
           margin={[16, 16]}
         >

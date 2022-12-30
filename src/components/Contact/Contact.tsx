@@ -6,6 +6,8 @@ import { useAnimation, AnimationControls } from 'framer-motion'
 import { Arrow, Button, Heading, Paragraph } from 'components'
 
 import * as S from './styles'
+import { useFiltersContext } from 'providers'
+import { getOpacity } from 'utils'
 
 interface EmailForm {
   email: string
@@ -39,6 +41,7 @@ const validate = (animation: AnimationControls, values: EmailForm) => {
 }
 
 function Contact() {
+  const { active } = useFiltersContext()
   const [title, setTitle] = useState("Let's stay in touch")
   const animation = useAnimation()
 
@@ -84,7 +87,7 @@ function Contact() {
   })
 
   return (
-    <S.Wrapper onSubmit={handleSubmit}>
+    <S.Wrapper $opacity={getOpacity(['Media'], active)} onSubmit={handleSubmit}>
       <S.Copy>
         <Heading>{title}</Heading>
         <Paragraph>

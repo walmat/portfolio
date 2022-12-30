@@ -1,11 +1,15 @@
-import { Box } from 'rebass'
+import { Box } from 'rebass/styled-components'
 import { Arrow, Heading, Paragraph, Button } from 'components'
+import { useFiltersContext } from 'providers'
+import { getOpacity } from 'utils'
 
 import * as S from './styles'
 
 function Blog() {
+  const { active } = useFiltersContext()
+
   return (
-    <S.Wrapper>
+    <S.Wrapper $opacity={getOpacity(['Media'], active)}>
       <S.Copy>
         <Box sx={{ mb: 2 }}>
           <Heading>Introspective look into web3 gaming</Heading>

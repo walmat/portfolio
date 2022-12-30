@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
 
-export const Wrapper = styled.form`
+export const Wrapper = styled.form<{ $opacity: number }>`
   height: 100%;
   width: 100%;
   display: flex;
@@ -10,6 +10,7 @@ export const Wrapper = styled.form`
   justify-content: space-between;
   padding: 40px 44px;
   border-radius: ${({ theme }) => theme.card.radius};
+  opacity: ${({ $opacity }) => $opacity};
   overflow: hidden;
   background: ${({ theme }) => theme.card.background};
   box-shadow: ${({ theme }) => theme.card.shadow};

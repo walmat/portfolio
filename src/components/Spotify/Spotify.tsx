@@ -1,7 +1,8 @@
 import Link from 'next/link'
 import { Flex } from 'rebass/styled-components'
-import { useSpotifyContext } from 'providers'
+import { useFiltersContext, useSpotifyContext } from 'providers'
 import * as S from './styles'
+import { getOpacity } from 'utils'
 
 interface SpotifyStatusProps {
   isPlaying: boolean
@@ -20,10 +21,12 @@ const SpotifyStatus = ({ isPlaying }: SpotifyStatusProps) => {
 }
 
 const Spotify = () => {
+  const { active } = useFiltersContext()
+
   const { isPlaying, image, song, artist } = useSpotifyContext()
 
   return (
-    <S.SpotifyWrapper>
+    <S.SpotifyWrapper $opacity={getOpacity(['About'], active)}>
       <S.AlbumArt src={image} />
       <S.SpotifyImage src="/spotify.svg" alt="" width={54} height={54} />
       <S.SpotifyMetadata>

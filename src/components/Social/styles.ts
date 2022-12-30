@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styled from 'styled-components'
 import { breakpoints } from 'styles'
 
-export const Container = styled.div<{ $name: string }>`
+export const Container = styled.div<{ $name: string; $opacity: number }>`
   height: 100%;
   width: 100%;
   display: flex;
@@ -13,6 +13,7 @@ export const Container = styled.div<{ $name: string }>`
   overflow: hidden;
   background: ${({ theme, $name }) => theme[$name].background};
   box-shadow: ${({ theme, $name }) => theme[$name].shadow};
+  opacity: ${({ $opacity }) => $opacity};
 
   cursor: grab;
   &:active {

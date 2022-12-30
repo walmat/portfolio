@@ -1,9 +1,10 @@
 import Link from 'next/link'
 
 import { Arrow, Button } from 'components'
-import { useThemeContext } from 'providers'
+import { useFiltersContext, useThemeContext } from 'providers'
 
 import * as S from './styles'
+import { getOpacity } from 'utils'
 
 interface SocialProps {
   name: string
@@ -14,9 +15,10 @@ interface SocialProps {
 
 function Social({ name, href, width, height }: SocialProps) {
   const { theme } = useThemeContext()
+  const { active } = useFiltersContext()
 
   return (
-    <S.Container $name={name}>
+    <S.Container $opacity={getOpacity(['About'], active)} $name={name}>
       <S.SocialIcon
         $name={name}
         src={`/${name}/${theme}.svg`}

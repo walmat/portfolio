@@ -3,15 +3,18 @@ import { useAnimation } from 'framer-motion'
 import { Arrow, Button } from 'components'
 
 import * as S from './styles'
-import { ThemeOptions, useThemeContext } from 'providers'
+import { ThemeOptions, useFiltersContext, useThemeContext } from 'providers'
+import { getOpacity } from 'utils'
 
 function Nebula() {
+  const { active } = useFiltersContext()
   const animate = useAnimation()
 
   const { theme } = useThemeContext()
 
   return (
     <S.Wrapper
+      $opacity={getOpacity(['Projects'], active)}
       animate={animate}
       onHoverEnd={() => animate.start('init')}
       onHoverStart={() => animate.start('anim')}

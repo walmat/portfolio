@@ -1,11 +1,13 @@
 import React, { PropsWithChildren } from 'react'
-import { AppProps } from 'next/app'
+import App, { AppContext } from 'next/app'
+import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Link from 'next/link'
 import { ThemeProvider } from 'styled-components'
 import { AnimatePresence } from 'framer-motion'
 import { PrismicProvider } from '@prismicio/react'
 import { PrismicPreview } from '@prismicio/next'
+import { getCookie } from 'cookies-next'
 
 import {
   FiltersProvider,
@@ -17,13 +19,14 @@ import {
 import { repositoryName } from 'prismicio'
 import { GlobalStyles, themes } from 'styles'
 
-interface ChildrenProps {
+interface ProvidersProps {
+  initialTheme: string
   children: PropsWithChildren<React.ReactNode>
 }
 
-function Providers({ children }: ChildrenProps) {
+function Providers({ initialTheme, children }: ProvidersProps) {
   return (
-    <Theme>
+    <Theme initialTheme={initialTheme}>
       <SpotifyProvider>
         <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
           <PrismicPreview repositoryName={repositoryName}>
@@ -35,14 +38,23 @@ function Providers({ children }: ChildrenProps) {
   )
 }
 
-const ThemeSwitch = ({ children }: ChildrenProps) => {
+interface ThemeSwitchProps {
+  children: PropsWithChildren<React.ReactNode>
+}
+
+const ThemeSwitch = ({ children }: ThemeSwitchProps) => {
   const { theme } = useThemeContext()
+
   return <ThemeProvider theme={themes[theme]}>{children}</ThemeProvider>
 }
 
-function App({ Component, pageProps }: AppProps) {
+interface ApplicationProps extends AppProps {
+  theme: string
+}
+
+function Application({ Component, pageProps, theme }: ApplicationProps) {
   return (
-    <Providers>
+    <Providers initialTheme={theme}>
       <Head>
         <title>mtw.</title>
         <link rel="icon" href="/favicon.ico" />
@@ -67,4 +79,17 @@ function App({ Component, pageProps }: AppProps) {
   )
 }
 
-export default App
+Application.getInitialProps = async (context: AppContext) => {
+  const props = await App.getInitialProps(context)
+  const theme = getCookie('theme', {
+    req: context.ctx.req,
+    res: context.ctx.res
+  })
+
+  return {
+    ...props,
+    theme: theme ?? 'light'
+  }
+}
+
+export default Application
