@@ -200,10 +200,10 @@ export const light: Theme = {
     shadow: 'transparent 0px 0px 0px 2px inset'
   },
   close: {
-    background: 'rgb(255, 255, 255)',
-    radius: '32px',
-    border: '2px solid rgb(240, 242, 248)',
-    hover: 'rgb(240 242 248) 0px 0px 0px 5px'
+    background: 'rgb(237, 233, 233)',
+    radius: '23px',
+    border: 'none',
+    hover: 'rgb(227, 224, 224)'
   }
 }
 
