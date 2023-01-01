@@ -153,13 +153,17 @@ export const projects: Projects = {
       featured: {
         src: '/nebula/product/featured.png',
         props: {
-          padding: 0
+          style: {
+            padding: '0px'
+          }
         }
       },
       logo: {
         src: '/nebula/product/logo.png',
         props: {
-          padding: 0
+          style: {
+            padding: '0px'
+          }
         }
       },
       inverted: {
