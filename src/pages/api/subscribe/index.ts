@@ -22,12 +22,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
     )
 
-    const list = await mailchimp.lists.getList(
-      process.env.MAILCHIMP_AUDIENCE_ID || ''
-    )
-
-    console.log({ list })
-
     return res.status(201).json({ error: null })
   } catch (error) {
     if (/looks fake/i.test(JSON.stringify(error))) {
