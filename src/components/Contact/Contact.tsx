@@ -99,7 +99,10 @@ function Contact() {
       <S.Subscribe
         id="email"
         name="email"
+        type="email"
         autoComplete="off"
+        onDrag={(e) => e.preventDefault()}
+        onClick={(e) => e.preventDefault()}
         onChange={handleChange}
         onBlur={handleBlur}
         value={values.email}
