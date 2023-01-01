@@ -1,15 +1,9 @@
 import { Project } from 'components'
 import { PageLayout } from 'layouts'
-import { projects } from 'meta'
+import { projects, Project as ProjectProps } from 'meta'
 import { NextPageContext } from 'next'
 
-interface ProjectPageProps {
-  title: string
-  name: string
-  description: string
-}
-
-export default function ProjectPage(project: ProjectPageProps) {
+export default function ProjectPage(project: ProjectProps) {
   return (
     <PageLayout
       title={`mtw. ${project.title}`}
