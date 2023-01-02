@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect'
 import { Project as ProjectProps, RowHeights } from 'meta'
 
 import * as S from './styles'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -79,6 +79,22 @@ function Project({ name, description, body, images, links }: ProjectProps) {
   const { push } = useRouter()
   const back = () => push('/')
 
+  const children = useMemo(() => {
+    return Object.keys(images).map((key) => (
+      <div key={key}>
+        <S.GridItem>
+          <S.Image
+            src={images[key].src}
+            width={800}
+            height={800}
+            alt={key}
+            {...images[key].props}
+          />
+        </S.GridItem>
+      </div>
+    ))
+  }, [images])
+
   const [rowHeight, setRowHeight] = useState(280)
 
   return (
@@ -133,19 +149,7 @@ function Project({ name, description, body, images, links }: ProjectProps) {
               rowHeight={rowHeight}
               margin={[16, 16]}
             >
-              {Object.keys(images).map((key) => (
-                <div key={key}>
-                  <S.GridItem>
-                    <S.Image
-                      src={images[key].src}
-                      width={1000}
-                      height={1000}
-                      alt={key}
-                      {...images[key].props}
-                    />
-                  </S.GridItem>
-                </div>
-              ))}
+              {children}
             </ResponsiveGridLayout>
           </S.GridContainer>
         </S.Container>

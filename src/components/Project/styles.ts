@@ -13,7 +13,7 @@ export const Wrapper = styled(motion.div)`
 
 export const Container = styled.div`
   margin: 0 auto;
-  max-width: 375px;
+  max-width: 320px;
   padding: 50px 0;
 
   ${({ theme }) =>
@@ -46,7 +46,7 @@ export const Container = styled.div`
 `
 
 export const Meta = styled.div`
-  padding: 0 32px;
+  padding: 0;
 
   ${({ theme }) =>
     breakpoints({
@@ -54,7 +54,7 @@ export const Meta = styled.div`
       cssProp: 'padding',
       values: [
         {
-          [theme.breakpoints[0]]: '0 32px',
+          [theme.breakpoints[0]]: '0',
           [theme.breakpoints[1]]: '0 32px',
           [theme.breakpoints[2]]: '0 16px'
         }
