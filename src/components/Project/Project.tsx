@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 import { isMobile } from 'react-device-detect'
 
-import { Project as ProjectProps, rowHeights } from 'meta'
+import { Project as ProjectProps, RowHeights } from 'meta'
 
 import * as S from './styles'
 import { useState } from 'react'
@@ -68,6 +68,12 @@ const sm = [
   { i: 'sixth', x: 0, y: 4, w: 2, h: 1 }
 ]
 
+export const rowHeights: RowHeights = {
+  lg: 280,
+  md: 180,
+  sm: 164
+}
+
 function Project({ name, description, body, images, links }: ProjectProps) {
   const animation = useAnimation()
   const { push } = useRouter()
@@ -123,9 +129,9 @@ function Project({ name, description, body, images, links }: ProjectProps) {
               onBreakpointChange={(breakpoint) =>
                 setRowHeight(rowHeights[breakpoint])
               }
+              containerPadding={[0, 0]}
               rowHeight={rowHeight}
               margin={[16, 16]}
-              containerPadding={[0, 16]}
             >
               {Object.keys(images).map((key) => (
                 <div key={key}>

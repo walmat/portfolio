@@ -37,80 +37,83 @@ const grid = {
 
 interface Item {
   key: string
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  Component: (props: any) => JSX.Element
-  props?: Record<string, unknown>
+  Component: JSX.Element
 }
 
-const items: Item[] = [
-  {
-    key: 'biography',
-    Component: Biography
-  },
-  {
-    key: 'github',
-    Component: Social,
-    props: {
-      name: 'github',
-      href: 'https://github.com/walmat',
-      height: 64,
-      width: 64
-    }
-  },
-  {
-    key: 'nebula',
-    Component: Nebula
-  },
-  {
-    key: 'spotify',
-    Component: Spotify
-  },
-  {
-    key: 'twitter',
-    Component: Social,
-    props: {
-      name: 'twitter',
-      href: 'https://twitter.com/Mattwall7',
-      height: 61.052,
-      width: 75.121
-    }
-  },
-  {
-    key: 'tigerbob',
-    Component: Tigerbob
-  },
-  {
-    key: 'blog',
-    Component: Blog
-  },
-  {
-    key: 'theme',
-    Component: Theme
-  },
-  {
-    key: 'recur',
-    Component: Recur
-  },
-  {
-    key: 'contact',
-    Component: Contact
-  }
-]
-
 const Grid = () => {
+  const items: Item[] = useMemo(() => {
+    return [
+      {
+        key: 'biography',
+        Component: <Biography />
+      },
+      {
+        key: 'github',
+        Component: (
+          <Social
+            {...{
+              width: 64,
+              height: 64,
+              name: 'github',
+              href: 'https://github.com/walmat'
+            }}
+          />
+        )
+      },
+      {
+        key: 'nebula',
+        Component: <Nebula />
+      },
+      {
+        key: 'spotify',
+        Component: <Spotify />
+      },
+      {
+        key: 'twitter',
+        Component: (
+          <Social
+            {...{
+              width: 75.121,
+              height: 61.052,
+              href: 'https://twitter.com/Mattwall7',
+              name: 'twitter'
+            }}
+          />
+        )
+      },
+      {
+        key: 'tigerbob',
+        Component: <Tigerbob />
+      },
+      {
+        key: 'blog',
+        Component: <Blog />
+      },
+      {
+        key: 'theme',
+        Component: <Theme />
+      },
+      {
+        key: 'recur',
+        Component: <Recur />
+      },
+      {
+        key: 'contact',
+        Component: <Contact />
+      }
+    ]
+  }, [])
+
   const [rowHeight, setRowHeight] = useState(280)
 
   const { active } = useFiltersContext()
 
   const children = useMemo(() => {
-    return items.map(({ key, Component, props }) => {
-      return (
-        <div key={key}>
-          <Component {...props} />
-        </div>
-      )
+    return items.map(({ key, Component }) => {
+      console.log(Component)
+      return <div key={key}>{Component}</div>
     })
-  }, [])
+  }, [items])
 
   return (
     <S.GridContainer

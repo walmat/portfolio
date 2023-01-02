@@ -162,7 +162,9 @@ export const projects: Projects = {
         src: '/nebula/product/logo.png',
         props: {
           style: {
-            padding: '0px'
+            'background-color': '#C6C1FE',
+            'object-fit': 'contain',
+            padding: '20px'
           }
         }
       },
@@ -174,7 +176,8 @@ export const projects: Projects = {
             'background-repeat': 'no-repeat',
             'background-position': 'center',
             'background-size': 'cover',
-            padding: '44px'
+            'object-fit': 'contain',
+            padding: '40px'
           }
         }
       },

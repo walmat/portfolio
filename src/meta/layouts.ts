@@ -1,6 +1,6 @@
 import { Layout } from 'react-grid-layout'
 
-interface RowHeights {
+export interface RowHeights {
   [key: string]: number
 }
 

@@ -110,7 +110,7 @@ export interface Theme extends DefaultTheme {
 }
 
 export const light: Theme = {
-  breakpoints: ['40rem', '800px', '64rem'],
+  breakpoints: ['23.438rem', '49.938rem', '64rem', '75rem'],
   colors: {
     primary: 'rgb(13, 17, 23)',
     secondary: '',
@@ -118,7 +118,7 @@ export const light: Theme = {
     error: '#6A2E35',
     cta: '',
     dim: 'rgba(9, 12, 16, 0.6)',
-    background: 'rgb(240, 242, 248)'
+    background: 'rgb(247, 242, 242)'
   },
   filters: {
     background: 'rgba(0, 0, 0, 0.04)',
@@ -220,7 +220,7 @@ export const light: Theme = {
 }
 
 export const dark: Theme = {
-  breakpoints: ['40rem', '50rem', '75rem'],
+  breakpoints: ['23.438rem', '49.938rem', '64rem', '75rem'],
   colors: {
     primary: 'rgb(240, 242, 248)',
     secondary: '',

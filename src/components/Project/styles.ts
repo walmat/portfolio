@@ -13,7 +13,7 @@ export const Wrapper = styled(motion.div)`
 
 export const Container = styled.div`
   margin: 0 auto;
-  max-width: 100%;
+  max-width: 375px;
   padding: 50px 0;
 
   ${({ theme }) =>
@@ -24,7 +24,8 @@ export const Container = styled.div`
         {
           [theme.breakpoints[0]]: '50px 0',
           [theme.breakpoints[1]]: '50px 0',
-          [theme.breakpoints[2]]: '60px 0'
+          [theme.breakpoints[2]]: '60px 0',
+          [theme.breakpoints[3]]: '60px 0'
         }
       ]
     })}
@@ -35,9 +36,10 @@ export const Container = styled.div`
       cssProp: 'max-width',
       values: [
         {
-          [theme.breakpoints[0]]: '375px',
+          [theme.breakpoints[0]]: '320px',
           [theme.breakpoints[1]]: '800px',
-          [theme.breakpoints[2]]: '1200px'
+          [theme.breakpoints[2]]: '800px',
+          [theme.breakpoints[3]]: '1200px'
         }
       ]
     })}
@@ -116,7 +118,8 @@ export const TextWrapper = styled.div`
         {
           [theme.breakpoints[0]]: '1fr',
           [theme.breakpoints[1]]: '1fr 1fr',
-          [theme.breakpoints[2]]: '1fr 1fr'
+          [theme.breakpoints[2]]: '1fr 1fr',
+          [theme.breakpoints[3]]: '1fr 1fr'
         }
       ]
     })}
@@ -179,7 +182,7 @@ export const Paragraph = styled.p`
 export const GridContainer = styled.div`
   max-width: 100%;
   position: relative;
-  margin: 32px;
+  margin: 32px auto 0px;
   padding-bottom: 80px;
 
   ${({ theme }) =>
@@ -188,9 +191,10 @@ export const GridContainer = styled.div`
       cssProp: 'max-width',
       values: [
         {
-          [theme.breakpoints[0]]: '375px',
+          [theme.breakpoints[0]]: '320px',
           [theme.breakpoints[1]]: '800px',
-          [theme.breakpoints[2]]: '1200px'
+          [theme.breakpoints[2]]: '800px',
+          [theme.breakpoints[3]]: '1200px'
         }
       ]
     })}

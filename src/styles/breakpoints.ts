@@ -39,10 +39,12 @@ export const breakpoints = ({
       const bp = values.find((value) => value[breakpoint])
       if (!bp) return mediaQueries
 
-      return (mediaQueries += `@media screen and (${mediaQueryType}: ${breakpoint}) {\n\t${cssProp}: ${bp[breakpoint]}${cssPropUnit};\n}\n`)
+      return (mediaQueries += `@media (${mediaQueryType}: ${breakpoint}) {\n\t${cssProp}: ${bp[breakpoint]}${cssPropUnit};\n}\n`)
     },
     ''
   )
+
+  console.log({ breakpointProps })
 
   return breakpointProps
 }
