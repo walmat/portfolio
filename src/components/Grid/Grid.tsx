@@ -38,6 +38,7 @@ const Grid = () => {
           onBreakpointChange={(breakpoint) =>
             setRowHeight(rowHeights[breakpoint])
           }
+          containerPadding={[16, 32]}
           rowHeight={rowHeight}
           margin={[16, 16]}
         >

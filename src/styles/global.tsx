@@ -73,6 +73,11 @@ export const _ResetStyles = css<{ silka: NextFont; moranga: NextFont }>`
     font-weight: 400;
     font-style: normal;
   }
+
+  .react-grid-item {
+    transition: all 500ms ease 0s;
+    will-change: transform;
+  }
 `
 
 export const ResetStyles = () => {
