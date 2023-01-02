@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding: ${({ theme }) => theme.filters.padding};
   border: ${({ theme }) => theme.filters.border};
 
-  max-width: 298.13px;
+  width: 298.13px;
 `
 
 export const Wrapper = styled.div`
@@ -33,7 +33,6 @@ export const OptionText = styled.p<{ $selected: boolean }>`
   font-size: 14px;
   color: ${({ theme }) => theme.filters.option.color};
   transition: all 0.2s ease 0s;
-  font-weight: 700;
   z-index: 2;
 
   &:hover {
