@@ -127,6 +127,7 @@ export const getRecentlyPlayed = async (
   const data = await res.json()
   if (!data.items.length) {
     return {
+      id: '',
       isPlaying: false,
       timestamp: -1,
       image: '',
@@ -144,6 +145,7 @@ export const getRecentlyPlayed = async (
   )
 
   return {
+    id: latest.track.id,
     isPlaying: false,
     timestamp: new Date(latest.played_at).getTime(),
     image: latest.track.album.images[0].url,
