@@ -75,7 +75,6 @@ export const ButtonWithMotion = styled(motion.div)`
 export const ButtonWithMotionText = styled(motion.p)`
   margin: 0px 36px 0px 16px;
   font-size: 14px;
-  font-family: 'Silka Regular';
   line-height: normal;
   letter-spacing: 0.3px;
   font-weight: 400;

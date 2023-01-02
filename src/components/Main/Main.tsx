@@ -8,8 +8,8 @@ const Main = () => (
     <S.Navigation>
       <S.Title>mtw.</S.Title>
       <Filters />
-      <Link href="mailto:matthew.wallt@gmail.com">
-        <S.Contact>Contact</S.Contact>
+      <Link target="_blank" href="https://linkedin.com/in/walmat">
+        <S.Contact>Connect</S.Contact>
       </Link>
     </S.Navigation>
     <Grid />

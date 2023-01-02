@@ -1,40 +1,7 @@
+import { NextFont } from '@next/font/dist/types'
 import { createGlobalStyle, css } from 'styled-components'
 
 import { Theme } from './themes'
-
-export const _Fonts = css`
-  @font-face {
-    font-family: 'Moranga Bold';
-    src: url('/fonts/Moranga-Bold.otf');
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Silka Regular';
-    src: url('/fonts/Silka-Regular.ttf');
-    font-weight: 400;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Silka Medium';
-    src: url('/fonts/Silka-Medium.ttf');
-    font-weight: 500;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'Beastly';
-    src: url('/fonts/Beastly.otf');
-    font-weight: 400;
-    font-style: normal;
-  }
-`
-
-export const Fonts = () => {
-  return <>{_Fonts}</>
-}
 
 export const _Keyframes = css`
   @keyframes playing {
@@ -56,7 +23,7 @@ export const Keyframes = () => {
   return <>{_Keyframes}</>
 }
 
-export const _ResetStyles = css`
+export const _ResetStyles = css<{ silka: NextFont; moranga: NextFont }>`
   * {
     outline: none;
     margin: 0;
@@ -92,17 +59,18 @@ export const _ResetStyles = css`
   h4,
   h5,
   h6 {
-    font-family: 'Beastly', sans-serif;
+    font-family: ${({ moranga }) => moranga.style.fontFamily};
   }
 
   p,
   a,
+  div,
   span,
   button,
   input,
   textarea {
-    font-family: 'Silka Medium', sans-serif;
-    font-weight: 500;
+    font-family: ${({ silka }) => silka.style.fontFamily};
+    font-weight: 400;
     font-style: normal;
   }
 `
@@ -121,9 +89,11 @@ export const ThemeStyles = () => {
   return <>{_ThemeStyles}</>
 }
 
-export const GlobalStyles = createGlobalStyle`
+export const GlobalStyles = createGlobalStyle<{
+  silka: NextFont
+  moranga: NextFont
+}>`
   ${_ResetStyles}
-  ${_Fonts}
   ${_Keyframes}
   ${_ThemeStyles}
 `

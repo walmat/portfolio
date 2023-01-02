@@ -97,7 +97,6 @@ export const Button = styled(motion.button)`
 
 export const Title = styled.h2`
   font-size: 36px;
-  font-family: 'Moranga Bold';
   line-height: 48px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.primary};
@@ -136,7 +135,6 @@ export const Link = styled.a`
   align-items: center;
   padding: 0px 16px;
   border-radius: 19px;
-  font-family: 'Silka Medium';
   letter-spacing: 0.25px;
   font-size: 14px;
   margin-right: 8px;
@@ -162,7 +160,6 @@ export const LinkTag = styled.div`
 
 export const Description = styled.p`
   font-size: 26px;
-  font-family: 'Silka Medium';
   line-height: 40px;
   letter-spacing: 0.25px;
   font-weight: 400;
@@ -172,7 +169,6 @@ export const Description = styled.p`
 
 export const Paragraph = styled.p`
   font-size: 15px;
-  font-family: 'Silka Regular';
   line-height: 26px;
   letter-spacing: 0.5px;
   font-weight: 400;

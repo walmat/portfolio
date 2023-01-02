@@ -8,6 +8,21 @@ import { AnimatePresence } from 'framer-motion'
 import { PrismicProvider } from '@prismicio/react'
 import { PrismicPreview } from '@prismicio/next'
 import { getCookie } from 'cookies-next'
+import localFont from '@next/font/local'
+
+export const moranga = localFont({ src: '../fonts/Moranga-Bold.otf' })
+export const silka = localFont({
+  src: [
+    {
+      path: '../fonts/Silka-Regular.ttf',
+      weight: '400'
+    },
+    {
+      path: '../fonts/Silka-Medium.ttf',
+      weight: '500'
+    }
+  ]
+})
 
 import {
   FiltersProvider,
@@ -66,7 +81,7 @@ function Application({ Component, pageProps, theme }: ApplicationProps) {
         />
       </Head>
       <ThemeSwitch>
-        <GlobalStyles />
+        <GlobalStyles silka={silka} moranga={moranga} />
         <AnimatePresence
           mode="wait"
           onExitComplete={() => window.scrollTo(0, 0)}

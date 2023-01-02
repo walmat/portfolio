@@ -9,6 +9,9 @@ const withPWA = require('next-pwa')({
 /** @type {import('next').NextConfig} */
 const settings = {
   swcMinify: true,
+  experimental: {
+    forceSwcTransforms: true
+  },
   compiler: {
     styledComponents: true
   },
@@ -16,11 +19,10 @@ const settings = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'i.scdn.co',
-      },
-    ],
-  },
-
+        hostname: 'i.scdn.co'
+      }
+    ]
+  }
 }
 
 module.exports = isProd ? withPWA(settings) : settings

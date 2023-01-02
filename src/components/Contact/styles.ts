@@ -25,7 +25,6 @@ export const Copy = styled.div``
 
 export const Title = styled.h2`
   font-size: 24px;
-  font-family: 'Moranga Bold';
   line-height: 32px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.primary};
@@ -34,7 +33,6 @@ export const Title = styled.h2`
 
 export const Text = styled.p`
   font-size: 15px;
-  font-family: 'Silka Regular';
   line-height: 26px;
   letter-spacing: 0.5px;
   font-weight: 400;
@@ -52,7 +50,6 @@ export const Subscribe = styled(motion.input)`
   border-bottom: ${({ theme }) => theme.contact.input.border};
   padding: 12px 0px;
   font-size: 16px;
-  font-family: 'Silka Regular';
   letter-spacing: 0.25px;
   font-weight: 400;
   margin-bottom: 8px;
@@ -116,7 +113,6 @@ export const ButtonIcon = styled.img`
 
 export const ButtonText = styled.p`
   font-size: 14px;
-  font-family: 'Silka Medium';
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;
@@ -126,7 +122,6 @@ export const ButtonText = styled.p`
 
 export const Error = styled.p`
   font-size: 14px;
-  font-family: 'Silka Medium';
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;

@@ -92,7 +92,6 @@ export const SpotifyNowPlaying = styled.div`
 export const SpotifyStatus = styled.p<{ isPlaying: boolean }>`
   margin-left: 4px;
   font-size: 14px;
-  font-family: 'Silka Medium';
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;
@@ -128,7 +127,6 @@ export const SpotifySongTitle = styled.h2`
   transition: opacity 0.5s ease 0s;
   display: inline-block;
   font-size: 24px;
-  font-family: 'Moranga Bold';
   line-height: 32px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.primary};
@@ -171,7 +169,6 @@ export const SpotifyArtist = styled.p`
   display: inline-block;
 
   font-size: 15px;
-  font-family: 'Silka Regular';
   letter-spacing: 0.5px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.primary};

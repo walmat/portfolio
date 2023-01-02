@@ -101,7 +101,6 @@ export const Title = styled.h1`
   --color-two: #a097fd;
   font-size: 3rem;
   margin: 36px 0 24px 0;
-  font-family: 'Beastly', sans-serif;
   background: linear-gradient(30deg, #776af2 13.4%, #a097fd 86.61%);
 
   @media (prefers-reduced-motion: no-preference) {

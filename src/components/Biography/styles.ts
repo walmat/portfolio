@@ -60,16 +60,15 @@ export const ImageContainer = styled(Image)`
     })}
 `
 
-export const BiographyText = styled.div`
+export const BiographyText = styled.p`
   font-size: 14px;
   line-height: 26px;
   letter-spacing: 0.5px;
   font-weight: 400;
-  font-family: 'Silka Regular';
   color: ${({ theme }) => theme.colors.primary};
 `
 
-export const BiographyName = styled.span`
-  font-family: 'Moranga Bold';
+export const BiographyName = styled.h2`
+  display: inline;
   font-size: 40px;
 `
