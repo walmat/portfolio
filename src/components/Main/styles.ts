@@ -102,6 +102,8 @@ export const Title = styled.h1`
   font-size: 3rem;
   margin: 36px 0 24px 0;
   background: linear-gradient(30deg, #776af2 13.4%, #a097fd 86.61%);
+  line-height: 1;
+  height: 42px;
 
   @media (prefers-reduced-motion: no-preference) {
     font-size: 3rem;
