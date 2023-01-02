@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { Responsive, WidthProvider } from 'react-grid-layout'
+import { useEffect, useMemo, useState } from 'react'
+import { Layouts, Responsive, WidthProvider } from 'react-grid-layout'
 import { isMobile } from 'react-device-detect'
 
 import {
@@ -107,6 +107,11 @@ const Grid = () => {
   const [rowHeight, setRowHeight] = useState(280)
 
   const { active } = useFiltersContext()
+  const [layouts, setLayouts] = useState({
+    lg: lg[active],
+    md: md[active],
+    sm: mobile[active]
+  })
 
   const children = useMemo(() => {
     return items.map(({ key, Component }) => {
@@ -114,6 +119,22 @@ const Grid = () => {
       return <div key={key}>{Component}</div>
     })
   }, [items])
+
+  const saveLayout = (layouts: Layouts) => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem('main', JSON.stringify(layouts))
+    }
+  }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const layouts = window.localStorage.getItem('main')
+      if (layouts) {
+        const parsedLayouts = JSON.parse(layouts)
+        setLayouts(parsedLayouts)
+      }
+    }
+  }, [])
 
   return (
     <S.GridContainer
@@ -127,12 +148,15 @@ const Grid = () => {
           useCSSTransforms
           isDraggable={!isMobile}
           isResizable={false}
-          layouts={{ lg: lg[active], md: md[active], sm: mobile[active] }}
+          layouts={layouts}
           breakpoints={{ lg: 1199, md: 799, sm: 0 }}
           cols={{ lg: 4, md: 4, sm: 2 }}
           onBreakpointChange={(breakpoint) =>
             setRowHeight(rowHeights[breakpoint])
           }
+          onLayoutChange={(_, layouts) => {
+            saveLayout(layouts)
+          }}
           containerPadding={[16, 32]}
           rowHeight={rowHeight}
           margin={[16, 16]}
