@@ -118,50 +118,51 @@ export const mobile: Layouts = {
   All: [
     { i: 'biography', x: 0, y: 0, w: 2, h: 2 },
     { i: 'github', x: 0, y: 2, w: 2, h: 1 },
-    { i: 'twitter', x: 0, y: 3, w: 1, h: 1 },
-    { i: 'nebula', x: 3, y: 0, w: 1, h: 2 },
-    { i: 'tigerbob', x: 0, y: 4, w: 1, h: 2 },
-    { i: 'theme', x: 3, y: 2, w: 1, h: 1 },
+    { i: 'twitter', x: 0, y: 2, w: 1, h: 1 },
+    { i: 'nebula', x: 1, y: 3, w: 1, h: 2 },
+    { i: 'tigerbob', x: 0, y: 3, w: 1, h: 2 },
+    { i: 'theme', x: 1, y: 5, w: 1, h: 1 },
     { i: 'spotify', x: 0, y: 6, w: 2, h: 2 },
     { i: 'blog', x: 0, y: 8, w: 2, h: 2 },
-    { i: 'recur', x: 0, y: 3, w: 2, h: 1 },
-    { i: 'contact', x: 2, y: 3, w: 2, h: 2 }
+    { i: 'recur', x: 0, y: 10, w: 2, h: 1 },
+    { i: 'contact', x: 0, y: 11, w: 2, h: 2 }
   ],
   About: [
     { i: 'biography', x: 0, y: 0, w: 2, h: 2 },
     { i: 'github', x: 0, y: 2, w: 2, h: 1 },
-    { i: 'twitter', x: 0, y: 3, w: 1, h: 1 },
-    { i: 'nebula', x: 3, y: 0, w: 1, h: 2 },
-    { i: 'tigerbob', x: 0, y: 4, w: 1, h: 2 },
-    { i: 'theme', x: 3, y: 2, w: 1, h: 1 },
-    { i: 'spotify', x: 0, y: 6, w: 2, h: 2 },
+    { i: 'spotify', x: 0, y: 3, w: 2, h: 2 },
+    { i: 'twitter', x: 0, y: 5, w: 1, h: 1 },
+    { i: 'nebula', x: 1, y: 5, w: 1, h: 2 },
+    { i: 'tigerbob', x: 0, y: 6, w: 1, h: 2 },
+    { i: 'theme', x: 1, y: 6, w: 1, h: 1 },
     { i: 'blog', x: 0, y: 8, w: 2, h: 2 },
-    { i: 'recur', x: 0, y: 3, w: 2, h: 1 },
-    { i: 'contact', x: 2, y: 3, w: 2, h: 2 }
+    { i: 'recur', x: 0, y: 10, w: 2, h: 1 },
+    { i: 'contact', x: 2, y: 11, w: 2, h: 2 }
   ],
   Projects: [
-    { i: 'biography', x: 0, y: 0, w: 2, h: 2 },
-    { i: 'github', x: 0, y: 2, w: 2, h: 1 },
-    { i: 'twitter', x: 0, y: 3, w: 1, h: 1 },
-    { i: 'nebula', x: 3, y: 0, w: 1, h: 2 },
-    { i: 'tigerbob', x: 0, y: 4, w: 1, h: 2 },
-    { i: 'theme', x: 3, y: 2, w: 1, h: 1 },
+    { i: 'nebula', x: 0, y: 0, w: 1, h: 2 },
+    { i: 'tigerbob', x: 1, y: 0, w: 1, h: 2 },
+    { i: 'recur', x: 0, y: 1, w: 2, h: 1 },
+
+    { i: 'biography', x: 0, y: 4, w: 2, h: 2 },
+    { i: 'github', x: 0, y: 5, w: 2, h: 1 },
+    { i: 'twitter', x: 0, y: 5, w: 1, h: 1 },
+    { i: 'theme', x: 1, y: 4, w: 1, h: 1 },
     { i: 'spotify', x: 0, y: 6, w: 2, h: 2 },
     { i: 'blog', x: 0, y: 8, w: 2, h: 2 },
-    { i: 'recur', x: 0, y: 3, w: 2, h: 1 },
     { i: 'contact', x: 2, y: 3, w: 2, h: 2 }
   ],
   Media: [
-    { i: 'biography', x: 0, y: 0, w: 2, h: 2 },
-    { i: 'github', x: 0, y: 2, w: 2, h: 1 },
-    { i: 'twitter', x: 0, y: 3, w: 1, h: 1 },
-    { i: 'nebula', x: 3, y: 0, w: 1, h: 2 },
-    { i: 'tigerbob', x: 0, y: 4, w: 1, h: 2 },
-    { i: 'theme', x: 3, y: 2, w: 1, h: 1 },
-    { i: 'spotify', x: 0, y: 6, w: 2, h: 2 },
-    { i: 'blog', x: 0, y: 8, w: 2, h: 2 },
-    { i: 'recur', x: 0, y: 3, w: 2, h: 1 },
-    { i: 'contact', x: 2, y: 3, w: 2, h: 2 }
+    { i: 'blog', x: 0, y: 0, w: 2, h: 2 },
+    { i: 'contact', x: 0, y: 2, w: 2, h: 2 },
+    { i: 'biography', x: 0, y: 4, w: 2, h: 2 },
+    { i: 'github', x: 0, y: 5, w: 2, h: 1 },
+    { i: 'spotify', x: 0, y: 3, w: 2, h: 2 },
+    { i: 'twitter', x: 0, y: 8, w: 1, h: 1 },
+    { i: 'nebula', x: 1, y: 5, w: 1, h: 2 },
+    { i: 'tigerbob', x: 0, y: 5, w: 1, h: 2 },
+    { i: 'theme', x: 1, y: 8, w: 1, h: 1 },
+    { i: 'recur', x: 0, y: 10, w: 2, h: 1 }
   ]
 }
 
