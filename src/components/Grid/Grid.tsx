@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Responsive, WidthProvider } from 'react-grid-layout'
 import { isMobile } from 'react-device-detect'
 
@@ -20,17 +20,108 @@ import { useFiltersContext } from 'providers'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
+const grid = {
+  initial: {
+    opacity: 0,
+    transition: {
+      duration: 0.24
+    }
+  },
+  animate: {
+    opacity: 1,
+    transition: {
+      duration: 0.24
+    }
+  }
+}
+
+interface Item {
+  key: string
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  Component: (props: any) => JSX.Element
+  props?: Record<string, unknown>
+}
+
+const items: Item[] = [
+  {
+    key: 'biography',
+    Component: Biography
+  },
+  {
+    key: 'github',
+    Component: Social,
+    props: {
+      name: 'github',
+      href: 'https://github.com/walmat',
+      height: 64,
+      width: 64
+    }
+  },
+  {
+    key: 'nebula',
+    Component: Nebula
+  },
+  {
+    key: 'spotify',
+    Component: Spotify
+  },
+  {
+    key: 'twitter',
+    Component: Social,
+    props: {
+      name: 'twitter',
+      href: 'https://twitter.com/Mattwall7',
+      height: 61.052,
+      width: 75.121
+    }
+  },
+  {
+    key: 'tigerbob',
+    Component: Tigerbob
+  },
+  {
+    key: 'blog',
+    Component: Blog
+  },
+  {
+    key: 'theme',
+    Component: Theme
+  },
+  {
+    key: 'recur',
+    Component: Recur
+  },
+  {
+    key: 'contact',
+    Component: Contact
+  }
+]
+
 const Grid = () => {
   const [rowHeight, setRowHeight] = useState(280)
 
   const { active } = useFiltersContext()
 
+  const children = useMemo(() => {
+    return items.map(({ key, Component, props }) => {
+      return (
+        <div key={key}>
+          <Component {...props} />
+        </div>
+      )
+    })
+  }, [])
+
   return (
-    <S.GridContainer>
+    <S.GridContainer
+      initial="initial"
+      animate="animate"
+      exit="initial"
+      variants={grid}
+    >
       <S.Container>
         <ResponsiveGridLayout
           useCSSTransforms
-          measureBeforeMount
           isDraggable={!isMobile}
           isResizable={false}
           layouts={{ lg: lg[active], md: md[active], sm: mobile[active] }}
@@ -43,46 +134,7 @@ const Grid = () => {
           rowHeight={rowHeight}
           margin={[16, 16]}
         >
-          <div key="biography">
-            <Biography />
-          </div>
-          <div key="github">
-            <Social
-              name="github"
-              href="https://github.com/walmat"
-              height={64}
-              width={64}
-            />
-          </div>
-          <div key="nebula">
-            <Nebula />
-          </div>
-          <div key="spotify">
-            <Spotify />
-          </div>
-          <div key="twitter">
-            <Social
-              name="twitter"
-              href="https://twitter.com/Mattwall7"
-              height={61.052}
-              width={75.121}
-            />
-          </div>
-          <div key="tigerbob">
-            <Tigerbob />
-          </div>
-          <div key="blog">
-            <Blog />
-          </div>
-          <div key="theme">
-            <Theme />
-          </div>
-          <div key="recur">
-            <Recur />
-          </div>
-          <div key="contact">
-            <Contact />
-          </div>
+          {children}
         </ResponsiveGridLayout>
       </S.Container>
     </S.GridContainer>
