@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 
 export const Container = styled.div`
   position: relative;
-  transform: translateX(0px);
   display: flex;
   font-size: 14px;
   border-radius: ${({ theme }) => theme.filters.radius};

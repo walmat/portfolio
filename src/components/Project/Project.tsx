@@ -125,6 +125,7 @@ function Project({ name, description, body, images, links }: ProjectProps) {
               }
               rowHeight={rowHeight}
               margin={[16, 16]}
+              containerPadding={[0, 16]}
             >
               {Object.keys(images).map((key) => (
                 <div key={key}>

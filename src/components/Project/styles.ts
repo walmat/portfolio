@@ -13,7 +13,7 @@ export const Wrapper = styled(motion.div)`
 
 export const Container = styled.div`
   margin: 0 auto;
-  max-width: 375px;
+  max-width: 100%;
   padding: 50px 0;
 
   ${({ theme }) =>
@@ -177,9 +177,9 @@ export const Paragraph = styled.p`
 `
 
 export const GridContainer = styled.div`
-  max-width: 375px;
+  max-width: 100%;
   position: relative;
-  margin: 32px auto 0px;
+  margin: 32px;
   padding-bottom: 80px;
 
   ${({ theme }) =>
