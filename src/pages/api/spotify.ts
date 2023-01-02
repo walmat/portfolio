@@ -11,6 +11,8 @@ const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode`
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`
 
+let _accessToken = ''
+
 export interface SpotifySong {
   name: string
   href: string
@@ -29,6 +31,7 @@ export interface SpotifyArtist {
 }
 
 export interface SpotifyResponse {
+  id: string
   isPlaying: boolean
   timestamp: number
   image: string
@@ -72,6 +75,7 @@ export const getNowPlaying = async (
 
   if (type === 'episode') {
     return {
+      id: data.item.id,
       isPlaying: data.is_playing,
       timestamp: data.timestamp,
       image: data.item.images[0].url,
@@ -89,6 +93,7 @@ export const getNowPlaying = async (
     }
   } else {
     return {
+      id: data.item.id,
       isPlaying: data.is_playing,
       timestamp: data.timestamp,
       image: data.item.album.images[0].url,
@@ -161,21 +166,26 @@ export const getRecentlyPlayed = async (
 
 export default async (_: NextApiRequest, res: NextApiResponse) => {
   try {
-    const { access_token } = await getAccessToken()
-    if (!access_token) {
-      throw new Error('No access token')
+    let accessToken = _accessToken
+
+    if (!accessToken) {
+      const { access_token } = await getAccessToken()
+      if (!access_token) {
+        throw new Error('No access token')
+      }
+      accessToken = _accessToken = access_token
     }
 
     let data: SpotifyResponse | null = null
     try {
-      data = await getNowPlaying(access_token)
+      data = await getNowPlaying(accessToken)
     } catch (e) {
       console.error(e)
     }
 
     if (!data) {
       try {
-        data = await getRecentlyPlayed(access_token)
+        data = await getRecentlyPlayed(accessToken)
       } catch (e) {
         console.error(e)
       }
