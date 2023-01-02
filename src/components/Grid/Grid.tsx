@@ -30,6 +30,7 @@ const Grid = () => {
       <S.Container>
         <ResponsiveGridLayout
           useCSSTransforms
+          measureBeforeMount
           isDraggable={!isMobile}
           isResizable={false}
           layouts={{ lg: lg[active], md: md[active], sm: mobile[active] }}
