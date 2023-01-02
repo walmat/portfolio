@@ -9,6 +9,8 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.filters.background};
   padding: ${({ theme }) => theme.filters.padding};
   border: ${({ theme }) => theme.filters.border};
+
+  max-width: 298.13px;
 `
 
 export const Wrapper = styled.div`
