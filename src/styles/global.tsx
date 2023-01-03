@@ -17,6 +17,25 @@ export const _Keyframes = css`
       height: 3px;
     }
   }
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes peekUp {
+    0% {
+      transform: translateY(20px);
+    }
+
+    100% {
+      transform: translateY(0);
+    }
+  }
 `
 
 export const Keyframes = () => {
@@ -76,12 +95,7 @@ export const _ResetStyles = css<{ silka: NextFont; moranga: NextFont }>`
 
   .react-grid-layout {
     position: relative;
-    transition: height 0.2s ease;
-  }
-
-  .react-grid-item {
-    transition: all 0.2s ease;
-    transition-property: left, top;
+    animation: fadeIn 1.75s, peekUp 1s;
   }
 
   .react-grid-item img {
@@ -89,10 +103,6 @@ export const _ResetStyles = css<{ silka: NextFont; moranga: NextFont }>`
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
-  }
-
-  .react-grid-item.cssTransforms {
-    transition-property: transform;
   }
 
   .react-grid-item.resizing {

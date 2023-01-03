@@ -60,7 +60,7 @@ export const ImageContainer = styled(Image)`
     })}
 `
 
-export const BiographyText = styled.p`
+export const BiographyText = styled.div`
   font-size: 14px;
   line-height: 26px;
   letter-spacing: 0.5px;

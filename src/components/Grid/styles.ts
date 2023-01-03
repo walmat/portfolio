@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { breakpoints } from 'styles'
 
 export const GridContainer = styled(motion.div)`
-  transform: none;
-  will-change: transform, opacity;
+  will-change: opacity;
+  position: relative;
 `
 
 export const Container = styled.div`

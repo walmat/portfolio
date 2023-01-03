@@ -26,7 +26,10 @@
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.80",
+    "@mdx-js/loader": "^2.2.1",
+    "@mdx-js/react": "^2.2.1",
     "@next/font": "^13.1.1",
+    "@next/mdx": "^13.1.1",
     "@popmotion/popcorn": "^0.4.4",
     "@prismicio/client": "^6.7.3",
     "@prismicio/helpers": "^2.3.8",
