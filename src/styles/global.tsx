@@ -93,6 +93,15 @@ export const _ResetStyles = css<{ silka: NextFont; moranga: NextFont }>`
     font-style: normal;
   }
 
+  input:-webkit-autofill {
+    box-shadow: 0 0 0px 1000px ${({ theme }) => theme.card.background} inset;
+    -webkit-box-shadow: 0 0 0px 1000px ${({ theme }) => theme.card.background}
+      inset;
+
+    -webkit-text-fill-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primary};
+  }
+
   .react-grid-layout {
     position: relative;
     animation: fadeIn 1.75s, peekUp 1s;

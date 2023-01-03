@@ -115,7 +115,7 @@ export const light: Theme = {
     primary: 'rgb(13, 17, 23)',
     secondary: '',
     tertiary: '',
-    error: '#6A2E35',
+    error: '#FF9F1C',
     cta: '',
     dim: 'rgba(9, 12, 16, 0.6)',
     background: 'rgb(247, 242, 242)'
@@ -225,7 +225,7 @@ export const dark: Theme = {
     primary: 'rgb(240, 242, 248)',
     secondary: '',
     tertiary: '',
-    error: '#6A2E35',
+    error: '#FF9F1C',
     cta: '',
     dim: 'rgba(240, 242, 248, 0.6)',
     background: 'rgb(9, 12, 16)'

@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import { breakpoints } from 'styles'
 
 export const Wrapper = styled.form<{ $opacity: number }>`
   height: 100%;
@@ -72,17 +73,43 @@ export const Subscribe = styled(motion.input)`
 
   &:invalid {
     animation: shake 0.2s ease-in-out 0s 2;
-    box-shadow: 0 0 0.6rem #ff0000;
   }
 `
 
 export const Footer = styled.div`
   width: 100%;
   display: flex;
-  -webkit-box-pack: justify;
+  flex-direction: column-reverse;
   justify-content: space-between;
-  -webkit-box-align: center;
-  align-items: center;
+  align-items: flex-start;
+
+  ${({ theme }) =>
+    breakpoints({
+      theme,
+      cssProp: 'flex-direction',
+      values: [
+        {
+          [theme.breakpoints[0]]: 'column-reverse',
+          [theme.breakpoints[1]]: 'colum-reverse',
+          [theme.breakpoints[2]]: 'row',
+          [theme.breakpoints[3]]: 'row'
+        }
+      ]
+    })}
+
+  ${({ theme }) =>
+    breakpoints({
+      theme,
+      cssProp: 'align-items',
+      values: [
+        {
+          [theme.breakpoints[0]]: 'flex-start',
+          [theme.breakpoints[1]]: 'flex-start',
+          [theme.breakpoints[2]]: 'center',
+          [theme.breakpoints[3]]: 'center'
+        }
+      ]
+    })}
 `
 
 export const Button = styled(motion.button)`
@@ -126,5 +153,19 @@ export const Error = styled.p`
   letter-spacing: 0.25px;
   font-weight: 400;
   color: ${({ theme }) => theme.colors.error};
-  margin-left: 6px;
+  margin: 0 0 16px 0;
+
+  ${({ theme }) =>
+    breakpoints({
+      theme,
+      cssProp: 'margin',
+      values: [
+        {
+          [theme.breakpoints[0]]: '0 0 16px 0',
+          [theme.breakpoints[1]]: '0 0 16px 0',
+          [theme.breakpoints[2]]: '0 0 0 6px',
+          [theme.breakpoints[3]]: '0 0 0 6px'
+        }
+      ]
+    })}
 `

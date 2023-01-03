@@ -17,6 +17,7 @@ import {
 import { lg, md, mobile, rowHeights } from 'meta'
 import * as S from './styles'
 import { useFiltersContext } from 'providers'
+import { Welcome } from 'hooks'
 
 const ResponsiveGridLayout = WidthProvider(Responsive)
 
@@ -25,7 +26,11 @@ interface Item {
   Component: JSX.Element
 }
 
-const Grid = () => {
+interface GridProps {
+  post: Welcome
+}
+
+const Grid = ({ post }: GridProps) => {
   const items: Item[] = useMemo(() => {
     return [
       {
@@ -72,7 +77,7 @@ const Grid = () => {
       },
       {
         key: 'blog',
-        Component: <Blog />
+        Component: <Blog post={post} />
       },
       {
         key: 'theme',
@@ -87,7 +92,7 @@ const Grid = () => {
         Component: <Contact />
       }
     ]
-  }, [])
+  }, [post])
 
   const [rowHeight, setRowHeight] = useState<number | undefined>(undefined)
 

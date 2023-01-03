@@ -2,8 +2,13 @@ import * as S from './styles'
 
 import { Filters, Grid } from '..'
 import Link from 'next/link'
+import { Welcome } from 'hooks'
 
-const Main = () => (
+interface MainProps {
+  post: Welcome
+}
+
+const Main = ({ post }: MainProps) => (
   <S.Wrapper>
     <S.Navigation>
       <S.Title>mtw.</S.Title>
@@ -12,7 +17,7 @@ const Main = () => (
         <S.Contact>Connect</S.Contact>
       </Link>
     </S.Navigation>
-    <Grid />
+    <Grid post={post} />
   </S.Wrapper>
 )
 
