@@ -44,7 +44,5 @@ export const breakpoints = ({
     ''
   )
 
-  console.log({ breakpointProps })
-
   return breakpointProps
 }
