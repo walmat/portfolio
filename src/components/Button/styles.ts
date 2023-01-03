@@ -62,6 +62,7 @@ export const ButtonWithMotion = styled(motion.div)`
   transition: box-shadow 0.2s ease-out 0s;
   background: ${({ theme }) => theme.cornerItem.background};
   box-shadow: ${({ theme }) => theme.cornerItem.shadow};
+  will-change: width, height, transform;
   border: none;
   z-index: 2;
 

@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding: ${({ theme }) => theme.filters.padding};
   border: ${({ theme }) => theme.filters.border};
 
-  width: 300px;
+  width: 301.14px;
 `
 
 export const Wrapper = styled.div`

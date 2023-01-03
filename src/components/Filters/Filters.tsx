@@ -36,7 +36,10 @@ const Filters = () => {
       <S.Wrapper>
         <AnimateSharedLayout>
           <S.Highlight
-            transition={{ type: 'spring', duration: 0.12 }}
+            transition={{
+              duration: 0.12,
+              type: 'spring'
+            }}
             animate={{ left: styles[active].left, width: styles[active].width }}
           />
           {options.map((el, i) => (
