@@ -66,6 +66,17 @@ export const getNowPlaying = async (
     }
   })
 
+  if (res.status === 403) {
+    _accessToken = ''
+    const { access_token } = await getAccessToken()
+    if (!access_token) {
+      throw new Error('No access token')
+    }
+
+    _accessToken = access_token
+    return getNowPlaying(access_token)
+  }
+
   const data = await res.json()
   if (!data) {
     throw new Error('no data')
@@ -123,6 +134,17 @@ export const getRecentlyPlayed = async (
       Authorization: `Bearer ${access_token}`
     }
   })
+
+  if (res.status === 403) {
+    _accessToken = ''
+    const { access_token } = await getAccessToken()
+    if (!access_token) {
+      throw new Error('No access token')
+    }
+
+    _accessToken = access_token
+    return getRecentlyPlayed(access_token)
+  }
 
   const data = await res.json()
   if (!data.items.length) {
