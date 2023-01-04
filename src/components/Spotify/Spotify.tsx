@@ -27,7 +27,7 @@ const Spotify = () => {
 
   return (
     <S.SpotifyWrapper $opacity={getOpacity(['About'], active)}>
-      <S.AlbumArt src={image} />
+      <S.AlbumArt alt="" src={image} />
       <S.SpotifyImage src="/spotify.svg" alt="" width={54} height={54} />
       <S.SpotifyMetadata>
         <S.SpotifyNowPlaying>

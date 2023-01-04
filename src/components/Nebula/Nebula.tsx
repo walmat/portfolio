@@ -8,9 +8,9 @@ import { getOpacity } from 'utils'
 
 function Nebula() {
   const { active } = useFiltersContext()
-  const animate = useAnimation()
-
   const { theme } = useThemeContext()
+
+  const animate = useAnimation()
 
   return (
     <S.Wrapper
@@ -26,20 +26,20 @@ function Nebula() {
         width={100}
       />
       {theme === ThemeOptions[0] && (
-        <S.RectangleImage
-          src="/nebula/rectangle.svg"
-          alt=""
-          height={200}
-          width={200}
-        />
-      )}
-      {theme === ThemeOptions[0] && (
-        <S.AccentImage
-          src="/nebula/accent.svg"
-          alt=""
-          height={200}
-          width={200}
-        />
+        <>
+          <S.RectangleImage
+            src="/nebula/rectangle.svg"
+            alt=""
+            height={200}
+            width={200}
+          />
+          <S.AccentImage
+            src="/nebula/accent.svg"
+            alt=""
+            height={200}
+            width={200}
+          />
+        </>
       )}
       <Link href="/projects/nebula">
         <Button withMotion Icon={Arrow}>

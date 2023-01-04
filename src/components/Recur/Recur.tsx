@@ -8,9 +8,8 @@ import { getOpacity } from 'utils'
 
 function Recur() {
   const { active } = useFiltersContext()
-  const animate = useAnimation()
-
   const { theme } = useThemeContext()
+  const animate = useAnimation()
 
   return (
     <S.Wrapper
@@ -26,20 +25,20 @@ function Recur() {
         width={100}
       />
       {theme === ThemeOptions[0] && (
-        <S.RectangleImage
-          src="/recur/rectangle.svg"
-          alt=""
-          height={200}
-          width={200}
-        />
-      )}
-      {theme === ThemeOptions[0] && (
-        <S.AccentImage
-          src="/recur/accent.svg"
-          alt=""
-          height={200}
-          width={200}
-        />
+        <>
+          <S.RectangleImage
+            src="/recur/rectangle.svg"
+            alt=""
+            height={200}
+            width={200}
+          />
+          <S.AccentImage
+            src="/recur/accent.svg"
+            alt=""
+            height={200}
+            width={200}
+          />
+        </>
       )}
       <Link href="/projects/recur">
         <Button withMotion Icon={Arrow}>
