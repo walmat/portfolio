@@ -2,11 +2,8 @@ import React, { PropsWithChildren } from 'react'
 import App, { AppContext } from 'next/app'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import Link from 'next/link'
 import { ThemeProvider } from 'styled-components'
 import { AnimatePresence } from 'framer-motion'
-import { PrismicProvider } from '@prismicio/react'
-import { PrismicPreview } from '@prismicio/next'
 import { getCookie } from 'cookies-next'
 import localFont from '@next/font/local'
 
@@ -31,7 +28,6 @@ import {
   useThemeContext
 } from 'providers'
 
-import { repositoryName } from 'prismicio'
 import { GlobalStyles, themes } from 'styles'
 
 interface ProvidersProps {
@@ -43,11 +39,7 @@ function Providers({ initialTheme, children }: ProvidersProps) {
   return (
     <Theme initialTheme={initialTheme}>
       <SpotifyProvider>
-        <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
-          <PrismicPreview repositoryName={repositoryName}>
-            <FiltersProvider>{children}</FiltersProvider>
-          </PrismicPreview>
-        </PrismicProvider>
+        <FiltersProvider>{children}</FiltersProvider>
       </SpotifyProvider>
     </Theme>
   )

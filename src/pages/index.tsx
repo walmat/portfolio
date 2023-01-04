@@ -1,19 +1,22 @@
 import { Main } from 'components'
-import { Welcome } from 'hooks'
+import { Item, Welcome } from 'hooks'
 import { PageLayout } from 'layouts'
+import { MediumProvider } from 'providers'
 
 interface HomeProps {
-  post: Welcome
+  post: Item
 }
 
 function Home({ post }: HomeProps) {
   return (
-    <PageLayout
-      title="mtw."
-      description="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
-    >
-      <Main post={post} />
-    </PageLayout>
+    <MediumProvider initialState={post}>
+      <PageLayout
+        title="mtw."
+        description="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
+      >
+        <Main />
+      </PageLayout>
+    </MediumProvider>
   )
 }
 
@@ -34,7 +37,7 @@ Home.getInitialProps = async () => {
     }
   } catch (_) {
     return {
-      post: null
+      post: {}
     }
   }
 }

@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useFormik } from 'formik'
-import { toast } from 'react-hot-toast'
 import { useAnimation, AnimationControls } from 'framer-motion'
 
 import { Arrow, Button, Heading, Paragraph } from 'components'
@@ -46,8 +45,6 @@ function Contact() {
   const animation = useAnimation()
 
   const subscribe = async (email: string) => {
-    toast.dismiss()
-
     if (!email) {
       return
     }

@@ -29,11 +29,21 @@ export interface Item {
 }
 
 export interface Enclosure {
-  link: string
+  link?: string
 }
 
-export const useMedium = () => {
-  const [post, setPost] = useState({} as Item)
+const getTrimmedDescription = (description: string) => {
+  const matches = description.match(/<p>(.*?)<\/p>/)
+  if (!matches) {
+    return description
+  }
+
+  const [, match] = matches
+  return match
+}
+
+export const useMedium = (initialState: Item) => {
+  const [post, setPost] = useState(initialState)
 
   const getPosts = async () => {
     try {
@@ -41,18 +51,16 @@ export const useMedium = () => {
         'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@mtw.'
       )
 
-      const { status }: Welcome = await res.json()
-
-      if (status !== 'ok') {
-        throw new Error('Medium API is not responding')
-      }
-
-      const { items } = await res.json()
+      const { items }: Welcome = await res.json()
       if (!items.length) {
         throw new Error('No posts found')
       }
 
-      setPost(items[0])
+      const [firstPost] = items
+
+      const desc = getTrimmedDescription(firstPost.description)
+      firstPost.description = desc
+      setPost(firstPost)
     } catch (_) {
       // noop
     }

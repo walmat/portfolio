@@ -10,7 +10,7 @@ export const Container = styled.div`
   padding: ${({ theme }) => theme.filters.padding};
   border: ${({ theme }) => theme.filters.border};
 
-  width: 301.14px;
+  min-width: 301.13px;
 `
 
 export const Wrapper = styled.div`
@@ -34,8 +34,7 @@ export const OptionText = styled.p<{ $selected: boolean }>`
   color: ${({ theme }) => theme.filters.option.color};
   transition: all 0.2s ease 0s;
   z-index: 2;
-
-  font-weight: ${({ $selected }) => ($selected ? '500' : '400')};
+  font-weight: normal;
 
   &:hover {
     color: ${({ $selected, theme }) =>

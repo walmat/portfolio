@@ -1,37 +1,16 @@
 import { Box } from 'rebass/styled-components'
 import { Arrow, Heading, Paragraph, Button } from 'components'
-import { useFiltersContext } from 'providers'
+import { useFiltersContext, useMediumContext } from 'providers'
 import { getOpacity } from 'utils'
 import { format } from 'date-fns'
 
 import * as S from './styles'
-import { Item } from 'hooks'
 import Link from 'next/link'
 
-interface BlogProps {
-  post: Item
-}
-
-const getTrimmedDescription = (description: string) => {
-  const matches = description.match(/<p>(.*?)<\/p>/)
-  if (!matches) {
-    return null
-  }
-
-  const [, match] = matches
-  return match
-}
-
-function Blog({ post }: BlogProps) {
+function Blog() {
   const { active } = useFiltersContext()
 
-  if (!post) {
-    return null
-  }
-
-  const { title, description, pubDate, link } = post
-
-  const desc = getTrimmedDescription(description)
+  const { title, description, pubDate, link } = useMediumContext()
 
   return (
     <S.Wrapper $opacity={getOpacity(['Media'], active)}>
@@ -39,7 +18,7 @@ function Blog({ post }: BlogProps) {
         <Box sx={{ mb: 2 }}>
           <Heading>{title}</Heading>
         </Box>
-        <Paragraph>{desc ?? ''}</Paragraph>
+        <Paragraph>{description}</Paragraph>
       </S.Copy>
 
       <S.Footer>

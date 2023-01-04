@@ -122,7 +122,7 @@ export const light: Theme = {
   },
   filters: {
     background: 'rgba(0, 0, 0, 0.04)',
-    border: 'none',
+    border: '2px solid rgb(247, 242, 242)',
     padding: '5px',
     radius: '23px',
     option: {
