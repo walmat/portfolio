@@ -10,7 +10,13 @@ import Link from 'next/link'
 function Blog() {
   const { active } = useFiltersContext()
 
-  const { title, description, pubDate, link } = useMediumContext()
+  const post = useMediumContext()
+
+  if (!post) {
+    return null
+  }
+
+  const { title, description, link, pubDate } = post
 
   return (
     <S.Wrapper $opacity={getOpacity(['Media'], active)}>

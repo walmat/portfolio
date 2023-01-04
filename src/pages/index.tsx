@@ -4,7 +4,7 @@ import { PageLayout } from 'layouts'
 import { MediumProvider } from 'providers'
 
 interface HomeProps {
-  post: Item
+  post?: Item
 }
 
 function Home({ post }: HomeProps) {
@@ -36,9 +36,7 @@ Home.getInitialProps = async () => {
       post
     }
   } catch (_) {
-    return {
-      post: {}
-    }
+    return {}
   }
 }
 

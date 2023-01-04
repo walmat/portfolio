@@ -42,7 +42,7 @@ const getTrimmedDescription = (description: string) => {
   return match
 }
 
-export const useMedium = (initialState: Item) => {
+export const useMedium = (initialState?: Item) => {
   const [post, setPost] = useState(initialState)
 
   const getPosts = async () => {

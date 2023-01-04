@@ -1,10 +1,10 @@
 import { useMedium, Item } from 'hooks'
 import { createContext, PropsWithChildren, useContext } from 'react'
 
-const MediumContext = createContext<Item>({} as Item)
+const MediumContext = createContext<Item | undefined>({} as Item)
 
 interface MediumProviderProps {
-  initialState: Item
+  initialState?: Item
   children: PropsWithChildren<React.ReactNode>
 }
 
