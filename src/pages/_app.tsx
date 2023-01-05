@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import { AnimatePresence } from 'framer-motion'
 import { getCookie } from 'cookies-next'
 import localFont from '@next/font/local'
+import { Analytics } from '@vercel/analytics/react'
 
 export const moranga = localFont({ src: '../fonts/Moranga-Bold.otf' })
 export const silka = localFont({
@@ -74,6 +75,7 @@ function Application({ Component, pageProps, theme }: ApplicationProps) {
       </Head>
       <ThemeSwitch>
         <GlobalStyles silka={silka} moranga={moranga} />
+        <Analytics />
         <AnimatePresence
           mode="wait"
           onExitComplete={() => window.scrollTo(0, 0)}
