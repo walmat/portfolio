@@ -8,6 +8,10 @@ import { getCookie } from 'cookies-next'
 import localFont from '@next/font/local'
 import { Analytics } from '@vercel/analytics/react'
 
+import { initialize } from 'utils'
+
+initialize()
+
 export const moranga = localFont({ src: '../fonts/Moranga-Bold.otf' })
 export const silka = localFont({
   src: [
