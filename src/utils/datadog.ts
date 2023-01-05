@@ -1,4 +1,5 @@
 import { datadogRum } from '@datadog/browser-rum'
+import { datadogLogs } from '@datadog/browser-logs'
 
 export const initialize = () => {
   datadogRum.init({
@@ -13,6 +14,13 @@ export const initialize = () => {
     premiumSampleRate: 100,
     trackInteractions: true,
     defaultPrivacyLevel: 'mask-user-input'
+  })
+
+  datadogLogs.init({
+    clientToken: 'pube79770ecf28983f42edcc8bd166d81ec',
+    site: 'us5.datadoghq.com',
+    forwardErrorsToLogs: true,
+    sampleRate: 100
   })
 
   datadogRum.startSessionReplayRecording()
