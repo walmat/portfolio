@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import { AnimatePresence } from 'framer-motion'
 import { getCookie } from 'cookies-next'
 import localFont from '@next/font/local'
+import { ErrorBoundary } from 'react-error-boundary'
 import { Analytics } from '@vercel/analytics/react'
 
 import { initialize } from 'utils'
@@ -66,28 +67,37 @@ interface ApplicationProps extends AppProps {
 
 function Application({ Component, pageProps, theme }: ApplicationProps) {
   return (
-    <Providers initialTheme={theme}>
-      <Head>
-        <title>mtw.</title>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/icon-512.png" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta
-          name="description"
-          content="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
-        />
-      </Head>
-      <ThemeSwitch>
-        <GlobalStyles silka={silka} moranga={moranga} />
-        <Analytics />
-        <AnimatePresence
-          mode="wait"
-          onExitComplete={() => window.scrollTo(0, 0)}
-        >
-          <Component {...pageProps} />
-        </AnimatePresence>
-      </ThemeSwitch>
-    </Providers>
+    <ErrorBoundary
+      fallbackRender={({ error, resetErrorBoundary }) => (
+        <div>
+          <h1>An error occurred: {error.message}</h1>
+          <button onClick={resetErrorBoundary}>Return home</button>
+        </div>
+      )}
+    >
+      <Providers initialTheme={theme}>
+        <Head>
+          <title>mtw.</title>
+          <link rel="icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" href="/icon-512.png" />
+          <link rel="manifest" href="/manifest.json" />
+          <meta
+            name="description"
+            content="An aspiring homesteader and avid believer that Web3 has the potential to change the world."
+          />
+        </Head>
+        <ThemeSwitch>
+          <GlobalStyles silka={silka} moranga={moranga} />
+          <Analytics />
+          <AnimatePresence
+            mode="wait"
+            onExitComplete={() => window.scrollTo(0, 0)}
+          >
+            <Component {...pageProps} />
+          </AnimatePresence>
+        </ThemeSwitch>
+      </Providers>
+    </ErrorBoundary>
   )
 }
 
