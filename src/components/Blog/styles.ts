@@ -55,7 +55,6 @@ export const ButtonIcon = styled.img`
 
 export const ButtonText = styled.p`
   font-size: 14px;
-  font-family: 'Silka Medium';
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;
@@ -65,7 +64,6 @@ export const ButtonText = styled.p`
 
 export const Date = styled.p`
   font-size: 14px;
-  font-family: 'Silka Medium';
   line-height: 24px;
   letter-spacing: 0.25px;
   font-weight: 400;
