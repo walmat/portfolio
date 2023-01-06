@@ -1,5 +1,5 @@
 import { Box } from 'rebass/styled-components'
-import { Arrow, Heading, Paragraph, Button } from 'components'
+import { Arrow, Heading, Button } from 'components'
 import { useFiltersContext, useMediumContext } from 'providers'
 import { getOpacity } from 'utils'
 import { format } from 'date-fns'
@@ -33,7 +33,7 @@ function Blog() {
         <Box sx={{ mb: 2 }}>
           <Heading>{title}</Heading>
         </Box>
-        <Paragraph>{description}</Paragraph>
+        <S.Description>{description}</S.Description>
       </S.Copy>
 
       <S.Footer>

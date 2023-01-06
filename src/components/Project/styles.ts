@@ -129,6 +129,7 @@ export const Section = styled.div``
 
 export const Links = styled.div`
   display: flex;
+  margin-bottom: 32px;
 `
 
 export const Link = styled.a`

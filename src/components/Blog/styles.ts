@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
+import { Paragraph } from 'components/Typography/styles'
 
 export const Wrapper = styled.div<{ $opacity: number }>`
   height: 100%;
@@ -25,6 +26,25 @@ export const Footer = styled.div`
   justify-content: space-between;
   -webkit-box-align: center;
   align-items: center;
+`
+
+export const Description = styled(Paragraph)`
+  max-height: 150px;
+  overflow: hidden;
+  position: relative;
+
+  &:before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(
+      transparent 100px,
+      ${({ theme }) => theme.card.background}
+    );
+  }
 `
 
 export const Button = styled(motion.button)`
