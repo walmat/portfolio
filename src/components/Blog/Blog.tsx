@@ -7,6 +7,15 @@ import { format } from 'date-fns'
 import * as S from './styles'
 import Link from 'next/link'
 
+const DateComponent = ({ date }: { date: string }) => {
+  try {
+    return <S.Date>{format(new Date(date), 'MMM dd, yyyy')}</S.Date>
+  } catch (error) {
+    console.error(error)
+    return null
+  }
+}
+
 function Blog() {
   const { active } = useFiltersContext()
 
@@ -31,7 +40,7 @@ function Blog() {
         <Link href={link} target="_blank">
           <Button Icon={Arrow}>Read more</Button>
         </Link>
-        <S.Date>{format(new Date(pubDate), 'MMM dd, yyyy')}</S.Date>
+        <DateComponent date={pubDate} />
       </S.Footer>
     </S.Wrapper>
   )

@@ -17,7 +17,7 @@ export interface Feed {
 
 export interface Item {
   title: string
-  pubDate: Date
+  pubDate: string
   link: string
   guid: string
   author: string
