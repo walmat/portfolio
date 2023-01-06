@@ -100,4 +100,5 @@ export const ButtonWithMotionIcon = styled(motion.div)`
 
 export const ButtonText = styled(Paragraph)`
   margin-left: 6px;
+  font-size: 14px;
 `
