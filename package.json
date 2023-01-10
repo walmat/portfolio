@@ -24,7 +24,7 @@
     ]
   },
   "dependencies": {
-    "@datadog/browser-logs": "^4.29.1",
+    "@datadog/browser-logs": "^4.30.0",
     "@datadog/browser-rum": "^4.29.1",
     "@mailchimp/mailchimp_marketing": "^3.0.80",
     "@next/font": "^13.1.1",
