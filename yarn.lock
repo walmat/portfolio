@@ -1161,6 +1161,11 @@
   resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.29.1.tgz#9e0e1cc0e8843f39d32030ec1ad8c8ce0574b5b5"
   integrity sha512-Kh4RrrMfwcTsWaDey1BXdZ5AMFE2qWTi1QVvdR/zM7L3OdO1XZWd5QXfjah6jppAiEdKoynI6KYhyf0UEGTe0A==
 
+"@datadog/browser-core@4.30.1":
+  version "4.30.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-core/-/browser-core-4.30.1.tgz#ee03c9fd83dde67ef21cb6db3f48c879ef721af0"
+  integrity sha512-f2ETFJgZTHH3gzAKNEy8wI22Ae9jFtMk6t7s1QIyHwdFsftC0E0GKuCdMv2maeKMm/z8UYvP27vvGgXjbW1twg==
+
 "@datadog/browser-logs@^4.29.1":
   version "4.29.1"
   resolved "https://registry.yarnpkg.com/@datadog/browser-logs/-/browser-logs-4.29.1.tgz#0cc4217ef6d04937a24903b6153eba7bf83a4b8d"
@@ -1168,20 +1173,20 @@
   dependencies:
     "@datadog/browser-core" "4.29.1"
 
-"@datadog/browser-rum-core@4.29.1":
-  version "4.29.1"
-  resolved "https://registry.yarnpkg.com/@datadog/browser-rum-core/-/browser-rum-core-4.29.1.tgz#61c946af179cc403a997773fd5038634944f3892"
-  integrity sha512-egxCGz1dyIM3n/jVuP/0iu2k2nkb5dHPfW9ZgB/hKmgRhziC8iUmxlZlG+rNNjkinWs0Hbl05dCQ7cBTxOm0RA==
+"@datadog/browser-rum-core@4.30.1":
+  version "4.30.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum-core/-/browser-rum-core-4.30.1.tgz#da88d95af2c8c7811fe05da62ef036dd19fbe55e"
+  integrity sha512-scWb9zAJfIEQexabQxdm98wxy9CJzhqvsDX/5/DUyv1lQDAsjaP6IHWAMTkikHeHift67/E9j5FVTrUMaanydQ==
   dependencies:
-    "@datadog/browser-core" "4.29.1"
+    "@datadog/browser-core" "4.30.1"
 
-"@datadog/browser-rum@^4.29.1":
-  version "4.29.1"
-  resolved "https://registry.yarnpkg.com/@datadog/browser-rum/-/browser-rum-4.29.1.tgz#97629ca5b159079f931f6ce9dc56cf8cf685ed5c"
-  integrity sha512-r5Pd+oVzTf1pxFmyZfPlpzeLa7uY0S2txol5h6IoZxTO2pHLpwnZfYTiC028ZtUBjSYKtTYrh3Fj2ynzLJgf2w==
+"@datadog/browser-rum@^4.30.1":
+  version "4.30.1"
+  resolved "https://registry.yarnpkg.com/@datadog/browser-rum/-/browser-rum-4.30.1.tgz#4497824fc166bef2dff6736dac42c627ea703e8e"
+  integrity sha512-iOJJYjyS9j1EsD93RIwabqCPRpfDd7FrltbgVVll+4oJ+eE2lfO/wPWbLuV1Kr4jZ39tGSzef7GC/Q/dcNLYzQ==
   dependencies:
-    "@datadog/browser-core" "4.29.1"
-    "@datadog/browser-rum-core" "4.29.1"
+    "@datadog/browser-core" "4.30.1"
+    "@datadog/browser-rum-core" "4.30.1"
 
 "@discoveryjs/json-ext@^0.5.3":
   version "0.5.7"
