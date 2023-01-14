@@ -11,8 +11,6 @@ const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode`
 const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`
 
-let _accessToken = ''
-
 export interface SpotifySong {
   name: string
   href: string
@@ -65,17 +63,6 @@ export const getNowPlaying = async (
       'Content-Type': 'application/json'
     }
   })
-
-  if (res.status === 403) {
-    _accessToken = ''
-    const { access_token } = await getAccessToken()
-    if (!access_token) {
-      throw new Error('No access token')
-    }
-
-    _accessToken = access_token
-    return getNowPlaying(access_token)
-  }
 
   const data = await res.json()
   if (!data) {
@@ -135,17 +122,6 @@ export const getRecentlyPlayed = async (
     }
   })
 
-  if (res.status === 403) {
-    _accessToken = ''
-    const { access_token } = await getAccessToken()
-    if (!access_token) {
-      throw new Error('No access token')
-    }
-
-    _accessToken = access_token
-    return getRecentlyPlayed(access_token)
-  }
-
   const data = await res.json()
   if (!data.items.length) {
     return {
@@ -190,26 +166,18 @@ export const getRecentlyPlayed = async (
 
 export default async (_: NextApiRequest, res: NextApiResponse) => {
   try {
-    let accessToken = _accessToken
-
-    if (!accessToken) {
-      const { access_token } = await getAccessToken()
-      if (!access_token) {
-        throw new Error('No access token')
-      }
-      accessToken = _accessToken = access_token
-    }
+    const { access_token } = await getAccessToken()
 
     let data: SpotifyResponse | null = null
     try {
-      data = await getNowPlaying(accessToken)
+      data = await getNowPlaying(access_token)
     } catch (e) {
       console.error(e)
     }
 
     if (!data) {
       try {
-        data = await getRecentlyPlayed(accessToken)
+        data = await getRecentlyPlayed(access_token)
       } catch (e) {
         console.error(e)
       }
