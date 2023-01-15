@@ -11,7 +11,6 @@ const DateComponent = ({ date }: { date: string }) => {
   try {
     return <S.Date>{format(new Date(date), 'MMM dd, yyyy')}</S.Date>
   } catch (error) {
-    console.error(error)
     return null
   }
 }
@@ -27,13 +26,11 @@ function Blog() {
 
   const { title, description, link, pubDate } = post
 
-  console.log(title)
-
   return (
     <S.Wrapper $opacity={getOpacity(['Media'], active)}>
       <S.Copy>
         <Box sx={{ mb: 2 }}>
-          <Heading>{title.replace(/&lt;|&gt;|\//g, '')}</Heading>
+          <Heading>{title}</Heading>
         </Box>
         <S.Description>{description}</S.Description>
       </S.Copy>

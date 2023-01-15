@@ -1,3 +1,4 @@
+import { getPosts } from 'crud'
 import { useEffect, useState } from 'react'
 
 export interface Welcome {
@@ -45,30 +46,27 @@ const getTrimmedDescription = (description: string) => {
 export const useMedium = (initialState?: Item) => {
   const [post, setPost] = useState(initialState)
 
-  const getPosts = async () => {
+  const getFeed = async () => {
     try {
-      const res = await fetch(
-        'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@mtw.'
-      )
-
-      const { items }: Welcome = await res.json()
+      const { items } = await getPosts()
       if (!items.length) {
         throw new Error('No posts found')
       }
 
-      const [firstPost] = items
+      const [post] = items
 
-      const desc = getTrimmedDescription(firstPost.description)
-      firstPost.description = desc
-      setPost(firstPost)
+      const desc = getTrimmedDescription(post.description)
+      post.description = desc
+      post.title = post.title.replace(/&(lt|gt);|\//g, '')
+      setPost(post)
     } catch (_) {
       // noop
     }
   }
 
   useEffect(() => {
-    getPosts()
-    const interval = setInterval(getPosts, 30_000)
+    getFeed()
+    const interval = setInterval(getFeed, 30_000)
     return () => clearInterval(interval)
   }, [])
 

@@ -1,5 +1,6 @@
 import { Main } from 'components'
-import { Item, Welcome } from 'hooks'
+import { getPosts } from 'crud'
+import { Item } from 'hooks'
 import { PageLayout } from 'layouts'
 import { MediumProvider } from 'providers'
 
@@ -22,11 +23,7 @@ function Home({ post }: HomeProps) {
 
 Home.getInitialProps = async () => {
   try {
-    const res = await fetch(
-      'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@mtw.'
-    )
-
-    const { items }: Welcome = await res.json()
+    const { items } = await getPosts()
     if (!items.length) {
       throw new Error('No posts found')
     }
