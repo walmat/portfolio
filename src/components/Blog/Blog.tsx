@@ -27,6 +27,8 @@ function Blog() {
 
   const { title, description, link, pubDate } = post
 
+  console.log(title)
+
   return (
     <S.Wrapper $opacity={getOpacity(['Media'], active)}>
       <S.Copy>
