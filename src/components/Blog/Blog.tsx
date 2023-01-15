@@ -33,7 +33,7 @@ function Blog() {
     <S.Wrapper $opacity={getOpacity(['Media'], active)}>
       <S.Copy>
         <Box sx={{ mb: 2 }}>
-          <Heading>{title}</Heading>
+          <Heading>{title.replace(/&lt;|&gt;|\//g, '')}</Heading>
         </Box>
         <S.Description>{description}</S.Description>
       </S.Copy>
