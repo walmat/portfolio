@@ -60,7 +60,7 @@ const Grid = () => {
             {...{
               width: 75.121,
               height: 61.052,
-              href: 'https://twitter.com/Mattwall7',
+              href: 'https://twitter.com/mtw_dev',
               name: 'twitter'
             }}
           />
