@@ -1,5 +1,6 @@
+'use client'
+
 import React, { ReactNode } from 'react'
-import { NextSeo } from 'next-seo'
 import { motion } from 'framer-motion'
 
 type Props = {
@@ -14,24 +15,14 @@ const variants = {
   exit: { opacity: 0, y: 20, transition: { duration: 0.24 } }
 }
 
-export const PageLayout = ({
-  children,
-  title,
-  description
-}: Props): JSX.Element => (
-  <>
-    <NextSeo
-      title={title}
-      description={description}
-      openGraph={{ title, description }}
-    />
-    <motion.div
-      initial="hidden"
-      animate="enter"
-      exit="exit"
-      variants={variants}
-    >
-      {children}
-    </motion.div>
-  </>
+export const PageLayout = ({ children }: Props): React.ReactElement => (
+  <motion.div
+    initial="hidden"
+    animate="enter"
+    exit="exit"
+    variants={variants}
+    className="flex flex-col flex-1"
+  >
+    {children}
+  </motion.div>
 )

@@ -1,0 +1,269 @@
+@import 'tailwindcss';
+@import 'react-grid-layout/css/styles.css';
+@import 'react-resizable/css/styles.css';
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* CSS Variables - these change with theme */
+:root {
+  --font-moranga: var(--font-moranga-local);
+  --font-silka: var(--font-silka-local);
+
+  /* Light mode colors */
+  --background: rgb(247, 242, 242);
+  --foreground: rgb(13, 17, 23);
+  --card: rgb(255, 255, 255);
+  --card-foreground: rgb(13, 17, 23);
+  --muted: rgb(240, 242, 248);
+  --muted-foreground: rgb(9, 12, 16, 0.6);
+  --secondary: rgb(237, 233, 233);
+  --secondary-foreground: rgb(13, 17, 23);
+  --border: transparent;
+  --ring: rgb(240, 242, 248);
+  --primary: rgb(13, 17, 23);
+  --primary-foreground: rgb(240, 242, 248);
+  --destructive: rgb(255, 159, 28);
+  --destructive-foreground: rgb(255, 255, 255);
+  --inverted: rgb(255, 255, 255);
+
+  /* Brand colors (static - don't change with theme) */
+  --nebula-start: rgb(119, 106, 242);
+  --nebula-end: rgb(160, 151, 253);
+  --recur-start: rgb(22, 201, 128);
+  --recur-end: rgb(42, 232, 154);
+  --tigerbob: rgb(248, 210, 204);
+  --github: rgb(23, 21, 21);
+  --x: rgb(0, 0, 0);
+  --spotify-green: rgb(110, 210, 183);
+}
+
+.dark {
+  --background: rgb(9, 12, 16);
+  --foreground: rgb(240, 242, 248);
+  --card: rgb(13, 17, 23);
+  --card-foreground: rgb(240, 242, 248);
+  --muted: rgb(33, 38, 45);
+  --muted-foreground: rgb(240, 242, 248, 0.6);
+  --secondary: rgb(13, 17, 23);
+  --secondary-foreground: rgb(240, 242, 248);
+  --border: rgb(48, 54, 61);
+  --ring: rgb(48, 54, 61);
+  --primary: rgb(240, 242, 248);
+  --primary-foreground: rgb(13, 17, 23);
+  --inverted: rgb(13, 17, 23);
+}
+
+/* Register theme colors with Tailwind */
+@theme inline {
+  /* Breakpoints */
+  --breakpoint-sm: 23.438rem;
+  --breakpoint-md: 49.938rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 75rem;
+
+  /* Semantic colors - reference CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-inverted: var(--inverted);
+
+  /* Brand colors */
+  --color-nebula-start: var(--nebula-start);
+  --color-nebula-end: var(--nebula-end);
+  --color-recur-start: var(--recur-start);
+  --color-recur-end: var(--recur-end);
+  --color-tigerbob: var(--tigerbob);
+  --color-github: var(--github);
+  --color-x: var(--x);
+  --color-spotify-green: var(--spotify-green);
+
+  /* Border radius */
+  --radius-card: 32px;
+  --radius-filter: 23px;
+  --radius-filter-highlight: 16px;
+}
+
+/* Keyframe animations */
+@keyframes playing {
+  0% {
+    height: 3px;
+  }
+  50% {
+    height: 12px;
+  }
+  to {
+    height: 3px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes peekUp {
+  0% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes move-bg {
+  to {
+    background-position: var(--bg-size) 0;
+  }
+}
+
+/* Base styles */
+@layer base {
+  * {
+    outline: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+  }
+
+  html {
+    background-color: var(--background);
+  }
+
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-width: 100vw;
+  }
+
+  img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-moranga-local), serif;
+  }
+
+  p,
+  a,
+  div,
+  span,
+  button,
+  input,
+  textarea {
+    font-family: var(--font-silka-local), sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+}
+
+/* React Grid Layout custom overrides */
+.react-grid-layout {
+  animation: fadeIn 1.75s, peekUp 1s;
+}
+
+/* Optimize grid item transforms for GPU acceleration */
+.react-grid-item {
+  /* Reduce transition duration for snappier feel */
+  transition: transform 150ms ease-out, width 150ms ease-out, height 150ms ease-out !important;
+  /* Hint browser to optimize transform layer */
+  will-change: transform;
+}
+
+/* Disable transitions entirely during active drag */
+.react-grid-item.react-draggable-dragging {
+  transition: none !important;
+  z-index: 100;
+}
+
+/* Disable all grid transitions during window resize */
+.is-resizing .react-grid-item {
+  transition: none !important;
+}
+
+.is-resizing .react-grid-layout {
+  transition: none !important;
+}
+
+/* Disable layout transition on container during resize */
+.react-grid-layout {
+  transition: none !important;
+}
+
+.react-grid-item img {
+  pointer-events: none;
+  user-select: none;
+}
+
+.react-grid-item.react-grid-placeholder {
+  border-radius: 32px;
+  opacity: 0.2;
+  background: var(--foreground) !important;
+  transition: none !important;
+}
+
+/* Grid container responsive styles - matches react-grid-layout breakpoints */
+.grid-container {
+  width: 100%;
+  max-width: 375px;
+  position: relative;
+  margin-top: -1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 800px) {
+  .grid-container {
+    max-width: 800px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid-container {
+    max-width: 1200px;
+  }
+}
+
+/* Utility for autofill styling */
+@layer utilities {
+  .autofill-themed {
+    &:-webkit-autofill {
+      box-shadow: 0 0 0px 1000px var(--card) inset;
+      -webkit-box-shadow: 0 0 0px 1000px var(--card) inset;
+      -webkit-text-fill-color: var(--foreground);
+      color: var(--foreground);
+    }
+  }
+}

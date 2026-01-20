@@ -1,19 +1,22 @@
-export * from './Main'
-export * from './Filters'
-export * from './Grid'
-export * from './Arrow'
-export * from './Switch'
-export * from './Spotify'
-export * from './Biography'
-export * from './Nebula'
-export * from './Tigerbob'
-export * from './Theme'
-export * from './Recur'
-export * from './Contact'
-export * from './Social'
-export * from './Blog'
-export * from './Arrow'
-export * from './Close'
-export * from './Button'
-export * from './Typography'
-export * from './Project'
+export { default as Main } from './Main'
+export { default as Filters } from './Filters'
+export { default as Grid } from './Grid'
+export { default as Spotify } from './Spotify'
+export { default as Biography } from './Biography'
+export { default as Theme } from './Theme'
+export { default as Contact } from './Contact'
+export { default as Social } from './Social'
+export { default as Blog } from './Blog'
+export { ProjectCard } from './ProjectCard'
+export { ProjectWrapper } from './ProjectWrapper'
+
+// UI Primitives
+export {
+  Arrow,
+  Button,
+  Close,
+  ContentCard,
+  Heading,
+  Paragraph,
+  Switch
+} from './ui'
