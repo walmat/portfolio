@@ -36,9 +36,7 @@ export async function generateMetadata({
       }
     }
   } catch {
-    return {
-      title: 'Not Found'
-    }
+    notFound();
   }
 }
 
