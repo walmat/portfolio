@@ -87,7 +87,7 @@ export function ProjectWrapper({ frontmatter, children }: Props) {
               <div>{children}</div>
             </div>
           </div>
-          <ImageGallery images={images} />
+          {images && Object.keys(images).length > 0 && <ImageGallery images={images} />}
         </div>
       </motion.div>
     </>

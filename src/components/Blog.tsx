@@ -1,11 +1,10 @@
 "use client";
 
-import { Suspense } from "react";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Arrow, Heading, Button, Paragraph } from "@/components";
 import { useCardOpacity } from "@/hooks";
-import { useLatestPost } from "@/lib/medium";
+import type { BlogFrontmatter } from "@/lib/blogs";
 
 const DateComponent = ({ date }: { date: string }) => {
   try {
@@ -19,7 +18,7 @@ const DateComponent = ({ date }: { date: string }) => {
   }
 };
 
-const BlogFallback = () => {
+export const BlogFallback = () => {
   return (
     <div className="h-full w-full flex flex-col items-start justify-between p-9 px-[42px] rounded-[32px] overflow-hidden bg-card shadow-[inset_0_0_0_2px_var(--border)]">
       <div className="w-full">
@@ -41,8 +40,11 @@ const BlogFallback = () => {
   );
 };
 
-const BlogContent = () => {
-  const { title, description, link, pubDate } = useLatestPost();
+interface BlogContentProps {
+  blog: BlogFrontmatter;
+}
+
+export function BlogContent({ blog }: BlogContentProps) {
   const opacity = useCardOpacity(["Media"]);
 
   return (
@@ -51,29 +53,33 @@ const BlogContent = () => {
       className="h-full w-full flex flex-col items-start justify-between p-9 px-[42px] rounded-[32px] overflow-hidden bg-card shadow-[inset_0_0_0_2px_var(--border)]"
     >
       <div className="w-full min-w-0 space-y-2">
-        <Heading>{title}</Heading>
+        <Heading className="w-full">{blog.title}</Heading>
         <div className="max-h-[124px] md:max-h-[150px] lg:max-h-[180px] xl:max-h-[94px] overflow-hidden relative">
-          <Paragraph>{description}</Paragraph>
+          <Paragraph>{blog.description}</Paragraph>
           <div className="absolute left-0 top-0 w-full h-full bg-gradient-to-b from-transparent via-transparent to-card" />
         </div>
       </div>
 
       <div className="w-full flex justify-between items-center">
-        <Link href={link} target="_blank">
+        <Link href={`/blog/${blog.slug}`}>
           <Button Icon={Arrow}>Read more</Button>
         </Link>
-        <DateComponent date={pubDate} />
+        <DateComponent date={blog.date} />
       </div>
     </div>
   );
-};
+}
 
-function Blog() {
-  return (
-    <Suspense fallback={<BlogFallback />}>
-      <BlogContent />
-    </Suspense>
-  );
+interface BlogProps {
+  blog: BlogFrontmatter | null;
+}
+
+function Blog({ blog }: BlogProps) {
+  if (!blog) {
+    return <BlogFallback />;
+  }
+
+  return <BlogContent blog={blog} />;
 }
 
 export default Blog;

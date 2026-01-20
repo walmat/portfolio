@@ -1,0 +1,64 @@
+---
+title: "//rainbow"
+name: "Rainbow"
+description: "A crypto wallet that brings life and color back to blockchain applications. Breaking down my first ever experience with react-native and reflecting on being surrounded by such talented people."
+slug: "rainbow"
+links:
+  - label: "Website"
+    href: "https://rainbow.me"
+  - label: "X"
+    href: "https://x.com/rainbowdotme"
+  - label: "GitHub"
+    href: "http://github.com/rainbow-me/rainbow"
+images:
+
+card:
+  gradient: "linear-gradient(to bottom right, #174299, #001E59)"
+  logoSrc: "/rainbow/rainbow.svg"
+  logoCentered: true
+  logoSize: "w-32 h-32"
+  buttonLabel: "Rainbow"
+---
+
+Rainbow is a crypto wallet that aims to bring life and color back to crypto applications. I joined the app team at Rainbow on October 1st, 2023. This was my first experience working in a React Native codebase. I had extensive experience with React on the web and all the other frontend libraries that Rainbow used, but I had never worked on something I could carry around in my pocket. The learning curve was minimal—taps instead of clicks, long presses, gestures—but nothing fundamentally different from how things worked on the web. Performance considerations became even more important, which made me more mindful about solving problems properly rather than just quickly.
+
+I had the opportunity to work on and rework some of the core modules that powered Rainbow's mobile app. I'll dive into each of them below.
+
+## Backups
+
+This part of the app was where the most legacy code lived, and it caused significant problems. Most of our support tickets were some variation of "I lost all my funds because the app said my wallet was backed up, but it wasn't." One of my first solo projects was reworking how backups functioned to ensure this couldn't happen to users. It's crucial that users can trust their seed phrases and private keys are stored and backed up safely.
+
+One of the biggest hurdles was ensuring feature parity between iCloud and Google Drive. Android users often get a worse experience with native app features, and I didn't want that to be the case here. I wanted both platforms to feel equally polished. The hardest part was getting the backup files to sync reliably—sometimes the files appeared to be there, sometimes they didn't (even when they actually were). Syncing issues, timeouts, and edge cases turned what was supposed to be a week-long sprint into a month-long effort.
+
+<MobileScreenshots screenshots={[
+  { src: "/rainbow/product/backups-list.png", alt: "Backups list view" },
+  { src: "/rainbow/product/backups-syncing.png", alt: "Backups syncing" }
+]} />
+
+## Swaps
+
+Swaps are the single most important feature in Rainbow because the company takes a 0.85% fee on every swap. During my time there, we ran two major sprints simultaneously: one for the dApp browser (allowing users to interact with dApps directly in the app), and another for overhauling swaps entirely. I was the DRI on the swaps project alongside my coworker Derek.
+
+The v1 swaps experience was, frankly, terrible. It was multi-paged, clunky, laggy, and painfully slow. Buttons would only enable after certain background operations completed at just the right time—a frustrating experience that drove users to other apps. Not ideal when swaps are your primary revenue driver.
+
+For v2, we rebuilt everything from scratch. Users tap a button, we preload their largest native asset as the input currency, and suggest popular, trending, or favorited assets to receive—all on a single screen. We developed a novel state management approach powered by react-native-reanimated that made the entire flow feel snappy. Every interaction has a smooth animated transition, and nothing relies on magic timing anymore. I still believe it's one of the best swap experiences in crypto, and certainly the best on mobile.
+
+<MobileScreenshots screenshots={[
+  { src: "/rainbow/product/swaps-entry.png", alt: "Swaps entry screen" },
+  { src: "/rainbow/product/swaps-quote.png", alt: "Swap quote" }
+]} />
+
+## Collectibles
+
+Yes, NFTs provide no direct monetary value to the company—I raised this point myself. But the feature was suffering from serious engineering debt that needed fixing. The metadata service was fetching *all* tokens upfront in a loop on a single Cloudflare worker. If you owned more than a few thousand NFTs, the worker would timeout before resolving any data. The GraphQL API was equally rough.
+
+I started by adding per-chain fetching and cursor pagination, which immediately made the problem more manageable. Then I optimized the API to return only collection-level data (image, name, count) in the paginated response. Individual NFT data within a collection would only be fetched when the user actually opened that collection—either fresh or from cache.
+
+The caching strategy became the interesting challenge. Paginated data refreshed every thirty seconds so newly minted NFTs would appear quickly. Collection-level data stayed cached for up to ten minutes or until explicitly viewed. All of this had to work across multiple wallet addresses. Feel free to [explore the code](https://github.com/rainbow-me/rainbow/blob/develop/src/state/nfts/createNftsStore.ts) if you're curious.
+
+The results spoke for themselves: vitalik.eth's wallet, which previously wouldn't load at all, now rendered the first page of data in under 300ms.
+
+<MobileScreenshots screenshots={[
+  { src: "/rainbow/product/collectibles-loading.png", alt: "Collectibles loading state" },
+  { src: "/rainbow/product/collectibles-empty.png", alt: "Empty collectibles view" }
+]} />
