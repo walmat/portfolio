@@ -50,7 +50,7 @@
   --ring: rgb(48, 54, 61);
   --primary: rgb(240, 242, 248);
   --primary-foreground: rgb(13, 17, 23);
-  --inverted: rgb(13, 17, 23);
+  --inverted: rgb(33, 38, 45);
 }
 
 /* Register theme colors with Tailwind */
