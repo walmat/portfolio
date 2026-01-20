@@ -1,0 +1,100 @@
+---
+title: "Building Nebula: From Side Project to $175K MRR"
+description: "A deep dive into how I built Nebula, an automation application that grew from a personal tool to a business generating $175,000 in monthly recurring revenue."
+slug: "building-nebula"
+date: "2024-01-10"
+author: "Matthew"
+tags: ["engineering", "startup", "react", "golang"]
+featured: true
+draft: false
+hero:
+  src: "/nebula/product/featured.png"
+  style:
+    objectFit: "cover"
+    borderRadius: "16px"
+images:
+  featured:
+    src: "/nebula/product/featured.png"
+    style:
+      padding: "0px"
+  logo:
+    src: "/nebula/product/logo.png"
+    style:
+      backgroundColor: "#C6C1FE"
+      objectFit: "contain"
+      padding: "20px"
+  inverted:
+    src: "/nebula/product/inverted.png"
+    style:
+      backgroundImage: "url(/nebula/product/background.svg)"
+      backgroundRepeat: "no-repeat"
+      backgroundPosition: "center"
+      backgroundSize: "cover"
+      objectFit: "contain"
+      padding: "40px"
+  first:
+    src: "/nebula/product/shopify.png"
+    style:
+      objectFit: "contain"
+      padding: "64px"
+  second:
+    src: "/nebula/product/jubilee.jpeg"
+    style:
+      objectFit: "cover"
+  third:
+    src: "/nebula/product/nike.png"
+    style:
+      objectFit: "contain"
+      padding: "64px"
+card:
+  gradient: "linear-gradient(135deg, #C6C1FE 0%, #8B7FE8 100%)"
+  accentColor: "#8B7FE8"
+---
+
+In the spring of 2018, I was wrapping up my final semester at university with a growing realization: I didn't want to spend my career building someone else's vision. This led me down a path that would eventually result in Nebula—an automation platform that would pay off my student loans in under a year.
+
+## The Genesis
+
+It started as a personal tool. I had been interested in the sneaker resale market and noticed that securing limited releases was nearly impossible without some form of automation. So I built something for myself.
+
+The first version was rough. It was a simple script that could monitor product pages and attempt purchases faster than I could manually. But it worked, and I started securing pairs that were selling for 2-3x retail on the secondary market.
+
+## From Personal Tool to Product
+
+After a few months of personal use, I realized others might pay for this capability. The sneaker resale market was booming, and there was clear demand for tools that could level the playing field against bots and professional resellers.
+
+I launched Nebula Orion in the summer of 2018. The initial version was basic but functional:
+
+- **Single-site support**: Initially only worked with one major retailer
+- **Basic task management**: Could run multiple purchase attempts simultaneously
+- **Simple proxy support**: Essential for avoiding rate limits and bans
+
+## Technical Evolution
+
+The architecture evolved significantly over time. The final version, Nebula Carina, was a complete rewrite:
+
+- **Frontend**: React.js with TypeScript and Styled Components
+- **Backend**: Golang for the automation engine
+- **Bundle size**: Under 30MB despite the feature set
+- **Scalability**: Virtually unlimited concurrent tasks
+
+The move to Golang for the backend was crucial. The performance characteristics of Go—particularly its goroutines for concurrent operations—made it possible to run hundreds of tasks simultaneously without the memory overhead we'd seen with previous implementations.
+
+## Lessons Learned
+
+Building Nebula taught me several important lessons:
+
+1. **Start with your own pain point**: The best products often come from solving your own problems first
+2. **Technical decisions compound**: Early architectural choices had massive implications down the road
+3. **Community matters**: Our Discord community became our best source of feedback and our most effective marketing channel
+4. **Know when to exit**: I stepped down in early 2021, recognizing that the market was shifting and my interests were evolving
+
+## The Numbers
+
+At its peak during the COVID-19 pandemic, Nebula was generating **$175,000 in monthly recurring revenue** with thousands of daily active users worldwide. People were using it for everything from sneakers to PS5s to limited edition clothing drops.
+
+The revenue allowed me to pay off my student loans in less than a year after graduation—a goal that had seemed almost impossible when I was still in school.
+
+## What's Next
+
+I've since moved on to new challenges, but the lessons from Nebula continue to inform how I approach building products. The intersection of technical capability and market demand is where the most interesting opportunities live.

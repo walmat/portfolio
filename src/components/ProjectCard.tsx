@@ -23,7 +23,9 @@ export function ProjectCard({ project }: Props) {
   const { animate, onHoverStart, onHoverEnd } = useProjectHover(slug);
 
   const backgroundStyle =
-    theme === "dark" ? "var(--card)" : card.gradient || card.backgroundColor || "var(--card)";
+    theme === "dark" && !card.logoCentered
+      ? "var(--card)"
+      : card.gradient || card.backgroundColor || "var(--card)";
 
   return (
     <motion.div
@@ -37,13 +39,25 @@ export function ProjectCard({ project }: Props) {
       }}
       className={cn(cardBase, cardInteractive)}
     >
-      <Image
-        src={card.logoSrc}
-        alt=""
-        fill
-        sizes="(max-width: 768px) 100vw, 50vw"
-        className="absolute left-0 top-0 object-cover z-[2]"
-      />
+      {card.logoCentered ? (
+        <div className="absolute inset-0 flex items-center justify-center z-[2] p-8">
+          <Image
+            src={card.logoSrc}
+            alt=""
+            width={200}
+            height={200}
+            className={cn("object-contain", card.logoSize || "w-24 h-24")}
+          />
+        </div>
+      ) : (
+        <Image
+          src={card.logoSrc}
+          alt=""
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="absolute left-0 top-0 object-cover z-[2]"
+        />
+      )}
       {theme === ThemeOptions[0] && (
         <>
           {card.rectangleSvg && (

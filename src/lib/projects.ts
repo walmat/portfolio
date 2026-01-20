@@ -19,6 +19,8 @@ export interface ProjectCard {
   backgroundColor?: string;
   logoSrc: string;
   darkLogoSrc?: string;
+  logoCentered?: boolean;
+  logoSize?: string;
   accentSvg?: string;
   accentStyle?: string;
   rectangleSvg?: string;

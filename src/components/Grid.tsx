@@ -11,6 +11,7 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { lg, md, mobile, rowHeights } from "@/meta";
 import { useFiltersContext } from "@/providers";
 import type { ProjectFrontmatter } from "@/lib/projects";
+import type { BlogFrontmatter } from "@/lib/blogs";
 
 const containerWidths = {
   lg: 1200,
@@ -25,9 +26,10 @@ interface Item {
 
 interface Props {
   projects: ProjectFrontmatter[];
+  latestBlog: BlogFrontmatter | null;
 }
 
-const Grid = ({ projects }: Props) => {
+const Grid = ({ projects, latestBlog }: Props) => {
   const projectMap = useMemo(() => {
     return projects.reduce(
       (acc, project) => {
@@ -85,7 +87,7 @@ const Grid = ({ projects }: Props) => {
       },
       {
         key: "blog",
-        Component: <Blog />,
+        Component: <Blog blog={latestBlog} />,
       },
       {
         key: "theme",
@@ -96,11 +98,15 @@ const Grid = ({ projects }: Props) => {
         Component: projectMap["recur"] ? <ProjectCard project={projectMap["recur"]} /> : null,
       },
       {
+        key: "rainbow",
+        Component: projectMap["rainbow"] ? <ProjectCard project={projectMap["rainbow"]} /> : null,
+      },
+      {
         key: "contact",
         Component: <Contact />,
       },
     ];
-  }, [projectMap]);
+  }, [projectMap, latestBlog]);
 
   const [rowHeight, setRowHeight] = useState<number | undefined>(undefined);
   const [width, setWidth] = useState<number | undefined>(undefined);

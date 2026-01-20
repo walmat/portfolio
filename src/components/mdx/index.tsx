@@ -1,8 +1,16 @@
 import type { MDXComponents } from "mdx/types";
 import { ImageGallery } from "./ImageGallery";
+import { MobileScreenshots } from "./MobileScreenshots";
+import { RainbowLettermark } from "./RainbowLettermark";
 
 export const mdxComponents: MDXComponents = {
   ImageGallery,
+  MobileScreenshots,
+  RainbowLettermark,
+
+  h2: (props) => <h2 className="text-2xl font-semibold text-foreground mt-10 mb-4" {...props} />,
+
+  h3: (props) => <h3 className="text-xl font-semibold text-foreground mt-8 mb-3" {...props} />,
 
   p: (props) => (
     <p
