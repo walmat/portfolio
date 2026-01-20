@@ -1,4 +1,2 @@
-export * from './filters'
-export * from './theme'
-export * from './spotify'
-export * from './medium'
+export * from "./filters";
+export * from "./theme";

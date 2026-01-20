@@ -1,2 +1,1 @@
-export * from './layouts'
-export * from './projects'
+export * from "./layouts";

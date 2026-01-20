@@ -1,36 +1,36 @@
+"use client";
+
 import {
   createContext,
   Dispatch,
   PropsWithChildren,
   SetStateAction,
   useContext,
-  useState
-} from 'react'
+  useState,
+} from "react";
 
-export const FilterOptions = ['All', 'About', 'Projects', 'Media']
+export const FilterOptions = ["All", "About", "Projects", "Media"];
 
 interface FiltersContext {
-  active: string
-  setActive: Dispatch<SetStateAction<string>>
-  options: string[]
+  active: string;
+  setActive: Dispatch<SetStateAction<string>>;
+  options: string[];
 }
 
-const FiltersContext = createContext<FiltersContext>({} as FiltersContext)
+const FiltersContext = createContext<FiltersContext>({} as FiltersContext);
 
 interface FiltersProviderProps {
-  children: PropsWithChildren<React.ReactNode>
+  children: PropsWithChildren<React.ReactNode>;
 }
 
 export const FiltersProvider = ({ children }: FiltersProviderProps) => {
-  const [active, setActive] = useState('All')
+  const [active, setActive] = useState("All");
 
   return (
-    <FiltersContext.Provider
-      value={{ active, setActive, options: FilterOptions }}
-    >
+    <FiltersContext.Provider value={{ active, setActive, options: FilterOptions }}>
       {children}
     </FiltersContext.Provider>
-  )
-}
+  );
+};
 
-export const useFiltersContext = () => useContext(FiltersContext)
+export const useFiltersContext = () => useContext(FiltersContext);

@@ -1,20 +1,6 @@
-const isProd = process.env.NODE_ENV === 'production'
-
-/* eslint-disable @typescript-eslint/no-var-requires */
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  disable: !isProd
-})
-
 /** @type {import('next').NextConfig} */
-const settings = {
-  swcMinify: true,
-  experimental: {
-    forceSwcTransforms: true
-  },
-  compiler: {
-    styledComponents: true
-  },
+const nextConfig = {
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -25,4 +11,4 @@ const settings = {
   }
 }
 
-module.exports = isProd ? withPWA(settings) : settings
+module.exports = nextConfig
