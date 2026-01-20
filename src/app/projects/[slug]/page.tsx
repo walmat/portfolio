@@ -5,10 +5,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import { ProjectWrapper } from '@/components/ProjectWrapper'
 import { mdxComponents } from '@/components/mdx'
 import { PageLayout } from '@/layouts/page'
-import {
-  getProjectBySlug,
-  getAllProjectSlugs
-} from '@/lib/projects'
+import { getProjectBySlug, getAllProjectSlugs } from '@/lib/projects'
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>
@@ -36,7 +33,7 @@ export async function generateMetadata({
       }
     }
   } catch {
-    notFound();
+    notFound()
   }
 }
 

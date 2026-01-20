@@ -47,7 +47,9 @@ export async function getProjectBySlug(
 
 export async function getAllProjectSlugs(): Promise<string[]> {
   const files = fs.readdirSync(PROJECTS_DIR)
-  return files.filter((f) => f.endsWith('.mdx')).map((f) => f.replace('.mdx', ''))
+  return files
+    .filter((f) => f.endsWith('.mdx'))
+    .map((f) => f.replace('.mdx', ''))
 }
 
 export async function getAllProjects(): Promise<ProjectFrontmatter[]> {

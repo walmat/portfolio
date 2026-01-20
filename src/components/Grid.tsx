@@ -5,14 +5,7 @@ import { Responsive } from 'react-grid-layout'
 import { isMobile } from 'react-device-detect'
 import { motion } from 'framer-motion'
 
-import {
-  Spotify,
-  Biography,
-  Social,
-  Theme,
-  Contact,
-  Blog
-} from '@/components'
+import { Spotify, Biography, Social, Theme, Contact, Blog } from '@/components'
 import { ProjectCard } from '@/components/ProjectCard'
 
 import { lg, md, mobile, rowHeights } from '@/meta'

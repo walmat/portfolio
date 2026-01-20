@@ -189,13 +189,18 @@
 
 /* React Grid Layout custom overrides */
 .react-grid-layout {
-  animation: fadeIn 1.75s, peekUp 1s;
+  animation:
+    fadeIn 1.75s,
+    peekUp 1s;
 }
 
 /* Optimize grid item transforms for GPU acceleration */
 .react-grid-item {
   /* Reduce transition duration for snappier feel */
-  transition: transform 150ms ease-out, width 150ms ease-out, height 150ms ease-out !important;
+  transition:
+    transform 150ms ease-out,
+    width 150ms ease-out,
+    height 150ms ease-out !important;
   /* Hint browser to optimize transform layer */
   will-change: transform;
 }

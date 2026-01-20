@@ -70,7 +70,7 @@ function selectMediumPost(data: MediumPost) {
     title: data.title,
     description: data.description,
     link: data.link,
-    pubDate: data.pubDate,
+    pubDate: data.pubDate
   }
 }
 

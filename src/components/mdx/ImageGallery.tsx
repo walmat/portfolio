@@ -75,7 +75,9 @@ export function ImageGallery({ images }: Props) {
               height={800}
               alt={key}
               className="w-full h-full"
-              style={{ objectFit: (objectFit as 'cover' | 'contain') || 'cover' }}
+              style={{
+                objectFit: (objectFit as 'cover' | 'contain') || 'cover'
+              }}
             />
           </div>
         </div>
@@ -92,7 +94,9 @@ export function ImageGallery({ images }: Props) {
         layouts={{ lg, md, sm }}
         breakpoints={{ lg: 1199, md: 799, sm: 0 }}
         cols={{ lg: 4, md: 4, sm: 2 }}
-        onBreakpointChange={(breakpoint) => setRowHeight(rowHeights[breakpoint])}
+        onBreakpointChange={(breakpoint) =>
+          setRowHeight(rowHeights[breakpoint])
+        }
         containerPadding={[0, 0]}
         rowHeight={rowHeight}
         margin={[16, 16]}

@@ -47,7 +47,7 @@ function Contact() {
         onSuccess: () => {
           setTitle('Thanks for subscribing!')
           form.reset()
-        },
+        }
       })
     }
   })
