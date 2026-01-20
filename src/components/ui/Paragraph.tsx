@@ -11,7 +11,7 @@ interface ParagraphProps {
 export const Paragraph = ({ children, className }: ParagraphProps) => (
   <p
     className={cn(
-      'text-[18px] leading-[26px] tracking-[0.5px] font-normal text-foreground truncate',
+      'inline-blocktext-[18px] leading-[26px] tracking-[0.5px] font-normal text-foreground truncate',
       className
     )}
   >

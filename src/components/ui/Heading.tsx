@@ -11,7 +11,7 @@ interface HeadingProps {
 export const Heading = ({ children, className }: HeadingProps) => (
   <h2
     className={cn(
-      'text-2xl leading-8 font-normal text-foreground mb-1 truncate',
+      'inline-block text-2xl leading-8 font-normal text-foreground mb-1 truncate',
       className
     )}
   >
