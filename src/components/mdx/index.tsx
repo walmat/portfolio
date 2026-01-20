@@ -1,5 +1,5 @@
-import type { MDXComponents } from 'mdx/types'
-import { ImageGallery } from './ImageGallery'
+import type { MDXComponents } from "mdx/types";
+import { ImageGallery } from "./ImageGallery";
 
 export const mdxComponents: MDXComponents = {
   ImageGallery,
@@ -43,5 +43,5 @@ export const mdxComponents: MDXComponents = {
       className="border-l-4 border-border pl-4 italic text-muted-foreground mb-4"
       {...props}
     />
-  )
-}
+  ),
+};

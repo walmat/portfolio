@@ -1,22 +1,14 @@
-export { default as Main } from './Main'
-export { default as Filters } from './Filters'
-export { default as Grid } from './Grid'
-export { default as Spotify } from './Spotify'
-export { default as Biography } from './Biography'
-export { default as Theme } from './Theme'
-export { default as Contact } from './Contact'
-export { default as Social } from './Social'
-export { default as Blog } from './Blog'
-export { ProjectCard } from './ProjectCard'
-export { ProjectWrapper } from './ProjectWrapper'
+export { default as Main } from "./Main";
+export { default as Filters } from "./Filters";
+export { default as Grid } from "./Grid";
+export { default as Spotify } from "./Spotify";
+export { default as Biography } from "./Biography";
+export { default as Theme } from "./Theme";
+export { default as Contact } from "./Contact";
+export { default as Social } from "./Social";
+export { default as Blog } from "./Blog";
+export { ProjectCard } from "./ProjectCard";
+export { ProjectWrapper } from "./ProjectWrapper";
 
 // UI Primitives
-export {
-  Arrow,
-  Button,
-  Close,
-  ContentCard,
-  Heading,
-  Paragraph,
-  Switch
-} from './ui'
+export { Arrow, Button, Close, ContentCard, Heading, Paragraph, Switch } from "./ui";

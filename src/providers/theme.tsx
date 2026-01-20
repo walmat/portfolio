@@ -1,16 +1,16 @@
-'use client'
+"use client";
 
-import { useTheme } from 'next-themes'
+import { useTheme } from "next-themes";
 
-export const ThemeOptions = ['light', 'dark']
+export const ThemeOptions = ["light", "dark"];
 
 export const useThemeContext = () => {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+  const { theme, setTheme, resolvedTheme } = useTheme();
 
   return {
-    theme: resolvedTheme || theme || 'light',
+    theme: resolvedTheme || theme || "light",
     setTheme,
-    toggleTheme: () => setTheme(theme === 'light' ? 'dark' : 'light'),
-    themes: ThemeOptions
-  }
-}
+    toggleTheme: () => setTheme(theme === "light" ? "dark" : "light"),
+    themes: ThemeOptions,
+  };
+};

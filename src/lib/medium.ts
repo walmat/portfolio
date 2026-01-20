@@ -1,68 +1,68 @@
-import { queryOptions, useSuspenseQuery } from '@tanstack/react-query'
+import { queryOptions, useSuspenseQuery } from "@tanstack/react-query";
 
 export interface MediumFeed {
-  url: string
-  title: string
-  link: string
-  author: string
-  description: string
-  image: string
+  url: string;
+  title: string;
+  link: string;
+  author: string;
+  description: string;
+  image: string;
 }
 
 export interface MediumEnclosure {
-  link?: string
+  link?: string;
 }
 
 export interface MediumPost {
-  title: string
-  pubDate: string
-  link: string
-  guid: string
-  author: string
-  thumbnail: string
-  description: string
-  content: string
-  enclosure: MediumEnclosure
-  categories: string[]
+  title: string;
+  pubDate: string;
+  link: string;
+  guid: string;
+  author: string;
+  thumbnail: string;
+  description: string;
+  content: string;
+  enclosure: MediumEnclosure;
+  categories: string[];
 }
 
 export interface MediumResponse {
-  status: string
-  feed: MediumFeed
-  items: MediumPost[]
+  status: string;
+  feed: MediumFeed;
+  items: MediumPost[];
 }
 
 function getTrimmedDescription(description: string) {
-  const matches = description.match(/<p>(.*?)<\/p>/)
+  const matches = description.match(/<p>(.*?)<\/p>/);
   if (!matches) {
-    return description
+    return description;
   }
-  const [, match] = matches
-  return match
+  const [, match] = matches;
+  return match;
 }
 
 async function getMediumPost(): Promise<MediumPost> {
   const res = await fetch(
-    'https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@mtw.'
-  )
+    "https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@mtw.",
+  );
 
   if (!res.ok) {
-    throw new Error('Failed to fetch Medium data')
+    throw new Error("Failed to fetch Medium data");
   }
 
-  const data: MediumResponse = await res.json()
+  const data: MediumResponse = await res.json();
 
   if (!data.items.length) {
-    throw new Error('No posts found')
+    throw new Error("No posts found");
   }
 
-  const [post] = data.items
+  const [post] = data.items;
 
   return {
     ...post,
     description: getTrimmedDescription(post.description),
-    title: post.title.replace(/&(lt|gt);|\//g, '')
-  }
+    title: post.title.replace(/&(lt|gt);|\//g, ""),
+  };
 }
 
 function selectMediumPost(data: MediumPost) {
@@ -70,21 +70,21 @@ function selectMediumPost(data: MediumPost) {
     title: data.title,
     description: data.description,
     link: data.link,
-    pubDate: data.pubDate
-  }
+    pubDate: data.pubDate,
+  };
 }
 
 export function mediumOptions() {
   return queryOptions({
-    queryKey: ['medium'],
+    queryKey: ["medium"],
     queryFn: getMediumPost,
     select: selectMediumPost,
     refetchInterval: 30_000,
-    staleTime: 30_000
-  })
+    staleTime: 30_000,
+  });
 }
 
 export function useLatestPost() {
-  const { data } = useSuspenseQuery(mediumOptions())
-  return data
+  const { data } = useSuspenseQuery(mediumOptions());
+  return data;
 }

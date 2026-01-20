@@ -1,45 +1,45 @@
-'use client'
+"use client";
 
-import { ReactNode } from 'react'
-import { Link, useTransitionRouter } from 'next-view-transitions'
-import { useAnimation, motion } from 'framer-motion'
+import { ReactNode } from "react";
+import { Link, useTransitionRouter } from "next-view-transitions";
+import { useAnimation, motion } from "framer-motion";
 
-import { Arrow, Close } from '@/components'
-import { ImageGallery } from '@/components/mdx/ImageGallery'
-import type { ProjectFrontmatter } from '@/lib/projects'
+import { Arrow, Close } from "@/components";
+import { ImageGallery } from "@/components/mdx/ImageGallery";
+import type { ProjectFrontmatter } from "@/lib/projects";
 
 const button = {
   initial: {
-    scale: 1
+    scale: 1,
   },
   animate: {
-    scale: 1.1
-  }
-}
+    scale: 1.1,
+  },
+};
 
 const container = {
   initial: {
-    y: 0
+    y: 0,
   },
   animate: {
     y: 20,
     transition: {
-      duration: 0.24
-    }
-  }
-}
+      duration: 0.24,
+    },
+  },
+};
 
 interface Props {
-  frontmatter: ProjectFrontmatter
-  children: ReactNode
+  frontmatter: ProjectFrontmatter;
+  children: ReactNode;
 }
 
 export function ProjectWrapper({ frontmatter, children }: Props) {
-  const animation = useAnimation()
-  const router = useTransitionRouter()
-  const back = () => router.push('/')
+  const animation = useAnimation();
+  const router = useTransitionRouter();
+  const back = () => router.push("/");
 
-  const { name, description, links, images, slug } = frontmatter
+  const { name, description, links, images, slug } = frontmatter;
 
   return (
     <>
@@ -47,8 +47,8 @@ export function ProjectWrapper({ frontmatter, children }: Props) {
         onTap={back}
         animate={animation}
         variants={button}
-        onHoverStart={() => animation.start('animate')}
-        onHoverEnd={() => animation.start('initial')}
+        onHoverStart={() => animation.start("animate")}
+        onHoverEnd={() => animation.start("initial")}
         className="absolute w-[46px] h-[46px] top-[37px] left-8 md:left-[calc(50%-23px)] rounded-[23px] flex items-center justify-center transition-all duration-300 ease-out bg-secondary border-2 border-border hover:cursor-pointer hover:bg-muted"
       >
         <Close />
@@ -62,9 +62,7 @@ export function ProjectWrapper({ frontmatter, children }: Props) {
       >
         <div className="mx-auto max-w-[320px] md:max-w-[800px] xl:max-w-[1200px] py-[50px] md:py-[60px]">
           <div className="px-0 md:px-8 lg:px-4">
-            <h2 className="text-4xl leading-[48px] font-normal text-foreground mb-2">
-              {name}
-            </h2>
+            <h2 className="text-4xl leading-[48px] font-normal text-foreground mb-2">{name}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
                 <p className="text-[26px] leading-10 tracking-[0.25px] font-normal text-foreground mb-4">
@@ -93,5 +91,5 @@ export function ProjectWrapper({ frontmatter, children }: Props) {
         </div>
       </motion.div>
     </>
-  )
+  );
 }

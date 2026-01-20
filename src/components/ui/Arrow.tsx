@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 export const Arrow = () => {
   return (
@@ -33,12 +33,7 @@ export const Arrow = () => {
           strokeWidth="2.5"
         />
       </g>
-      <path
-        id="Path_12"
-        data-name="Path 12"
-        d="M0,0H18.256V18.256H0Z"
-        fill="none"
-      />
+      <path id="Path_12" data-name="Path 12" d="M0,0H18.256V18.256H0Z" fill="none" />
     </svg>
-  )
-}
+  );
+};

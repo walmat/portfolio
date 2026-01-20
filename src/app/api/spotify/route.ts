@@ -1,76 +1,74 @@
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server";
 
-const client_id = process.env.SPOTIFY_CLIENT_ID
-const client_secret = process.env.SPOTIFY_CLIENT_SECRET
-const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
 
-const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
-const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
+const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64");
+const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`;
 
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode`
-const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`
+const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing?additional_types=track,episode`;
+const RECENTLY_PLAYED_ENDPOINT = `https://api.spotify.com/v1/me/player/recently-played`;
 
 interface SpotifySong {
-  name: string
-  href: string
-  progress: number
-  duration: number
+  name: string;
+  href: string;
+  progress: number;
+  duration: number;
 }
 
 interface SpotifyAlbum {
-  name: string
-  href: string
+  name: string;
+  href: string;
 }
 
 interface SpotifyArtist {
-  name: string
-  href: string
+  name: string;
+  href: string;
 }
 
 interface SpotifyResponse {
-  id: string
-  isPlaying: boolean
-  timestamp: number
-  image: string
-  song: SpotifySong | null
-  album: SpotifyAlbum | null
-  artist: SpotifyArtist | null
+  id: string;
+  isPlaying: boolean;
+  timestamp: number;
+  image: string;
+  song: SpotifySong | null;
+  album: SpotifyAlbum | null;
+  artist: SpotifyArtist | null;
 }
 
 const getAccessToken = async () => {
   const response = await fetch(TOKEN_ENDPOINT, {
-    method: 'POST',
+    method: "POST",
     headers: {
       Authorization: `Basic ${basic}`,
-      'Content-Type': 'application/x-www-form-urlencoded'
+      "Content-Type": "application/x-www-form-urlencoded",
     },
     body: new URLSearchParams({
-      grant_type: 'refresh_token',
-      refresh_token: refresh_token || ''
-    })
-  })
+      grant_type: "refresh_token",
+      refresh_token: refresh_token || "",
+    }),
+  });
 
-  return response.json()
-}
+  return response.json();
+};
 
-const getNowPlaying = async (
-  access_token: string
-): Promise<SpotifyResponse> => {
+const getNowPlaying = async (access_token: string): Promise<SpotifyResponse> => {
   const res = await fetch(NOW_PLAYING_ENDPOINT, {
     headers: {
       Authorization: `Bearer ${access_token}`,
-      'Content-Type': 'application/json'
-    }
-  })
+      "Content-Type": "application/json",
+    },
+  });
 
-  const data = await res.json()
+  const data = await res.json();
   if (!data) {
-    throw new Error('no data')
+    throw new Error("no data");
   }
 
-  const { currently_playing_type: type } = data
+  const { currently_playing_type: type } = data;
 
-  if (type === 'episode') {
+  if (type === "episode") {
     return {
       id: data.item.id,
       isPlaying: data.is_playing,
@@ -80,14 +78,14 @@ const getNowPlaying = async (
         name: data.item.name,
         href: data.item.external_urls.spotify,
         progress: data.progress_ms,
-        duration: data.item.duration_ms
+        duration: data.item.duration_ms,
       },
       album: null,
       artist: {
         name: data.item.show.name,
-        href: data.item.show.external_urls.spotify
-      }
-    }
+        href: data.item.show.external_urls.spotify,
+      },
+    };
   } else {
     return {
       id: data.item.id,
@@ -98,48 +96,44 @@ const getNowPlaying = async (
         name: data.item.name,
         href: data.item.external_urls.spotify,
         progress: data.progress_ms,
-        duration: data.item.duration_ms
+        duration: data.item.duration_ms,
       },
       album: {
         name: data.item.album.name,
-        href: data.item.album.external_urls.spotify
+        href: data.item.album.external_urls.spotify,
       },
       artist: {
         name: data.item.artists[0].name,
-        href: data.item.artists[0].external_urls.spotify
-      }
-    }
+        href: data.item.artists[0].external_urls.spotify,
+      },
+    };
   }
-}
+};
 
-const getRecentlyPlayed = async (
-  access_token: string
-): Promise<SpotifyResponse> => {
+const getRecentlyPlayed = async (access_token: string): Promise<SpotifyResponse> => {
   const res = await fetch(RECENTLY_PLAYED_ENDPOINT, {
     headers: {
-      Authorization: `Bearer ${access_token}`
-    }
-  })
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
 
-  const data = await res.json()
+  const data = await res.json();
   if (!data.items.length) {
     return {
-      id: '',
+      id: "",
       isPlaying: false,
       timestamp: -1,
-      image: '',
+      image: "",
       song: null,
       album: null,
-      artist: null
-    }
+      artist: null,
+    };
   }
 
   const [latest] = data.items.sort(
-    (
-      a: { played_at: string | number | Date },
-      b: { played_at: string | number | Date }
-    ) => new Date(b.played_at).getTime() - new Date(a.played_at).getTime()
-  )
+    (a: { played_at: string | number | Date }, b: { played_at: string | number | Date }) =>
+      new Date(b.played_at).getTime() - new Date(a.played_at).getTime(),
+  );
 
   return {
     id: latest.track.id,
@@ -150,40 +144,40 @@ const getRecentlyPlayed = async (
       name: latest.track.name,
       href: latest.track.external_urls.spotify,
       progress: 0,
-      duration: 0
+      duration: 0,
     },
     album: {
       name: latest.track.album.name,
-      href: latest.track.album.external_urls.spotify
+      href: latest.track.album.external_urls.spotify,
     },
     artist: {
       name: latest.track.artists[0].name,
-      href: latest.track.artists[0].external_urls.spotify
-    }
-  }
-}
+      href: latest.track.artists[0].external_urls.spotify,
+    },
+  };
+};
 
 export async function GET() {
   try {
-    const { access_token } = await getAccessToken()
+    const { access_token } = await getAccessToken();
 
-    let data: SpotifyResponse | null = null
+    let data: SpotifyResponse | null = null;
     try {
-      data = await getNowPlaying(access_token)
+      data = await getNowPlaying(access_token);
     } catch (e) {
-      console.error('getNowPlaying error', e)
+      console.error("getNowPlaying error", e);
     }
 
     if (!data) {
       try {
-        data = await getRecentlyPlayed(access_token)
+        data = await getRecentlyPlayed(access_token);
       } catch (e) {
-        console.error('getRecentlyPlayed error', e)
+        console.error("getRecentlyPlayed error", e);
       }
     }
 
-    return NextResponse.json(data)
+    return NextResponse.json(data);
   } catch {
-    return NextResponse.json({ error: 'Error!' }, { status: 403 })
+    return NextResponse.json({ error: "Error!" }, { status: 403 });
   }
 }

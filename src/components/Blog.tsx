@@ -1,23 +1,23 @@
-'use client'
+"use client";
 
-import { Suspense } from 'react'
-import Link from 'next/link'
-import { format } from 'date-fns'
-import { Arrow, Heading, Button, Paragraph } from '@/components'
-import { useCardOpacity } from '@/hooks'
-import { useLatestPost } from '@/lib/medium'
+import { Suspense } from "react";
+import Link from "next/link";
+import { format } from "date-fns";
+import { Arrow, Heading, Button, Paragraph } from "@/components";
+import { useCardOpacity } from "@/hooks";
+import { useLatestPost } from "@/lib/medium";
 
 const DateComponent = ({ date }: { date: string }) => {
   try {
     return (
       <p className="text-sm leading-6 tracking-[0.25px] font-normal text-muted-foreground">
-        {format(new Date(date), 'MMM dd, yyyy')}
+        {format(new Date(date), "MMM dd, yyyy")}
       </p>
-    )
+    );
   } catch {
-    return null
+    return null;
   }
-}
+};
 
 const BlogFallback = () => {
   return (
@@ -38,12 +38,12 @@ const BlogFallback = () => {
         <div className="h-5 w-24 bg-muted-foreground/20 rounded animate-pulse" />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const BlogContent = () => {
-  const { title, description, link, pubDate } = useLatestPost()
-  const opacity = useCardOpacity(['Media'])
+  const { title, description, link, pubDate } = useLatestPost();
+  const opacity = useCardOpacity(["Media"]);
 
   return (
     <div
@@ -65,15 +65,15 @@ const BlogContent = () => {
         <DateComponent date={pubDate} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 function Blog() {
   return (
     <Suspense fallback={<BlogFallback />}>
       <BlogContent />
     </Suspense>
-  )
+  );
 }
 
-export default Blog
+export default Blog;

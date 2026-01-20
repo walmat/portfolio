@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import { Switch } from '@/components'
-import { useCardOpacity } from '@/hooks'
+import { Switch } from "@/components";
+import { useCardOpacity } from "@/hooks";
 
 function Theme() {
-  const opacity = useCardOpacity([])
+  const opacity = useCardOpacity([]);
 
   return (
     <div
@@ -13,7 +13,7 @@ function Theme() {
     >
       <Switch />
     </div>
-  )
+  );
 }
 
-export default Theme
+export default Theme;

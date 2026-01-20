@@ -1,65 +1,65 @@
-'use client'
+"use client";
 
-import { PropsWithChildren } from 'react'
-import { motion } from 'framer-motion'
+import { PropsWithChildren } from "react";
+import { motion } from "framer-motion";
 
 interface ButtonProps {
-  Icon: React.FC
-  children?: PropsWithChildren<React.ReactNode | undefined>
-  onlyIcon?: boolean
-  withMotion?: boolean
-  disabled?: boolean
+  Icon: React.FC;
+  children?: PropsWithChildren<React.ReactNode | undefined>;
+  onlyIcon?: boolean;
+  withMotion?: boolean;
+  disabled?: boolean;
 }
 
 const spring = {
-  type: 'spring' as const,
+  type: "spring" as const,
   stiffness: 400,
-  damping: 40
-}
+  damping: 40,
+};
 
 const container = {
   init: {
-    width: '36px',
-    transition: spring
+    width: "36px",
+    transition: spring,
   },
   anim: {
-    width: 'auto',
-    transition: spring
-  }
-}
+    width: "auto",
+    transition: spring,
+  },
+};
 
 const text = {
   init: {
     x: -4,
     opacity: 0,
-    transition: spring
+    transition: spring,
   },
   anim: {
     x: 0,
     opacity: 1,
-    transition: spring
-  }
-}
+    transition: spring,
+  },
+};
 
 const arrow = {
   init: {
     scale: 1,
     borderRadius: 16,
-    transition: spring
+    transition: spring,
   },
   anim: {
     scale: 1,
     borderRadius: 12,
-    transition: spring
-  }
-}
+    transition: spring,
+  },
+};
 
 export function Button({
   children,
   Icon,
   onlyIcon = false,
   withMotion = false,
-  disabled = false
+  disabled = false,
 }: ButtonProps) {
   if (withMotion) {
     return (
@@ -80,7 +80,7 @@ export function Button({
           <Icon />
         </motion.div>
       </motion.div>
-    )
+    );
   }
 
   if (onlyIcon) {
@@ -88,7 +88,7 @@ export function Button({
       <div className="bg-card shadow-[inset_0_0_0_2px_var(--border)] w-9 h-9 rounded-[18px] absolute bottom-3.5 left-3.5 flex items-center justify-center transition-shadow duration-200 ease-out hover:cursor-pointer hover:shadow-[0_0_0_5px_var(--ring)]">
         <Icon />
       </div>
-    )
+    );
   }
 
   return (
@@ -99,5 +99,5 @@ export function Button({
       <Icon />
       <span className="ml-1.5 text-sm text-foreground">{children}</span>
     </motion.button>
-  )
+  );
 }

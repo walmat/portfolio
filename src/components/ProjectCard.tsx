@@ -1,31 +1,29 @@
-'use client'
+"use client";
 
-import { Link } from 'next-view-transitions'
-import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { Link } from "next-view-transitions";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-import { Arrow, Button } from '@/components'
-import { ThemeOptions, useThemeContext } from '@/providers'
-import { useCardOpacity, useProjectHover } from '@/hooks'
-import { cn } from '@/lib/utils'
-import { cardBase, cardInteractive } from '@/lib/styles'
-import type { ProjectFrontmatter } from '@/lib/projects'
+import { Arrow, Button } from "@/components";
+import { ThemeOptions, useThemeContext } from "@/providers";
+import { useCardOpacity, useProjectHover } from "@/hooks";
+import { cn } from "@/lib/utils";
+import { cardBase, cardInteractive } from "@/lib/styles";
+import type { ProjectFrontmatter } from "@/lib/projects";
 
 interface Props {
-  project: ProjectFrontmatter
+  project: ProjectFrontmatter;
 }
 
 export function ProjectCard({ project }: Props) {
-  const { theme } = useThemeContext()
-  const opacity = useCardOpacity(['Projects'])
+  const { theme } = useThemeContext();
+  const opacity = useCardOpacity(["Projects"]);
 
-  const { slug, card } = project
-  const { animate, onHoverStart, onHoverEnd } = useProjectHover(slug)
+  const { slug, card } = project;
+  const { animate, onHoverStart, onHoverEnd } = useProjectHover(slug);
 
   const backgroundStyle =
-    theme === 'dark'
-      ? 'var(--card)'
-      : card.gradient || card.backgroundColor || 'var(--card)'
+    theme === "dark" ? "var(--card)" : card.gradient || card.backgroundColor || "var(--card)";
 
   return (
     <motion.div
@@ -35,16 +33,16 @@ export function ProjectCard({ project }: Props) {
       style={{
         opacity,
         viewTransitionName: `project-${slug}`,
-        background: backgroundStyle
+        background: backgroundStyle,
       }}
       className={cn(cardBase, cardInteractive)}
     >
       <Image
         src={card.logoSrc}
         alt=""
-        height={100}
-        width={100}
-        className="absolute left-0 top-0 h-full w-full object-cover z-[2]"
+        fill
+        sizes="(max-width: 768px) 100vw, 50vw"
+        className="absolute left-0 top-0 object-cover z-[2]"
       />
       {theme === ThemeOptions[0] && (
         <>
@@ -52,8 +50,8 @@ export function ProjectCard({ project }: Props) {
             <Image
               src={card.rectangleSvg}
               alt=""
-              height={200}
-              width={200}
+              height={600}
+              width={600}
               className={card.rectangleStyle}
             />
           )}
@@ -61,8 +59,8 @@ export function ProjectCard({ project }: Props) {
             <Image
               src={card.accentSvg}
               alt=""
-              height={200}
-              width={200}
+              height={600}
+              width={600}
               className={card.accentStyle}
             />
           )}
@@ -74,5 +72,5 @@ export function ProjectCard({ project }: Props) {
         </Button>
       </Link>
     </motion.div>
-  )
+  );
 }

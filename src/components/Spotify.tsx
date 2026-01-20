@@ -1,13 +1,13 @@
-'use client'
+"use client";
 
-import { Suspense } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { useCardOpacity } from '@/hooks'
-import { useNowPlaying } from '@/lib/spotify'
+import { Suspense } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useCardOpacity } from "@/hooks";
+import { useNowPlaying } from "@/lib/spotify";
 
 interface SpotifyStatusProps {
-  isPlaying: boolean
+  isPlaying: boolean;
 }
 
 const SpotifyStatus = ({ isPlaying }: SpotifyStatusProps) => {
@@ -16,37 +16,33 @@ const SpotifyStatus = ({ isPlaying }: SpotifyStatusProps) => {
       <p className="ml-1 text-sm leading-6 tracking-[0.25px] font-normal text-muted-foreground">
         Offline. Last played
       </p>
-    )
+    );
   }
 
   return (
     <p className="ml-1 text-sm leading-6 tracking-[0.25px] font-normal text-spotify-green">
       Now playing
     </p>
-  )
-}
+  );
+};
 
 interface SpotifyStatusSliceProps {
-  h: number
-  isPlaying: boolean
-  timing: number
+  h: number;
+  isPlaying: boolean;
+  timing: number;
 }
 
-const SpotifyStatusSlice = ({
-  h,
-  isPlaying,
-  timing
-}: SpotifyStatusSliceProps) => (
+const SpotifyStatusSlice = ({ h, isPlaying, timing }: SpotifyStatusSliceProps) => (
   <div
     style={{
       height: `${h}px`,
-      animation: isPlaying ? `playing ${timing}s infinite ease` : 'none'
+      animation: isPlaying ? `playing ${timing}s infinite ease` : "none",
     }}
     className={`w-[3px] mr-[3px] rounded-[1.5px] ${
-      isPlaying ? 'bg-spotify-green' : 'bg-muted-foreground'
+      isPlaying ? "bg-spotify-green" : "bg-muted-foreground"
     }`}
   />
-)
+);
 
 const SpotifyFallback = () => {
   return (
@@ -76,12 +72,12 @@ const SpotifyFallback = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const SpotifyContent = () => {
-  const { isPlaying, image, song, artist } = useNowPlaying()
-  const opacity = useCardOpacity(['About'])
+  const { isPlaying, image, song, artist } = useNowPlaying();
+  const opacity = useCardOpacity(["About"]);
 
   return (
     <div
@@ -89,10 +85,11 @@ const SpotifyContent = () => {
       className="relative h-full w-full flex flex-col items-start justify-between p-8 px-[38px] md:p-7 md:px-8 lg:p-8 lg:px-[38px] rounded-[32px] overflow-hidden bg-card shadow-[inset_0_0_0_2px_var(--border)] cursor-grab active:cursor-grabbing"
     >
       {image && (
-        <img
+        <Image
           alt=""
           src={image}
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-25 z-[1]"
+          fill
+          className="absolute top-0 left-0 object-cover opacity-25 z-[1]"
         />
       )}
       <Image
@@ -113,12 +110,12 @@ const SpotifyContent = () => {
         </div>
 
         <div className="flex flex-col">
-          <Link target="_blank" href={song?.href || ''}>
+          <Link target="_blank" href={song?.href || ""}>
             <h2 className="transition-opacity duration-500 ease-in-out inline-block text-[32px] md:text-xl lg:text-2xl leading-[38px] md:leading-8 lg:leading-8 font-normal text-foreground hover:opacity-50 hover:cursor-pointer">
               {song?.name}
             </h2>
           </Link>
-          <Link target="_blank" href={artist?.href || ''}>
+          <Link target="_blank" href={artist?.href || ""}>
             <p className="transition-opacity duration-500 ease-in-out inline-block text-[15px] tracking-[0.5px] font-normal text-foreground leading-[22px] hover:opacity-50 hover:cursor-pointer">
               {artist?.name}
             </p>
@@ -126,15 +123,15 @@ const SpotifyContent = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Spotify = () => {
   return (
     <Suspense fallback={<SpotifyFallback />}>
       <SpotifyContent />
     </Suspense>
-  )
-}
+  );
+};
 
-export default Spotify
+export default Spotify;

@@ -1,9 +1,9 @@
-import Main from '@/components/Main'
-import { PageLayout } from '@/layouts/page'
-import { getAllProjects } from '@/lib/projects'
+import Main from "@/components/Main";
+import { PageLayout } from "@/layouts/page";
+import { getAllProjects } from "@/lib/projects";
 
 export default async function Home() {
-  const projects = await getAllProjects()
+  const projects = await getAllProjects();
 
   return (
     <PageLayout
@@ -12,5 +12,5 @@ export default async function Home() {
     >
       <Main projects={projects} />
     </PageLayout>
-  )
+  );
 }

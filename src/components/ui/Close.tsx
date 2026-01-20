@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 export const Close = () => {
   return (
@@ -9,16 +9,8 @@ export const Close = () => {
       viewBox="0 0 11.644 11.385"
       className="text-foreground"
     >
-      <g
-        id="Group_40"
-        data-name="Group 40"
-        transform="translate(-954.372 -59.349)"
-      >
-        <g
-          id="Group_39"
-          data-name="Group 39"
-          transform="translate(-6035.801 -1683.588)"
-        >
+      <g id="Group_40" data-name="Group 40" transform="translate(-954.372 -59.349)">
+        <g id="Group_39" data-name="Group 39" transform="translate(-6035.801 -1683.588)">
           <line
             id="Line_6"
             data-name="Line 6"
@@ -42,5 +34,5 @@ export const Close = () => {
         </g>
       </g>
     </svg>
-  )
-}
+  );
+};

@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { Filters, Grid } from '@/components'
-import type { ProjectFrontmatter } from '@/lib/projects'
+import Link from "next/link";
+import { Filters, Grid } from "@/components";
+import type { ProjectFrontmatter } from "@/lib/projects";
 
 interface Props {
-  projects: ProjectFrontmatter[]
+  projects: ProjectFrontmatter[];
 }
 
 const Main = ({ projects }: Props) => (
@@ -15,11 +15,7 @@ const Main = ({ projects }: Props) => (
         mtw.
       </h1>
       <Filters />
-      <Link
-        target="_blank"
-        href="https://linkedin.com/in/walmat"
-        className="hidden md:flex"
-      >
+      <Link target="_blank" href="https://linkedin.com/in/walmat" className="hidden md:flex">
         <p className="inline-block text-[15px] leading-[26px] tracking-[0.5px] font-normal text-[var(--text-primary)] transition-all duration-200 ease-in-out hover:opacity-50 hover:cursor-pointer">
           Connect
         </p>
@@ -27,6 +23,6 @@ const Main = ({ projects }: Props) => (
     </nav>
     <Grid projects={projects} />
   </div>
-)
+);
 
-export default Main
+export default Main;

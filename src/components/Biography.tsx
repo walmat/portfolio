@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { useCardOpacity } from '@/hooks'
+import Image from "next/image";
+import { useCardOpacity } from "@/hooks";
 
 function Biography() {
-  const opacity = useCardOpacity(['About'])
+  const opacity = useCardOpacity(["About"]);
 
   return (
     <div
@@ -21,12 +21,12 @@ function Biography() {
         />
       </div>
       <div className="text-sm leading-[26px] tracking-[0.5px] font-normal text-foreground">
-        I&apos;m <h2 className="inline text-[40px]">Matthew</h2>, a founding
-        engineer who loves building products and sweating the small stuff.
-        Currently working on Forkast — AI-powered recipes for near-zero waste.
+        I&apos;m <h2 className="inline text-[40px]">Matthew</h2>, a founding engineer who loves
+        building products and sweating the small stuff. Currently working on Forkast — AI-powered
+        recipes for near-zero waste.
       </div>
     </div>
-  )
+  );
 }
 
-export default Biography
+export default Biography;
