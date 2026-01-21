@@ -1,7 +1,6 @@
 import { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/react";
-import { ViewTransitions } from "next-view-transitions";
 
 import { Providers } from "@/lib/providers";
 import "./globals.css";
@@ -43,15 +42,13 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <ViewTransitions>
-      <html lang="en" className={`${moranga.variable} ${silka.variable}`} suppressHydrationWarning>
-        <body className="flex flex-col flex-1">
-          <Providers>
-            {children}
-            <Analytics />
-          </Providers>
-        </body>
-      </html>
-    </ViewTransitions>
+    <html lang="en" className={`${moranga.variable} ${silka.variable}`} suppressHydrationWarning>
+      <body className="flex flex-col flex-1">
+        <Providers>
+          {children}
+          <Analytics />
+        </Providers>
+      </body>
+    </html>
   );
 }

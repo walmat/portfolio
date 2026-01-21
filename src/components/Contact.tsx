@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "@tanstack/react-form";
 import { motion } from "framer-motion";
 
-import { Arrow, Button, Heading, Paragraph } from "@/components";
+import { Heading, Paragraph, SubscribeIcon } from "@/components";
+import type { IconState } from "@/components/ui";
 import { useCardOpacity } from "@/hooks";
 import { subscribeSchema, useSubscribe } from "@/lib/subscribe";
 
@@ -19,9 +20,25 @@ const wiggle = {
 function Contact() {
   const [title, setTitle] = useState("Let's stay in touch");
   const [shouldWiggle, setShouldWiggle] = useState(false);
+  const [iconState, setIconState] = useState<IconState>("idle");
   const opacity = useCardOpacity(["Media"]);
 
   const mutation = useSubscribe();
+
+  // Derive icon state from form/mutation status
+  useEffect(() => {
+    if (mutation.isPending) {
+      setIconState("pending");
+    } else if (mutation.isSuccess) {
+      setIconState("success");
+      const timer = setTimeout(() => setIconState("idle"), 2000);
+      return () => clearTimeout(timer);
+    } else if (mutation.isError) {
+      setIconState("error");
+      const timer = setTimeout(() => setIconState("idle"), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [mutation.isPending, mutation.isSuccess, mutation.isError]);
 
   const form = useForm({
     defaultValues: {
@@ -32,7 +49,11 @@ function Contact() {
         const result = subscribeSchema.safeParse(value);
         if (!result.success) {
           setShouldWiggle(true);
-          setTimeout(() => setShouldWiggle(false), 400);
+          setIconState("error");
+          setTimeout(() => {
+            setShouldWiggle(false);
+            setIconState("idle");
+          }, 2000);
           return {
             fields: {
               email: result.error.issues[0]?.message || "Invalid email address",
@@ -92,9 +113,15 @@ function Contact() {
       </form.Field>
 
       <div className="w-full flex flex-col-reverse lg:flex-row justify-between items-start lg:items-center">
-        <Button Icon={Arrow} disabled={mutation.isPending}>
-          {mutation.isPending ? "Subscribing..." : "Subscribe"}
-        </Button>
+        <motion.button
+          disabled={mutation.isPending}
+          className="h-9 px-3 rounded-[18px] shadow-[0_0_0_2px_var(--ring)] border-none bg-transparent flex items-center transition-all duration-300 ease-out hover:cursor-pointer hover:shadow-[0_0_0_5px_var(--ring)] disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          <SubscribeIcon state={iconState} />
+          <span className="ml-1.5 text-sm text-foreground">
+            {mutation.isPending ? "Subscribing..." : "Subscribe"}
+          </span>
+        </motion.button>
         {errorMessage && (
           <p className="text-sm leading-6 tracking-[0.25px] font-normal text-destructive mb-4 lg:mb-0 lg:ml-1.5">
             {errorMessage}

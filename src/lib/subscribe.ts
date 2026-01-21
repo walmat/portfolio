@@ -7,12 +7,18 @@ export const subscribeSchema = z.object({
 
 export type SubscribeInput = z.infer<typeof subscribeSchema>;
 
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 async function subscribe(data: SubscribeInput): Promise<void> {
-  const res = await fetch("/api/subscribe", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+  // Run API call and minimum delay in parallel
+  const [res] = await Promise.all([
+    fetch("/api/subscribe", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }),
+    delay(800), // Minimum time to show loading state
+  ]);
 
   if (!res.ok) {
     const { error } = await res.json();
