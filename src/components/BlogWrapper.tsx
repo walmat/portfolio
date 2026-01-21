@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, useEffect, useState } from "react";
-import { useTransitionRouter } from "next-view-transitions";
+import { useRouter } from "next/navigation";
 import { useAnimation, motion, AnimatePresence } from "framer-motion";
 import { format } from "date-fns";
 import Image from "next/image";
@@ -51,7 +51,7 @@ interface Props {
 
 export function BlogWrapper({ frontmatter, navigation, children }: Props) {
   const buttonAnimation = useAnimation();
-  const router = useTransitionRouter();
+  const router = useRouter();
   const back = () => router.push("/");
 
   const { title, description, date, author, tags, hero, images, slug } = frontmatter;

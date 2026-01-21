@@ -12,4 +12,4 @@ export { ProjectWrapper } from "./ProjectWrapper";
 export { BlogWrapper } from "./BlogWrapper";
 
 // UI Primitives
-export { Arrow, Button, Close, ContentCard, Heading, Paragraph, Switch } from "./ui";
+export { Arrow, Button, Close, ContentCard, Heading, Paragraph, SubscribeIcon, Switch } from "./ui";

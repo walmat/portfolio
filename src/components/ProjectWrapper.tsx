@@ -1,7 +1,8 @@
 "use client";
 
 import { ReactNode } from "react";
-import { Link, useTransitionRouter } from "next-view-transitions";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useAnimation, motion } from "framer-motion";
 
 import { Arrow, Close } from "@/components";
@@ -36,7 +37,7 @@ interface Props {
 
 export function ProjectWrapper({ frontmatter, children }: Props) {
   const animation = useAnimation();
-  const router = useTransitionRouter();
+  const router = useRouter();
   const back = () => router.push("/");
 
   const { name, description, links, images, slug } = frontmatter;
