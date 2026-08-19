@@ -1,4 +1,4 @@
-import { Layout } from "react-grid-layout";
+import type { LayoutItem } from "react-grid-layout/legacy";
 
 export interface RowHeights {
   [key: string]: number;
@@ -9,7 +9,7 @@ interface Paddings {
 }
 
 interface Layouts {
-  [key: string]: Layout[];
+  [key: string]: LayoutItem[];
 }
 
 export const lg: Layouts = {
