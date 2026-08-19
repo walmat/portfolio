@@ -102,6 +102,10 @@ const Grid = ({ projects, latestBlog }: Props) => {
         Component: projectMap["rainbow"] ? <ProjectCard project={projectMap["rainbow"]} /> : null,
       },
       {
+        key: "whim",
+        Component: projectMap["whim"] ? <ProjectCard project={projectMap["whim"]} /> : null,
+      },
+      {
         key: "contact",
         Component: <Contact />,
       },

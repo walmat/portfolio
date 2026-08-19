@@ -1,9 +1,11 @@
 import type { MDXComponents } from "mdx/types";
+import { DesktopScreenshots } from "./DesktopScreenshots";
 import { ImageGallery } from "./ImageGallery";
 import { MobileScreenshots } from "./MobileScreenshots";
 import { RainbowLettermark } from "./RainbowLettermark";
 
 export const mdxComponents: MDXComponents = {
+  DesktopScreenshots,
   ImageGallery,
   MobileScreenshots,
   RainbowLettermark,
