@@ -1,7 +1,7 @@
 ---
 title: "//whim"
 name: "Whim"
-description: "Rent premium products by the month, from the brands that build them — chosen on the partner brand's own site, managed from your own portal."
+description: "A rental service for premium products, from the brands that make them. Three frontends—the marketing site, the customer portal, and the piece that ships into partner brands' sites."
 slug: "whim"
 links:
   - label: "Website"
@@ -17,108 +17,100 @@ card:
   buttonLabel: "Whim"
 ---
 
-Whim lets you rent premium products by the month from the brands that build them. You start where
-you were already shopping: Whim turns up as an option on a partner brand's own site, and one
-monthly price puts the thing on your doorstep — a projector, an espresso machine, a composter, a
-pool. From then on you can swap it, upgrade it, have it replaced if it breaks, or request a quote
-and keep it.
+{/* TODO(matthew): the opening. Every other page starts with how you got there—graduating in
+    May 2018, burning out after Nebula, RECUR reaching out, joining the Rainbow app team on
+    October 1st, 2023. Two or three sentences: when you joined Fragile, how it came about, and
+    what the team looked like when you got there. */}
 
-That shape decides most of what the frontend has to be. Whim's first appearance is on somebody
-else's site. Everything after that lives in a portal: what you're renting now, what you've sent
-back, and a shop for finding the next thing. Fragile is the company, Whim is the product, and I
-owned the frontend.
+Fragile is the company and Whim is the product. I was mostly in charge of everything frontend.
 
-## The site
+Whim rents products by the month from the brands that make them. A customer picks Whim on a
+partner brand's own site, and for one monthly price we ship the product to their door, new or
+like-new. From there they can swap it, upgrade it, have it replaced, or request a quote and keep
+it.
 
-The marketing site carries the whole proposition before anyone has agreed to anything. The hero
-scatters real product cutouts — a projector, an espresso machine, a pool, a PC case, a license
-plate — loosely around the headline, so the page reads the way its headline does: stuff you've
-been eyeing, not a product grid.
+{/* TODO(matthew): the stack, same as every other page—React.js and Golang on Nebula, Remix with
+    Prisma and PostgreSQL on Kubernetes for RECUR Studio. Framework, styling, state, hosting, and
+    what the partner integration is built with, since it can't be the same thing as the portal. */}
+
+There are three frontends: the marketing site, the customer portal, and the piece that ships into
+partner brands' sites. I'll dive into each of them below.
+
+## Marketing site
+
+whim.com is one page and it's still pre-launch. The headline is "Try the stuff you've been
+eyeing," the primary action is "Get notified," and around twenty product cutouts are scattered
+around it.
 
 <DesktopScreenshots screenshots={[
-  { src: "/whim/product/hero.webp", alt: "Whim homepage hero", caption: "Products scattered around the headline; Get notified is the primary action." }
+  { src: "/whim/product/hero.webp", alt: "The Whim homepage hero" }
 ]} />
 
-Below it the page settles into an editorial rhythm: three claims, alternating sides, each one
-letting a photograph do the arguing instead of a feature list. Try for as little or as long as you
-want. Swap, upgrade, or replace anytime. Keep what you love.
+Three sections follow, alternating text and photo: try for as little or as long as you want, swap
+or upgrade or replace anytime, and keep what you love.
 
 <DesktopScreenshots screenshots={[
-  { src: "/whim/product/how-it-works.webp", alt: "How it works section", caption: "Three claims, alternating sides. On a phone each row collapses to text, then image." }
+  { src: "/whim/product/how-it-works.webp", alt: "How it works on the Whim homepage" }
 ]} />
 
-The scatter is the part that can't just be a background image. Every cutout has to hold its
-relationship to the headline as the viewport changes, and on a phone there's no room for most of
-them at all — the composition thins out and regroups above and below the text, while the
-alternating rows collapse into a single column of text-then-image.
+None of that fits on a phone. The hero drops most of the cutouts and the three sections stack into
+one column.
 
 <MobileScreenshots screenshots={[
-  { src: "/whim/product/mobile-hero.webp", alt: "Whim homepage hero on mobile" },
+  { src: "/whim/product/mobile-hero.webp", alt: "The Whim homepage hero on mobile" },
   { src: "/whim/product/mobile-how.webp", alt: "How it works on mobile" }
 ]} />
 
-{/* TODO(matthew): replace my description with your account. I can see what the site does; I
-    can't see what it cost to build. Worth covering:
-    - How the scatter is actually built and positioned across breakpoints.
-    - Those are large transparent cutouts above the fold — what did you do about weight and LCP?
-    - Anything that fought you, or that you rebuilt. */}
+{/* TODO(matthew): what this one cost to build. How the cutouts are positioned across breakpoints,
+    what you did about weight and LCP with that many transparent images above the fold, and what
+    you ended up rebuilding. */}
 
-{/* TODO(matthew): NEXT SECTION — "## The checkout integration"
-    The most distinctive frontend problem here, and one I can't see at all.
-    "Choose Whim on any partner brand's site" means shipping UI into a page you don't own.
-    - WHERE does it appear — checkout, product page, somewhere else? The site only says "site",
-      so I removed my guess of "checkout" from the prose.
-    - Is it an embedded widget, a redirect, an SDK the brand installs? Something else?
-    - How does it stay recognisably Whim while living inside someone else's design system?
-    - Bundle size, style isolation, versioning across partners who upgrade whenever they feel
-      like it?
-    - How do you test something that only exists inside a third party's page? */}
+{/* TODO(matthew): NEXT SECTION, the partner integration. No screenshots of it because it only
+    exists inside somebody else's page. Where does it appear—product page, cart, checkout? A
+    widget, a redirect, or an SDK the brand installs? How is it isolated from their CSS, and how
+    do you test against a site you can't deploy to? */}
 
-## The portal
+## Portal
 
-Once you're renting something, the portal is Whim. Four things in the sidebar — Home, Shop,
-Payments, Account — and Home opens on what you currently have out, with everything you've since
-sent back tucked behind a disclosure rather than deleted. That distinction matters more here than
-in a normal store: an order you completed is history, but a rental you're holding is a live thing
-with a monthly charge attached, so the two can't look alike.
+my.whim.com is where customers manage what they have out. Four items in the sidebar—Home, Shop,
+Payments, and Account—and Home opens on active orders, with completed cancellations behind a
+disclosure.
 
-An order opens under the brand it came from. Whim stays the mechanism; the brand stays the name on
-the thing you're renting. Underneath sit the details a subscription needs and a purchase never
-does — the date it started, the terms you agreed to, any code applied at signup.
+An order opens under the brand it came from and lists the items in it. A modal holds the date
+subscribed, the discount code, a link to the agreement, and the order number.
 
-The shop is the newer half. Every card leads with a monthly rate and the retail price it stands in
-for — $189/mo against $2,999 for an Eight Sleep Pod 5, $34/mo against $499 for a Reencle composter
-— plus the brand that makes it, because the brand is the reason you'd trust renting it. Alongside
-them run the three promises that make a rental defensible at all: cancel anytime, free shipping
-both ways, replacements at no cost.
+The shop is the newest part of the portal. Cards lead with a monthly rate and the retail price
+struck through—$189/mo against $2,999 for an Eight Sleep Pod 5, $34/mo against $499 for a Reencle,
+$99/mo against $1,795 for a Terra Kaffe TK-02. Above the grid is a bar with the three guarantees:
+cancel anytime, free shipping, and no cost replacements.
 
 <DesktopScreenshots screenshots={[
-  { src: "/whim/product/portal-shop.webp", alt: "The shop inside the Whim portal", caption: "Monthly rate first, retail price struck through, brand under the name." }
+  { src: "/whim/product/portal-shop.webp", alt: "The shop inside the Whim portal" }
 ]} />
 
-The product pages are where renting stops resembling buying. Picking a bigger Pod doesn't show you
-a different price, it shows you a difference — King is +$10.00/mo, Full is −$20.00/mo — because
-the thing being chosen isn't a total, it's a rate you'll keep paying until you send it back.
+Product pages carry the image, the brand, the monthly rate against retail, a description, and a
+Checkout button. Size variants are priced as monthly deltas. On the Pod 5, Queen is the default,
+Full is -$20.00/mo, and King is +$10.00/mo.
 
 <DesktopScreenshots screenshots={[
-  { src: "/whim/product/portal-product.webp", alt: "A product page inside the Whim portal", caption: "Size variants priced as monthly deltas, over the three guarantees." }
+  { src: "/whim/product/portal-product.webp", alt: "A product page inside the Whim portal" }
 ]} />
 
-Both collapse to a single column on a phone, where the sidebar becomes a menu and the grid drops
-to two.
+At 430px the sidebar becomes a menu and the product grid drops to two columns.
 
 <MobileScreenshots screenshots={[
   { src: "/whim/product/portal-shop-mobile.webp", alt: "The portal shop on mobile" },
   { src: "/whim/product/portal-product-mobile.webp", alt: "A portal product page on mobile" }
 ]} />
 
-{/* TODO(matthew): the above is what I could see in your account — surfaces, not substance.
-    What I can't see, and what would make this section good:
-    - What was hard about representing a rental as ongoing state instead of a finished order?
-    - Swap, upgrade, replace, purchase-quote: the flows behind the buttons I deliberately didn't
-      click. What happens in the UI when an outbound and a return have to be coordinated?
-    - Keeping the UI honest about state the warehouse owns rather than the frontend.
-    - The shop is badged NEW. What did adding a storefront to what was a management portal
-      change or break?
-    - The mobile portal header renders a Fragile wordmark where desktop shows none. Deliberate
-      white-labelling, or a leak? Worth a look either way. */}
+{/* TODO(matthew): everything above is surfaces. What was hard—swap, upgrade, replace, and the
+    purchase-quote flow, what the UI does when an outbound and a return have to be coordinated,
+    and how you keep it honest about state the warehouse owns. Also what adding a storefront to a
+    management portal broke. */}
+
+{/* TODO(matthew): the number. Every other page has one—$175,000 MRR, 30 MB, 0.25 ETH. Partner
+    brands live, products in the catalog, LCP on the homepage, whatever is true and yours to
+    say. */}
+
+{/* TODO(matthew): the last line, same as the others—stepping down from Nebula in early spring
+    2021, stepping back from Tigerbob to join RECUR. Still at Fragile, and what's next? */}
