@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
+import { mdxOptions } from "@/lib/mdx-options";
+
 import { ProjectWrapper } from "@/components/ProjectWrapper";
 import { mdxComponents } from "@/components/mdx";
 import { PageLayout } from "@/layouts/page";
@@ -42,7 +44,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
   return (
     <PageLayout title={`mtw. ${frontmatter.title}`} description={frontmatter.description}>
       <ProjectWrapper frontmatter={frontmatter}>
-        <MDXRemote source={content} components={mdxComponents} />
+        <MDXRemote source={content} components={mdxComponents} options={mdxOptions} />
       </ProjectWrapper>
     </PageLayout>
   );

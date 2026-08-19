@@ -8,9 +8,18 @@ import { useNowPlaying } from "@/lib/spotify";
 
 interface SpotifyStatusProps {
   isPlaying: boolean;
+  hasSong: boolean;
 }
 
-const SpotifyStatus = ({ isPlaying }: SpotifyStatusProps) => {
+const SpotifyStatus = ({ isPlaying, hasSong }: SpotifyStatusProps) => {
+  if (!hasSong) {
+    return (
+      <p className="ml-1 text-sm leading-6 tracking-[0.25px] font-normal text-muted-foreground">
+        Offline
+      </p>
+    );
+  }
+
   if (!isPlaying) {
     return (
       <p className="ml-1 text-sm leading-6 tracking-[0.25px] font-normal text-muted-foreground">
@@ -77,6 +86,7 @@ const SpotifyFallback = () => {
 
 const SpotifyContent = () => {
   const { isPlaying, image, song, artist } = useNowPlaying();
+  const hasSong = Boolean(song?.name);
   const opacity = useCardOpacity(["About"]);
 
   return (
@@ -106,21 +116,23 @@ const SpotifyContent = () => {
             <SpotifyStatusSlice h={11.26} isPlaying={isPlaying} timing={1.26} />
             <SpotifyStatusSlice h={6.62} isPlaying={isPlaying} timing={0.62} />
           </div>
-          <SpotifyStatus isPlaying={isPlaying} />
+          <SpotifyStatus isPlaying={isPlaying} hasSong={hasSong} />
         </div>
 
-        <div className="flex flex-col">
-          <Link target="_blank" href={song?.href || ""}>
-            <h2 className="transition-opacity duration-500 ease-in-out inline-block text-[32px] md:text-xl lg:text-2xl leading-[38px] md:leading-8 lg:leading-8 font-normal text-foreground hover:opacity-50 hover:cursor-pointer">
-              {song?.name}
-            </h2>
-          </Link>
-          <Link target="_blank" href={artist?.href || ""}>
-            <p className="transition-opacity duration-500 ease-in-out inline-block text-[15px] tracking-[0.5px] font-normal text-foreground leading-[22px] hover:opacity-50 hover:cursor-pointer">
-              {artist?.name}
-            </p>
-          </Link>
-        </div>
+        {hasSong && (
+          <div className="flex flex-col">
+            <Link target="_blank" href={song?.href || ""}>
+              <h2 className="transition-opacity duration-500 ease-in-out inline-block text-[32px] md:text-xl lg:text-2xl leading-[38px] md:leading-8 lg:leading-8 font-normal text-foreground hover:opacity-50 hover:cursor-pointer">
+                {song?.name}
+              </h2>
+            </Link>
+            <Link target="_blank" href={artist?.href || ""}>
+              <p className="transition-opacity duration-500 ease-in-out inline-block text-[15px] tracking-[0.5px] font-normal text-foreground leading-[22px] hover:opacity-50 hover:cursor-pointer">
+                {artist?.name}
+              </p>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
