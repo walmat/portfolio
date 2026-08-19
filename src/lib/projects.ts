@@ -16,6 +16,9 @@ export interface ProjectImage {
 
 export interface ProjectCard {
   gradient?: string;
+  // Full-bleed photo behind a centered logo, dimmed for legibility.
+  backgroundSrc?: string;
+  backgroundOverlay?: string;
   backgroundColor?: string;
   logoSrc: string;
   darkLogoSrc?: string;
