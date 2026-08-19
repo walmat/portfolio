@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { MDXRemote } from "next-mdx-remote/rsc";
 
+import { mdxOptions } from "@/lib/mdx-options";
+
 import { BlogWrapper } from "@/components/BlogWrapper";
 import { mdxComponents } from "@/components/mdx";
 import { BlogLayout } from "@/layouts/blog";
@@ -45,7 +47,7 @@ export default async function BlogPage({ params }: BlogPageProps) {
     return (
       <BlogLayout>
         <BlogWrapper frontmatter={frontmatter} navigation={navigation}>
-          <MDXRemote source={content} components={mdxComponents} />
+          <MDXRemote source={content} components={mdxComponents} options={mdxOptions} />
         </BlogWrapper>
       </BlogLayout>
     );
