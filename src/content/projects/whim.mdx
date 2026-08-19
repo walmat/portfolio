@@ -92,9 +92,25 @@ for — $189/mo against $2,999 for an Eight Sleep Pod 5, $34/mo against $499 for
 them run the three promises that make a rental defensible at all: cancel anytime, free shipping
 both ways, replacements at no cost.
 
+<DesktopScreenshots screenshots={[
+  { src: "/whim/product/portal-shop.webp", alt: "The shop inside the Whim portal", caption: "Monthly rate first, retail price struck through, brand under the name." }
+]} />
+
 The product pages are where renting stops resembling buying. Picking a bigger Pod doesn't show you
 a different price, it shows you a difference — King is +$10.00/mo, Full is −$20.00/mo — because
 the thing being chosen isn't a total, it's a rate you'll keep paying until you send it back.
+
+<DesktopScreenshots screenshots={[
+  { src: "/whim/product/portal-product.webp", alt: "A product page inside the Whim portal", caption: "Size variants priced as monthly deltas, over the three guarantees." }
+]} />
+
+Both collapse to a single column on a phone, where the sidebar becomes a menu and the grid drops
+to two.
+
+<MobileScreenshots screenshots={[
+  { src: "/whim/product/portal-shop-mobile.webp", alt: "The portal shop on mobile" },
+  { src: "/whim/product/portal-product-mobile.webp", alt: "A portal product page on mobile" }
+]} />
 
 {/* TODO(matthew): the above is what I could see in your account — surfaces, not substance.
     What I can't see, and what would make this section good:
@@ -104,5 +120,5 @@ the thing being chosen isn't a total, it's a rate you'll keep paying until you s
     - Keeping the UI honest about state the warehouse owns rather than the frontend.
     - The shop is badged NEW. What did adding a storefront to what was a management portal
       change or break?
-    - Screenshots: I captured the shop and a product page but couldn't write them to disk
-      (permissions). Say the word and I'll add them. */}
+    - The mobile portal header renders a Fragile wordmark where desktop shows none. Deliberate
+      white-labelling, or a leak? Worth a look either way. */}
