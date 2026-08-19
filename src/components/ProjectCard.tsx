@@ -39,6 +39,24 @@ export function ProjectCard({ project }: Props) {
       }}
       className={cn(cardBase, cardInteractive)}
     >
+      {card.backgroundSrc && (
+        <>
+          <Image
+            src={card.backgroundSrc}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="absolute left-0 top-0 object-cover z-[1]"
+          />
+          <div
+            className="absolute inset-0 z-[1]"
+            style={{
+              background:
+                card.backgroundOverlay || "linear-gradient(to bottom right, #00000059, #000000A6)",
+            }}
+          />
+        </>
+      )}
       {card.logoCentered ? (
         <div className="absolute inset-0 flex items-center justify-center z-[2] p-8">
           <Image
