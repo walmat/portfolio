@@ -1,7 +1,7 @@
 ---
 title: "//whim"
 name: "Whim"
-description: "A rental subscription service for premium consumer products — rent from the brands that build them, swap or upgrade anytime. I owned the frontend."
+description: "Rent premium products by the month, from the brands that build them — chosen at the partner brand's checkout, managed from your own portal. I owned the frontend."
 slug: "whim"
 links:
   - label: "Website"
@@ -17,61 +17,67 @@ card:
   buttonLabel: "Whim"
 ---
 
-{/* TODO(matthew): the intro. What Whim is, when you joined, and what "everything
-    frontend" actually covered — team size, what existed before you, what you owned
-    end to end. The Rainbow page works because it opens concrete; do the same here. */}
+Whim lets you rent premium products by the month from the brands that build them. You pick it up
+where you were already shopping — you choose Whim on a partner brand's own site, one monthly
+price ships the device to your door, and from then on you can swap it, upgrade it, have it
+replaced if it breaks, or request a quote and just keep it.
 
-Whim is a rental subscription service for premium consumer products. Instead of buying a
-projector, an espresso machine, or a sauna outright, you rent it by the month from the brand
-that builds it, and you can swap it, upgrade it, or buy it whenever you want. Fragile is the
-company behind it. I was responsible for the frontend.
+That shape decides most of what the frontend has to be. Whim isn't a store. There's no catalog to
+browse and no cart to fill. It's a payment option that lives inside somebody else's checkout, and
+then a place you manage what you're renting. Fragile is the company behind it. I was responsible
+for the frontend.
 
-That last sentence is the easy part to say and the hard part to prove, so the rest of this is
-the specific work rather than the job title.
+## The site
 
-## Catalog and browse
-
-{/* TODO(matthew): The problem -> the hard part -> what shipped.
-    Some prompts, delete what doesn't apply:
-    - Rental catalog isn't a normal product grid — every item carries a monthly price, an
-      availability state, and a condition. How did that change the card and the filters?
-    - Where did the data come from (the CMS at cms.fragile.co)? What did modeling it cost you?
-    - Product photography is the whole brand here. What did you do about image weight,
-      layout shift, or loading on a page that is mostly large photos? */}
-
-## The rental flow
-
-{/* TODO(matthew): The checkout. This is the most interesting section for most readers because
-    a subscription rental checkout is genuinely not standard ecommerce.
-    - What's different from a normal cart? Recurring billing, deposits, delivery windows,
-      identity or payment checks?
-    - What was the failure mode you had to design around?
-    - Anything you had to rebuild after learning how people actually used it? */}
-
-## Swap and upgrade
-
-{/* TODO(matthew): This is the mechanic that makes Whim *Whim* — the thing a normal store
-    doesn't have. Worth the most detail.
-    - What does the flow look like from the user's side?
-    - What's hard about it underneath — reconciling an active subscription, prorating,
-      coordinating the outbound and return at once?
-    - What did you get wrong the first time? The Rainbow page is good precisely because it
-      admits the backups work blew a week-long estimate into a month. */}
-
-## Managing a rental
-
-{/* TODO(matthew): The account surface. Rentals are ongoing state, not a completed purchase,
-    so this is a live dashboard rather than an order history.
-    - What does someone need to see and do here?
-    - Returns, replacements for defective items, the buy-it-now quote flow?
-    - Anything about keeping this in sync with the backend state? */}
-
-{/* SCREENSHOTS: drop files in public/whim/product/ and use them like this — the component
-    stacks them full width, one per row, with optional captions:
+The marketing site carries the whole proposition before anyone has agreed to anything. The hero
+scatters real product cutouts — a projector, an espresso machine, a pool, a PC case, a license
+plate — loosely around the headline, so the page reads as _stuff you've been eyeing_ rather than
+as a grid of SKUs.
 
 <DesktopScreenshots screenshots={[
-  { src: "/whim/product/catalog.png", alt: "Whim catalog", caption: "The catalog grid." }
+  { src: "/whim/product/hero.webp", alt: "Whim homepage hero", caption: "Products scattered around the headline, with the waitlist as the primary action." }
 ]} />
 
-    Note these are desktop-width; MobileScreenshots is the narrow side-by-side one used on
-    the Rainbow page. */}
+Below it the page settles into an editorial rhythm: three claims, alternating sides, each one
+letting a photograph do the arguing instead of a feature list. Try for as little or as long as you
+want. Swap, upgrade, or replace anytime. Keep what you love.
+
+<DesktopScreenshots screenshots={[
+  { src: "/whim/product/how-it-works.webp", alt: "How it works section", caption: "Alternating text and photography rather than a feature grid." }
+]} />
+
+The scatter is the part that can't just be a background image. Every cutout has to hold its
+relationship to the headline as the viewport changes, and on a phone there's no room for most of
+them at all — the composition thins out and regroups above and below the text rather than around
+it, while the alternating rows collapse into a single column of text-then-image.
+
+<MobileScreenshots screenshots={[
+  { src: "/whim/product/mobile-hero.webp", alt: "Whim homepage hero on mobile" },
+  { src: "/whim/product/mobile-how.webp", alt: "How it works on mobile" }
+]} />
+
+{/* TODO(matthew): replace my description with your account. I can see what the site does; I
+    can't see what it cost to build. Worth covering:
+    - How the scatter is actually built and positioned across breakpoints.
+    - Those are large transparent cutouts above the fold — what did you do about weight and LCP?
+    - Anything that fought you, or that you rebuilt. */}
+
+{/* TODO(matthew): NEXT SECTION — "## The checkout integration"
+    The most distinctive frontend problem here, and one I can't see at all.
+    "Choose Whim on any partner brand's site" means shipping UI into a checkout you don't own.
+    - Is it an embedded widget, a redirect, an SDK the brand installs? Something else?
+    - How does it stay recognisably Whim while living inside someone else's design system?
+    - Bundle size, style isolation, versioning across partners who upgrade whenever they feel
+      like it?
+    - How do you test something that only exists inside a third party's page? */}
+
+{/* TODO(matthew): NEXT SECTION — "## The portal"
+    my.whim.com — behind a login, so I couldn't see or screenshot it.
+    A rental is ongoing state rather than a completed order, so this is a live dashboard, not an
+    order history. Worth covering:
+    - What someone needs to see and do here.
+    - Swap, upgrade, replace, and the purchase-quote flow — the mechanics that make Whim Whim.
+    - What's genuinely hard: reconciling an active subscription, coordinating an outbound and a
+      return at once, keeping the UI honest about state the warehouse owns.
+    - Screenshots: anything shareable that doesn't expose real customer data. Drop them in
+      public/whim/product/ and use DesktopScreenshots, same as above. */}
