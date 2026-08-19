@@ -1,0 +1,75 @@
+---
+title: "//whim"
+name: "Whim"
+description: "A rental subscription service for premium consumer products — rent from the brands that build them, swap or upgrade anytime. I owned the frontend."
+slug: "whim"
+links:
+  - label: "Website"
+    href: "https://www.whim.com"
+images:
+card:
+  gradient: "linear-gradient(to bottom right, #1C1C1E, #000000)"
+  logoSrc: "/whim/whim.svg"
+  logoCentered: true
+  logoSize: "w-40 h-10"
+  buttonLabel: "Whim"
+---
+
+{/* TODO(matthew): the intro. What Whim is, when you joined, and what "everything
+    frontend" actually covered — team size, what existed before you, what you owned
+    end to end. The Rainbow page works because it opens concrete; do the same here. */}
+
+Whim is a rental subscription service for premium consumer products. Instead of buying a
+projector, an espresso machine, or a sauna outright, you rent it by the month from the brand
+that builds it, and you can swap it, upgrade it, or buy it whenever you want. Fragile is the
+company behind it. I was responsible for the frontend.
+
+That last sentence is the easy part to say and the hard part to prove, so the rest of this is
+the specific work rather than the job title.
+
+## Catalog and browse
+
+{/* TODO(matthew): The problem -> the hard part -> what shipped.
+    Some prompts, delete what doesn't apply:
+    - Rental catalog isn't a normal product grid — every item carries a monthly price, an
+      availability state, and a condition. How did that change the card and the filters?
+    - Where did the data come from (the CMS at cms.fragile.co)? What did modeling it cost you?
+    - Product photography is the whole brand here. What did you do about image weight,
+      layout shift, or loading on a page that is mostly large photos? */}
+
+## The rental flow
+
+{/* TODO(matthew): The checkout. This is the most interesting section for most readers because
+    a subscription rental checkout is genuinely not standard ecommerce.
+    - What's different from a normal cart? Recurring billing, deposits, delivery windows,
+      identity or payment checks?
+    - What was the failure mode you had to design around?
+    - Anything you had to rebuild after learning how people actually used it? */}
+
+## Swap and upgrade
+
+{/* TODO(matthew): This is the mechanic that makes Whim *Whim* — the thing a normal store
+    doesn't have. Worth the most detail.
+    - What does the flow look like from the user's side?
+    - What's hard about it underneath — reconciling an active subscription, prorating,
+      coordinating the outbound and return at once?
+    - What did you get wrong the first time? The Rainbow page is good precisely because it
+      admits the backups work blew a week-long estimate into a month. */}
+
+## Managing a rental
+
+{/* TODO(matthew): The account surface. Rentals are ongoing state, not a completed purchase,
+    so this is a live dashboard rather than an order history.
+    - What does someone need to see and do here?
+    - Returns, replacements for defective items, the buy-it-now quote flow?
+    - Anything about keeping this in sync with the backend state? */}
+
+{/* SCREENSHOTS: drop files in public/whim/product/ and use them like this — the component
+    stacks them full width, one per row, with optional captions:
+
+<DesktopScreenshots screenshots={[
+  { src: "/whim/product/catalog.png", alt: "Whim catalog", caption: "The catalog grid." }
+]} />
+
+    Note these are desktop-width; MobileScreenshots is the narrow side-by-side one used on
+    the Rainbow page. */}
