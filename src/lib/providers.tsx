@@ -16,7 +16,9 @@ export function Providers({ children }: ProvidersProps) {
     <ErrorBoundary
       fallbackRender={({ error, resetErrorBoundary }) => (
         <div className="flex flex-col items-center justify-center min-h-screen p-4">
-          <h1 className="text-xl font-bold mb-4">An error occurred: {error.message}</h1>
+          <h1 className="text-xl font-bold mb-4">
+            An error occurred: {error instanceof Error ? error.message : String(error)}
+          </h1>
           <button
             onClick={resetErrorBoundary}
             className="px-4 py-2 bg-gray-200 dark:bg-gray-800 rounded-lg"

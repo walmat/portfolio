@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { Responsive } from "react-grid-layout";
+import { Responsive } from "react-grid-layout/legacy";
 import { isMobile } from "react-device-detect";
 import { motion } from "framer-motion";
 

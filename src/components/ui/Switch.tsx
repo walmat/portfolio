@@ -1,12 +1,12 @@
 "use client";
 
 import { useRef, useCallback } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import { useThemeContext } from "@/providers/theme";
 
 const LONG_PRESS_DURATION = 500;
 
-const toggle = {
+const toggle: Variants = {
   light: {
     x: 8,
     transition: {
@@ -25,7 +25,7 @@ const toggle = {
   },
 };
 
-const iconVariants = {
+const iconVariants: Variants = {
   initial: {
     scale: 0,
     rotate: -45,

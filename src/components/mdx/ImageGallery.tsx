@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import { Responsive, WidthProvider } from "react-grid-layout";
+import { Responsive, WidthProvider } from "react-grid-layout/legacy";
 import { isMobile } from "react-device-detect";
 
 import type { ProjectImage } from "@/lib/projects";
