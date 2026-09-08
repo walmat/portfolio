@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { useFiltersContext } from "@/providers/filters";
 
@@ -19,7 +20,7 @@ const Filters = () => {
           <button
             key={option}
             onClick={() => setActive(option)}
-            className="relative z-[2] rounded-full flex items-center h-8 px-4 cursor-pointer"
+            className="relative z-[2] rounded-full flex items-center h-8 px-2.5 md:px-4 cursor-pointer"
           >
             {active === option && (
               <motion.div
@@ -37,6 +38,15 @@ const Filters = () => {
             </span>
           </button>
         ))}
+
+        {/* The nav hides its resume link below md, so it rides along here. It
+            never takes the pill, which is what keeps it reading as a link
+            rather than a fifth filter. */}
+        <Link href="/resume" className="relative z-[2] flex items-center h-8 px-2.5 md:hidden">
+          <span className="text-sm font-normal text-foreground transition-opacity duration-200 hover:opacity-50">
+            Resume
+          </span>
+        </Link>
       </div>
     </div>
   );
