@@ -21,6 +21,10 @@ export const resumeComponents: MDXComponents = {
 
   strong: (props) => <strong className="font-semibold" {...props} />,
 
+  em: (props) => (
+    <em className="not-italic text-sm tracking-[0.5px] text-muted-foreground" {...props} />
+  ),
+
   a: ({ href, ...props }) => {
     const external = typeof href === "string" && /^(https?:|mailto:)/.test(href);
 
