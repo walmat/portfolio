@@ -9,6 +9,7 @@ export { default as Social } from "./Social";
 export { default as Blog } from "./Blog";
 export { ProjectCard } from "./ProjectCard";
 export { ProjectWrapper } from "./ProjectWrapper";
+export { Resume } from "./Resume";
 export { BlogWrapper } from "./BlogWrapper";
 
 // UI Primitives

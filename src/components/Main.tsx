@@ -17,9 +17,9 @@ const Main = ({ projects, latestBlog }: Props) => (
         mtw.
       </h1>
       <Filters />
-      <Link target="_blank" href="https://linkedin.com/in/walmat" className="hidden md:flex">
+      <Link href="/resume" className="hidden md:flex">
         <p className="inline-block text-[15px] leading-[26px] tracking-[0.5px] font-normal text-[var(--text-primary)] transition-all duration-200 ease-in-out hover:opacity-50 hover:cursor-pointer">
-          Connect
+          Resume
         </p>
       </Link>
     </nav>
