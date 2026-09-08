@@ -28,7 +28,7 @@ export const capabilities: { area: string; detail: string }[] = [
   {
     area: "CRM administration",
     detail:
-      "Ran a self-hosted CRM as an organization's system of record — user and role administration, custom objects and fields, validation, and staged environments for testing before release.",
+      "Built and ran the CRM an organization works out of — user and role administration, custom objects and fields, validation, and staged environments for testing before release.",
   },
   {
     area: "Data modeling",
@@ -43,7 +43,7 @@ export const capabilities: { area: string; detail: string }[] = [
   {
     area: "Integrations",
     detail:
-      "Built and maintained integrations across telephony, email, payments, analytics, and storage providers, including the webhook sync between the CRM and the platform.",
+      "Built and maintained integrations across telephony, email, payments, analytics, and storage providers, so one toolset covers work that used to need four.",
   },
   {
     area: "Access and permissions",
