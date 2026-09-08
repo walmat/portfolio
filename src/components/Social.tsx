@@ -19,8 +19,8 @@ const backgroundColors: { [key: string]: { light: string; dark: string } } = {
     light: "var(--github)",
     dark: "var(--card)",
   },
-  x: {
-    light: "var(--x)",
+  linkedin: {
+    light: "var(--linkedin)",
     dark: "var(--card)",
   },
 } as const;
@@ -41,7 +41,7 @@ function Social({ name, href, width, height, extension = "svg" }: SocialProps) {
         alt=""
         width={width}
         height={height}
-        className={`${name === "x" ? "scale-[0.7]" : ""} md:scale-[0.7] lg:scale-100`}
+        className="md:scale-[0.7] lg:scale-100"
       />
       <Link href={href} target="_blank">
         <Button onlyIcon Icon={Arrow} />

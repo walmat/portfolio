@@ -33,7 +33,7 @@
   --recur-end: rgb(42, 232, 154);
   --tigerbob: rgb(248, 210, 204);
   --github: rgb(23, 21, 21);
-  --x: rgb(0, 0, 0);
+  --linkedin: rgb(10, 102, 194);
   --spotify-green: rgb(110, 210, 183);
 }
 
@@ -85,7 +85,7 @@
   --color-recur-end: var(--recur-end);
   --color-tigerbob: var(--tigerbob);
   --color-github: var(--github);
-  --color-x: var(--x);
+  --color-linkedin: var(--linkedin);
   --color-spotify-green: var(--spotify-green);
 
   /* Border radius */

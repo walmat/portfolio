@@ -1,0 +1,110 @@
+---
+title: "//omnia"
+name: "Omnia"
+description: "An autonomous brokerage management system. Nia works the leads, routes the calls, and shows her work, then hands off when a conversation needs a licensed human."
+slug: "omnia"
+links:
+  - label: "Website"
+    href: "https://omniaagent.com"
+images:
+card:
+  gradient: "linear-gradient(to bottom right, #1D1810, #0B0906)"
+  logoSrc: "/omnia/omnia.svg"
+  logoCentered: true
+  logoSize: "w-24 h-24"
+  buttonLabel: "Omnia"
+resume:
+  role: "Founding engineer"
+  period: "October 2025 - present"
+  summary: "Omnia Insurance Group. An autonomous system for running an insurance brokerage: it works the leads, routes the calls, and hands off to a licensed human at the point where the law says it has to."
+  highlights:
+    - "Stood up and administered the organization's CRM as its system of record, tracking every customization against upstream so the platform stays upgradeable."
+    - "Built an admin-facing data-model editor so staff define their own objects and fields, which then flow into forms, search, and reporting with no deploy."
+    - "Designed the canonical client and policy model that incoming records from third-party agency management systems map onto, with a CSV import path for the systems that offer no API."
+    - "Built the multi-tenant access model: role tiers, invitations, staff onboarding and offboarding, and per-record scoping that fails closed."
+    - "Integrated telephony, transcription, email, analytics, and object storage, plus the webhook sync between the CRM and the platform."
+    - "Built the reporting and reconciliation surfaces that reduce a carrier statement from hundreds of rows to a handful of decisions."
+    - "Enforced consent, contact-hour, and multi-year retention rules in the system itself, to TCPA, CMS, and HIPAA requirements."
+    - "Wrote the architecture decision records and operating procedures the rest of the work is held to."
+---
+
+{/* TODO(matthew): the opening. When you started, how it came about, who else was there. First
+commit is October 24th, 2025 if that's the date you want. */}
+
+Omnia is the company and Nia is the agent. I've been the engineer on the product.
+
+Nia works the leads, routes the calls, and does the follow-up nobody on the floor has time for.
+Every action carries its receipt, and anything that needs a license goes to somebody who has one.
+That boundary is enforced in code, not asked for in a prompt.
+
+## The stack
+
+One codebase, three targets. [One](https://onestack.dev) handles file-based routing for web, iOS,
+and Android off the same tree, on React 19 and React Native. The design system is Tamagui.
+
+Postgres is the source of truth, Drizzle owns the schema and migrations, and
+[Rocicorp Zero](https://zero.rocicorp.dev) sits on top as a local-first sync engine. The client
+queries a local replica, writes apply optimistically, and the server reconciles. Reads are
+org-scoped and fail closed. Auth is Better Auth with the organization plugin.
+
+The rest: valibot, oxlint, oxfmt, Vitest, Playwright, Maestro for the native flows. Bun, not Node.
+SST on AWS.
+
+## Outreach
+
+TCPA governs whether you may contact someone and what consent you needed first, so consent is
+checked at dispatch and quiet hours run against the recipient's timezone rather than the server
+clock. Campaigns show their blast radius before a send. Lifecycle touches are seeded against
+history, so turning on a day-30 check-in doesn't fire a back-dated greeting at everyone.
+
+{/* TODO(matthew): the approvals queue — what's in it, what a reviewer sees, what changed once
+people started trusting it. */}
+
+## Routing
+
+A call comes in from Georgia and routing has to know who is licensed there, who is appointed with
+that carrier, and who is free. It returns reasons, not just a name.
+
+Telephony is Twilio, the live conversation runs through Deepgram's voice agent over a websocket
+bridge, and there's a softphone in the browser. Callbacks are English and Spanish. Calls are
+recorded dual channel to S3 and kept ten years, per CMS.
+
+{/* TODO(matthew): the honest paragraph about voice — latency, barge-in, what it sounds like when
+the bridge drops mid-sentence, and how you made handoff not feel like starting over. */}
+
+## The console
+
+Clients, policies, conversations, inbox, calls, tasks, campaigns, effectuation, retention,
+reconciliation, reports, search. Settings covers the AI configuration, the prompt and skill and
+tool editors, the data-model editor, and org management.
+
+Brokerages don't agree on what a client record contains, so object and field definitions are data
+rather than TypeScript. An admin adds a field and it appears in the schema, the forms, the search,
+and the agent's view of the world without a deploy.
+
+{/* TODO(matthew): pick one surface and go deep the way the Whim page does. Reconciliation is
+probably it — twelve decisions instead of four hundred rows is a real claim. */}
+
+## The ledger
+
+Every decision Nia makes shows up the moment she makes it, with how confident she was and how it
+turned out.
+
+The agent is a skill registry rather than a prompt. Each skill is a bounded capability with its own
+tools. A cheaper model does a classification pass first so the expensive one only sees what needs
+reasoning, and every call is metered against a per-organization cost ledger. Nia runs on Claude
+through Bedrock, because health data needs a business associate agreement under HIPAA.
+
+{/* TODO(matthew): the projections — how the agent gets a current view of a person without
+dragging the whole record through the context window. */}
+
+## The back office
+
+The system of record is a fork of [Twenty](https://twenty.com). Every change on top of upstream is
+tracked in one file so the merges stay possible. It deploys separately and talks to the platform
+over webhooks.
+
+{/* TODO(matthew): the number. Every other page has one — $175,000 MRR, 30 MB, 0.25 ETH. */}
+
+{/* TODO(matthew): the last line. Still at Omnia, multi-tenant GA is the stated goal. What's
+next? */}

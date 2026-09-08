@@ -16,10 +16,11 @@ const Main = ({ projects, latestBlog }: Props) => (
       <h1 className="text-5xl font-bold my-9 md:my-0 leading-none h-[42px] bg-gradient-to-r from-[#776af2] via-[#a097fd] to-[#776af2] bg-[length:400%_100%] text-transparent bg-clip-text animate-[move-bg_30s_infinite_linear]">
         mtw.
       </h1>
+      {/* Carries the resume link on mobile, where this nav has no room for it. */}
       <Filters />
-      <Link target="_blank" href="https://linkedin.com/in/walmat" className="hidden md:flex">
+      <Link href="/resume" className="hidden md:flex">
         <p className="inline-block text-[15px] leading-[26px] tracking-[0.5px] font-normal text-[var(--text-primary)] transition-all duration-200 ease-in-out hover:opacity-50 hover:cursor-pointer">
-          Connect
+          Resume
         </p>
       </Link>
     </nav>

@@ -31,6 +31,15 @@ export interface ProjectCard {
   buttonLabel: string;
 }
 
+// Resume-only. The card and the write-up ignore this; it exists because a
+// project description sells the product and a resume has to say what I did.
+export interface ProjectResume {
+  role: string;
+  period?: string;
+  summary?: string;
+  highlights?: string[];
+}
+
 export interface ProjectFrontmatter {
   title: string;
   name: string;
@@ -39,6 +48,7 @@ export interface ProjectFrontmatter {
   links: ProjectLink[];
   images: Record<string, ProjectImage>;
   card: ProjectCard;
+  resume?: ProjectResume;
 }
 
 export async function getProjectBySlug(

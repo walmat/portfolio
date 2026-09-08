@@ -68,15 +68,14 @@ const Grid = ({ projects, latestBlog }: Props) => {
         Component: <Spotify />,
       },
       {
-        key: "twitter",
+        key: "linkedin",
         Component: (
           <Social
             {...{
-              width: 75.121,
-              height: 61.052,
-              href: "https://x.com/mtw_dev",
-              name: "x",
-              extension: "png",
+              width: 64,
+              height: 64,
+              href: "https://linkedin.com/in/walmat",
+              name: "linkedin",
             }}
           />
         ),
@@ -104,6 +103,10 @@ const Grid = ({ projects, latestBlog }: Props) => {
       {
         key: "whim",
         Component: projectMap["whim"] ? <ProjectCard project={projectMap["whim"]} /> : null,
+      },
+      {
+        key: "omnia",
+        Component: projectMap["omnia"] ? <ProjectCard project={projectMap["omnia"]} /> : null,
       },
       {
         key: "contact",

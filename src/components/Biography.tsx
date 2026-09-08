@@ -22,8 +22,8 @@ function Biography() {
       </div>
       <div className="text-sm leading-[26px] tracking-[0.5px] font-normal text-foreground">
         I&apos;m <h2 className="inline text-[40px]">Matthew</h2>, a founding engineer who loves
-        building products and sweating the small stuff. Currently working on Forkast — AI-powered
-        recipes for near-zero waste.
+        building products and sweating the small stuff. Currently working on Omnia — an autonomous
+        brokerage management system.
       </div>
     </div>
   );
