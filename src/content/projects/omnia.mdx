@@ -18,11 +18,11 @@ resume:
   period: "October 2025 - present"
   summary: "Omnia Insurance Group. An autonomous system for running an insurance brokerage: it works the leads, routes the calls, and hands off to a licensed human at the point where the law says it has to."
   highlights:
-    - "Stood up and administered the organization's CRM as its system of record, tracking every customization against upstream so the platform stays upgradeable."
+    - "Built the console that replaced a brokerage's stack of separate products, putting the CRM, the dialer, call review, and reporting in one toolset against one set of records."
     - "Built an admin-facing data-model editor so staff define their own objects and fields, which then flow into forms, search, and reporting with no deploy."
     - "Designed the canonical client and policy model that incoming records from third-party agency management systems map onto, with a CSV import path for the systems that offer no API."
     - "Built the multi-tenant access model: role tiers, invitations, staff onboarding and offboarding, and per-record scoping that fails closed."
-    - "Integrated telephony, transcription, email, analytics, and object storage, plus the webhook sync between the CRM and the platform."
+    - "Integrated telephony, transcription, email, analytics, and object storage behind that one toolset."
     - "Built the reporting and reconciliation surfaces that reduce a carrier statement from hundreds of rows to a handful of decisions."
     - "Enforced consent, contact-hour, and multi-year retention rules in the system itself, to TCPA, CMS, and HIPAA requirements."
     - "Wrote the architecture decision records and operating procedures the rest of the work is held to."
@@ -74,6 +74,12 @@ the bridge drops mid-sentence, and how you made handoff not feel like starting o
 
 ## The console
 
+The console is the whole idea. A brokerage runs on a stack of products that don't know about each
+other — a CRM here, a dialer there, call review somewhere else, reporting in a fourth place — and
+producers spend the day carrying context between tabs. We built one toolset instead. The client
+record, the phone, the transcript and its review queue, and the numbers all sit in the same place,
+against the same data.
+
 Clients, policies, conversations, inbox, calls, tasks, campaigns, effectuation, retention,
 reconciliation, reports, search. Settings covers the AI configuration, the prompt and skill and
 tool editors, the data-model editor, and org management.
@@ -97,12 +103,6 @@ through Bedrock, because health data needs a business associate agreement under 
 
 {/* TODO(matthew): the projections — how the agent gets a current view of a person without
 dragging the whole record through the context window. */}
-
-## The back office
-
-The system of record is a fork of [Twenty](https://twenty.com). Every change on top of upstream is
-tracked in one file so the merges stay possible. It deploys separately and talks to the platform
-over webhooks.
 
 {/* TODO(matthew): the number. Every other page has one — $175,000 MRR, 30 MB, 0.25 ETH. */}
 
