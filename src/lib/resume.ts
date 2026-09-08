@@ -14,7 +14,7 @@ export const profile = {
   // Kept separate from the home-page bio on purpose. A resume has to agree with
   // the dates underneath it.
   summary:
-    "I build and run the systems an organization depends on: the record of who it deals with, the data model underneath it, the integrations feeding it, and the reporting that comes out. Currently the founding engineer at Omnia Insurance Group.",
+    "I build and run the systems an organization depends on: the record of who it deals with, the data model underneath it, the integrations feeding it, and the reporting that comes out. I have also hired and led the people around those systems, and run a business on the numbers they produced. Currently the founding engineer at Omnia Insurance Group.",
   email: "matthew.wallt@gmail.com",
   links: [
     { label: "GitHub", href: "https://github.com/walmat" },
